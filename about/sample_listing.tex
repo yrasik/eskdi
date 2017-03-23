@@ -1,0 +1,704 @@
+\section{Структура каталога со шрифтами ''pscyr''} \label{app:list}
+\sectionmark{Структура каталога со шрифтами ''pscyr''}
+
+\begin{lstlisting}[frame=tb, extendedchars=false, breaklines=false, basicstyle=\footnotesize\upshape ,columns=flexible ,keepspaces=true , lineskip={-7.0pt} ]
+ '--texmf-dist
+    |----dvips
+    |    '----pscyr
+    |           t2a.enc
+    |           t2d.enc
+    |           
+    |----fonts
+    |   |----afm
+    |   |    '----public
+    |   |         '----pscyr
+    |   |               acade1.afm
+    |   |               acade2.afm
+    |   |               acade3.afm
+    |   |               adver4.afm
+    |   |               antiq4.afm
+    |   |               antiq5.afm
+    |   |               antiq6.afm
+    |   |               antiq7.afm
+    |   |               arial.afm
+    |   |               arialbd.afm
+    |   |               arialbi.afm
+    |   |               ariale.afm
+    |   |               ariali.afm
+    |   |               colle10.afm
+    |   |               colle8.afm
+    |   |               colle9.afm
+    |   |               cooper.afm
+    |   |               cour.afm
+    |   |               courbd.afm
+    |   |               courbi.afm
+    |   |               couri.afm
+    |   |               ercour.afm
+    |   |               ercourb.afm
+    |   |               ercourbi.afm
+    |   |               ercouri.afm
+    |   |               handb11.afm
+    |   |               handb12.afm
+    |   |               handb13.afm
+    |   |               journ.afm
+    |   |               journb.afm
+    |   |               journi.afm
+    |   |               lazur14.afm
+    |   |               magaz15.afm
+    |   |               magaz16.afm
+    |   |               magaz17.afm
+    |   |               souven.afm
+    |   |               souvenb.afm
+    |   |               textb18.afm
+    |   |               textb19.afm
+    |   |               textb20.afm
+    |   |               times.afm
+    |   |               timesbd.afm
+    |   |               timesbi.afm
+    |   |               timesi.afm
+    |   |               
+    |   |----enc
+    |   |       t2a.enc
+    |   |       t2d.enc
+    |   |       
+    |   |----map
+    |   |    '----pscyr
+    |   |           pscyr.map
+    |   |           
+    |   |----tfm
+    |   |    '----public
+    |   |         '----pscyr
+    |   |               facb6a.tfm
+    |   |               facb7t.tfm
+    |   |               facb8r.tfm
+    |   |               facb8t.tfm
+    |   |               facbc6a.tfm
+    |   |               facbo6a.tfm
+    |   |               facbo7t.tfm
+    |   |               facbo8r.tfm
+    |   |               facbo8t.tfm
+    |   |               facr6a.tfm
+    |   |               facr7t.tfm
+    |   |               facr8r.tfm
+    |   |               facr8t.tfm
+    |   |               facrc6a.tfm
+    |   |               facrc7t.tfm
+    |   |               facrc8t.tfm
+    |   |               facri6a.tfm
+    |   |               facri7t.tfm
+    |   |               facri8r.tfm
+    |   |               facri8t.tfm
+    |   |               facro6a.tfm
+    |   |               facro7t.tfm
+    |   |               facro8r.tfm
+    |   |               facro8t.tfm
+    |   |               fadr6a.tfm
+    |   |               fadr6t.tfm
+    |   |               fadr7t.tfm
+    |   |               fadr8r.tfm
+    |   |               fadr8t.tfm
+    |   |               fadrc6t.tfm
+    |   |               fadrc7t.tfm
+    |   |               fadrc8t.tfm
+    |   |               faqb6a.tfm
+    |   |               faqb6d.tfm
+    |   |               faqb7t.tfm
+    |   |               faqb8r.tfm
+    |   |               faqb8t.tfm
+    |   |               faqbc6a.tfm
+    |   |               faqbi6a.tfm
+    |   |               faqbi7t.tfm
+    |   |               faqbi8r.tfm
+    |   |               faqbi8t.tfm
+    |   |               faqbo6a.tfm
+    |   |               faqbo6d.tfm
+    |   |               faqbo7t.tfm
+    |   |               faqbo8r.tfm
+    |   |               faqbo8t.tfm
+    |   |               faqr6a.tfm
+    |   |               faqr6d.tfm
+    |   |               faqr7t.tfm
+    |   |               faqr8r.tfm
+    |   |               faqr8t.tfm
+    |   |               faqrc6a.tfm
+    |   |               faqrc7t.tfm
+    |   |               faqrc8t.tfm
+    |   |               faqri6a.tfm
+    |   |               faqri6d.tfm
+    |   |               faqri7t.tfm
+    |   |               faqri8r.tfm
+    |   |               faqri8t.tfm
+    |   |               faqro6a.tfm
+    |   |               faqro6d.tfm
+    |   |               faqro7t.tfm
+    |   |               faqro8r.tfm
+    |   |               faqro8t.tfm
+    |   |               farb6a.tfm
+    |   |               farb6t.tfm
+    |   |               farb7t.tfm
+    |   |               farb8r.tfm
+    |   |               farb8t.tfm
+    |   |               farbe6a.tfm
+    |   |               farbe6t.tfm
+    |   |               farbe7t.tfm
+    |   |               farbe8r.tfm
+    |   |               farbe8t.tfm
+    |   |               farbi6a.tfm
+    |   |               farbi6t.tfm
+    |   |               farbi7t.tfm
+    |   |               farbi8r.tfm
+    |   |               farbi8t.tfm
+    |   |               farbo6a.tfm
+    |   |               farbo6t.tfm
+    |   |               farbo7t.tfm
+    |   |               farbo8r.tfm
+    |   |               farbo8t.tfm
+    |   |               farr6a.tfm
+    |   |               farr6t.tfm
+    |   |               farr7t.tfm
+    |   |               farr8r.tfm
+    |   |               farr8t.tfm
+    |   |               farrc6t.tfm
+    |   |               farrc7t.tfm
+    |   |               farrc8t.tfm
+    |   |               farri6a.tfm
+    |   |               farri6t.tfm
+    |   |               farri7t.tfm
+    |   |               farri8r.tfm
+    |   |               farri8t.tfm
+    |   |               farro6a.tfm
+    |   |               farro6t.tfm
+    |   |               farro7t.tfm
+    |   |               farro8r.tfm
+    |   |               farro8t.tfm
+    |   |               fcob6a.tfm
+    |   |               fcob7t.tfm
+    |   |               fcob8r.tfm
+    |   |               fcob8t.tfm
+    |   |               fcobc6a.tfm
+    |   |               fcobo6a.tfm
+    |   |               fcobo7t.tfm
+    |   |               fcobo8r.tfm
+    |   |               fcobo8t.tfm
+    |   |               fcor6a.tfm
+    |   |               fcor7t.tfm
+    |   |               fcor8r.tfm
+    |   |               fcor8t.tfm
+    |   |               fcorc6a.tfm
+    |   |               fcorc7t.tfm
+    |   |               fcorc8t.tfm
+    |   |               fcori6a.tfm
+    |   |               fcori7t.tfm
+    |   |               fcori8r.tfm
+    |   |               fcori8t.tfm
+    |   |               fcoro6a.tfm
+    |   |               fcoro7t.tfm
+    |   |               fcoro8r.tfm
+    |   |               fcoro8t.tfm
+    |   |               fcpr6a.tfm
+    |   |               fcpr6t.tfm
+    |   |               fcpr7t.tfm
+    |   |               fcpr8r.tfm
+    |   |               fcpr8t.tfm
+    |   |               fcprc6t.tfm
+    |   |               fcprc7t.tfm
+    |   |               fcprc8t.tfm
+    |   |               fcrb6a.tfm
+    |   |               fcrb7t.tfm
+    |   |               fcrb8r.tfm
+    |   |               fcrb8t.tfm
+    |   |               fcrbi6a.tfm
+    |   |               fcrbi7t.tfm
+    |   |               fcrbi8r.tfm
+    |   |               fcrbi8t.tfm
+    |   |               fcrr6a.tfm
+    |   |               fcrr7t.tfm
+    |   |               fcrr8r.tfm
+    |   |               fcrr8t.tfm
+    |   |               fcrri6a.tfm
+    |   |               fcrri7t.tfm
+    |   |               fcrri8r.tfm
+    |   |               fcrri8t.tfm
+    |   |               ferb6a.tfm
+    |   |               ferb7t.tfm
+    |   |               ferb8r.tfm
+    |   |               ferb8t.tfm
+    |   |               ferbi6a.tfm
+    |   |               ferbi7t.tfm
+    |   |               ferbi8r.tfm
+    |   |               ferbi8t.tfm
+    |   |               ferr6a.tfm
+    |   |               ferr7t.tfm
+    |   |               ferr8r.tfm
+    |   |               ferr8t.tfm
+    |   |               ferri6a.tfm
+    |   |               ferri7t.tfm
+    |   |               ferri8r.tfm
+    |   |               ferri8t.tfm
+    |   |               fhab6a.tfm
+    |   |               fhab7t.tfm
+    |   |               fhab8r.tfm
+    |   |               fhab8t.tfm
+    |   |               fhabc6a.tfm
+    |   |               fhabo6a.tfm
+    |   |               fhabo7t.tfm
+    |   |               fhabo8r.tfm
+    |   |               fhabo8t.tfm
+    |   |               fhar6a.tfm
+    |   |               fhar7t.tfm
+    |   |               fhar8r.tfm
+    |   |               fhar8t.tfm
+    |   |               fharc6a.tfm
+    |   |               fharc7t.tfm
+    |   |               fharc8t.tfm
+    |   |               fhari6a.tfm
+    |   |               fhari7t.tfm
+    |   |               fhari8r.tfm
+    |   |               fhari8t.tfm
+    |   |               fharo6a.tfm
+    |   |               fharo7t.tfm
+    |   |               fharo8r.tfm
+    |   |               fharo8t.tfm
+    |   |               fjnb6a.tfm
+    |   |               fjnb6d.tfm
+    |   |               fjnb7t.tfm
+    |   |               fjnb8r.tfm
+    |   |               fjnb8t.tfm
+    |   |               fjnbc6a.tfm
+    |   |               fjnbo6a.tfm
+    |   |               fjnbo6d.tfm
+    |   |               fjnbo7t.tfm
+    |   |               fjnbo8r.tfm
+    |   |               fjnbo8t.tfm
+    |   |               fjnr6a.tfm
+    |   |               fjnr6d.tfm
+    |   |               fjnr7t.tfm
+    |   |               fjnr8r.tfm
+    |   |               fjnr8t.tfm
+    |   |               fjnrc6a.tfm
+    |   |               fjnrc7t.tfm
+    |   |               fjnrc8t.tfm
+    |   |               fjnri6a.tfm
+    |   |               fjnri6d.tfm
+    |   |               fjnri7t.tfm
+    |   |               fjnri8r.tfm
+    |   |               fjnri8t.tfm
+    |   |               fjnro6a.tfm
+    |   |               fjnro6d.tfm
+    |   |               fjnro7t.tfm
+    |   |               fjnro8r.tfm
+    |   |               fjnro8t.tfm
+    |   |               flzr6a.tfm
+    |   |               flzr6t.tfm
+    |   |               flzr7t.tfm
+    |   |               flzr8r.tfm
+    |   |               flzrc6t.tfm
+    |   |               flzrc7t.tfm
+    |   |               flzro6a.tfm
+    |   |               flzro6t.tfm
+    |   |               flzro7t.tfm
+    |   |               flzro8r.tfm
+    |   |               fmab6a.tfm
+    |   |               fmab7t.tfm
+    |   |               fmab8r.tfm
+    |   |               fmab8t.tfm
+    |   |               fmabc6a.tfm
+    |   |               fmabo6a.tfm
+    |   |               fmabo7t.tfm
+    |   |               fmabo8r.tfm
+    |   |               fmabo8t.tfm
+    |   |               fmar6a.tfm
+    |   |               fmar7t.tfm
+    |   |               fmar8r.tfm
+    |   |               fmar8t.tfm
+    |   |               fmarc6a.tfm
+    |   |               fmarc7t.tfm
+    |   |               fmarc8t.tfm
+    |   |               fmari6a.tfm
+    |   |               fmari7t.tfm
+    |   |               fmari8r.tfm
+    |   |               fmari8t.tfm
+    |   |               fmaro6a.tfm
+    |   |               fmaro7t.tfm
+    |   |               fmaro8r.tfm
+    |   |               fmaro8t.tfm
+    |   |               fsvb6a.tfm
+    |   |               fsvb7t.tfm
+    |   |               fsvb8r.tfm
+    |   |               fsvb8t.tfm
+    |   |               fsvbc6a.tfm
+    |   |               fsvbo6a.tfm
+    |   |               fsvbo7t.tfm
+    |   |               fsvbo8r.tfm
+    |   |               fsvbo8t.tfm
+    |   |               fsvr6a.tfm
+    |   |               fsvr7t.tfm
+    |   |               fsvr8r.tfm
+    |   |               fsvr8t.tfm
+    |   |               fsvrc6a.tfm
+    |   |               fsvrc7t.tfm
+    |   |               fsvrc8t.tfm
+    |   |               fsvro6a.tfm
+    |   |               fsvro7t.tfm
+    |   |               fsvro8r.tfm
+    |   |               fsvro8t.tfm
+    |   |               ftmb6a.tfm
+    |   |               ftmb6t.tfm
+    |   |               ftmb7t.tfm
+    |   |               ftmb8r.tfm
+    |   |               ftmb8t.tfm
+    |   |               ftmbi6a.tfm
+    |   |               ftmbi6t.tfm
+    |   |               ftmbi7t.tfm
+    |   |               ftmbi8r.tfm
+    |   |               ftmbi8t.tfm
+    |   |               ftmbo6a.tfm
+    |   |               ftmbo6t.tfm
+    |   |               ftmbo7t.tfm
+    |   |               ftmbo8r.tfm
+    |   |               ftmbo8t.tfm
+    |   |               ftmr6a.tfm
+    |   |               ftmr6t.tfm
+    |   |               ftmr7t.tfm
+    |   |               ftmr8r.tfm
+    |   |               ftmr8t.tfm
+    |   |               ftmrc6t.tfm
+    |   |               ftmrc7t.tfm
+    |   |               ftmrc8t.tfm
+    |   |               ftmri6a.tfm
+    |   |               ftmri6t.tfm
+    |   |               ftmri7t.tfm
+    |   |               ftmri8r.tfm
+    |   |               ftmri8t.tfm
+    |   |               ftmro6a.tfm
+    |   |               ftmro6t.tfm
+    |   |               ftmro7t.tfm
+    |   |               ftmro8r.tfm
+    |   |               ftmro8t.tfm
+    |   |               ftxb6a.tfm
+    |   |               ftxb6d.tfm
+    |   |               ftxb7t.tfm
+    |   |               ftxb8r.tfm
+    |   |               ftxb8t.tfm
+    |   |               ftxbc6a.tfm
+    |   |               ftxbo6a.tfm
+    |   |               ftxbo6d.tfm
+    |   |               ftxbo7t.tfm
+    |   |               ftxbo8r.tfm
+    |   |               ftxbo8t.tfm
+    |   |               ftxr6a.tfm
+    |   |               ftxr6d.tfm
+    |   |               ftxr7t.tfm
+    |   |               ftxr8r.tfm
+    |   |               ftxr8t.tfm
+    |   |               ftxrc6a.tfm
+    |   |               ftxrc7t.tfm
+    |   |               ftxrc8t.tfm
+    |   |               ftxri6a.tfm
+    |   |               ftxri6d.tfm
+    |   |               ftxri7t.tfm
+    |   |               ftxri8r.tfm
+    |   |               ftxri8t.tfm
+    |   |               ftxro6a.tfm
+    |   |               ftxro6d.tfm
+    |   |               ftxro7t.tfm
+    |   |               ftxro8r.tfm
+    |   |               ftxro8t.tfm
+    |   |               zfaqcmbm.tfm
+    |   |               zfaqcmrm.tfm
+    |   |               
+    |   |----type1
+    |   |    '----public
+    |   |         '----pscyr
+    |   |               acade1.pfb
+    |   |               acade2.pfb
+    |   |               acade3.pfb
+    |   |               adver4.pfb
+    |   |               antiq4.pfb
+    |   |               antiq5.pfb
+    |   |               antiq6.pfb
+    |   |               antiq7.pfb
+    |   |               arial.pfb
+    |   |               arialbd.pfb
+    |   |               arialbi.pfb
+    |   |               ariale.pfb
+    |   |               ariali.pfb
+    |   |               colle10.pfb
+    |   |               colle8.pfb
+    |   |               colle9.pfb
+    |   |               cooper.pfb
+    |   |               cour.pfb
+    |   |               courbd.pfb
+    |   |               courbi.pfb
+    |   |               couri.pfb
+    |   |               ercour.pfb
+    |   |               ercourb.pfb
+    |   |               ercourbi.pfb
+    |   |               ercouri.pfb
+    |   |               handb11.pfb
+    |   |               handb12.pfb
+    |   |               handb13.pfb
+    |   |               journ.pfb
+    |   |               journb.pfb
+    |   |               journi.pfb
+    |   |               lazur14.pfb
+    |   |               magaz15.pfb
+    |   |               magaz16.pfb
+    |   |               magaz17.pfb
+    |   |               souven.pfb
+    |   |               souvenb.pfb
+    |   |               textb18.pfb
+    |   |               textb19.pfb
+    |   |               textb20.pfb
+    |   |               times.pfb
+    |   |               timesbd.pfb
+    |   |               timesbi.pfb
+    |   |               timesi.pfb
+    |   |               
+    |   '----vf
+    |        '----public
+    |             '----pscyr
+    |                   facb7t.vf
+    |                   facb8t.vf
+    |                   facbc6a.vf
+    |                   facbo7t.vf
+    |                   facbo8t.vf
+    |                   facr7t.vf
+    |                   facr8t.vf
+    |                   facrc6a.vf
+    |                   facrc7t.vf
+    |                   facrc8t.vf
+    |                   facri7t.vf
+    |                   facri8t.vf
+    |                   facro7t.vf
+    |                   facro8t.vf
+    |                   faqb7t.vf
+    |                   faqb8t.vf
+    |                   faqbc6a.vf
+    |                   faqbi7t.vf
+    |                   faqbi8t.vf
+    |                   faqbo7t.vf
+    |                   faqbo8t.vf
+    |                   faqr7t.vf
+    |                   faqr8t.vf
+    |                   faqrc6a.vf
+    |                   faqrc7t.vf
+    |                   faqrc8t.vf
+    |                   faqri7t.vf
+    |                   faqri8t.vf
+    |                   faqro7t.vf
+    |                   faqro8t.vf
+    |                   farb6t.vf
+    |                   farb7t.vf
+    |                   farb8t.vf
+    |                   farbe6t.vf
+    |                   farbe7t.vf
+    |                   farbe8t.vf
+    |                   farbi6t.vf
+    |                   farbi7t.vf
+    |                   farbi8t.vf
+    |                   farbo6t.vf
+    |                   farbo7t.vf
+    |                   farbo8t.vf
+    |                   farr6t.vf
+    |                   farr7t.vf
+    |                   farr8t.vf
+    |                   farrc6t.vf
+    |                   farrc7t.vf
+    |                   farrc8t.vf
+    |                   farri6t.vf
+    |                   farri7t.vf
+    |                   farri8t.vf
+    |                   farro6t.vf
+    |                   farro7t.vf
+    |                   farro8t.vf
+    |                   fcob7t.vf
+    |                   fcob8t.vf
+    |                   fcobc6a.vf
+    |                   fcobo7t.vf
+    |                   fcobo8t.vf
+    |                   fcor7t.vf
+    |                   fcor8t.vf
+    |                   fcorc6a.vf
+    |                   fcorc7t.vf
+    |                   fcorc8t.vf
+    |                   fcori7t.vf
+    |                   fcori8t.vf
+    |                   fcoro7t.vf
+    |                   fcoro8t.vf
+    |                   fcpr6t.vf
+    |                   fcpr7t.vf
+    |                   fcpr8t.vf
+    |                   fcprc6t.vf
+    |                   fcprc7t.vf
+    |                   fcprc8t.vf
+    |                   fcrb7t.vf
+    |                   fcrb8t.vf
+    |                   fcrbi7t.vf
+    |                   fcrbi8t.vf
+    |                   fcrr7t.vf
+    |                   fcrr8t.vf
+    |                   fcrri7t.vf
+    |                   fcrri8t.vf
+    |                   ferb7t.vf
+    |                   ferb8t.vf
+    |                   ferbi7t.vf
+    |                   ferbi8t.vf
+    |                   ferr7t.vf
+    |                   ferr8t.vf
+    |                   ferri7t.vf
+    |                   ferri8t.vf
+    |                   fhab7t.vf
+    |                   fhab8t.vf
+    |                   fhabc6a.vf
+    |                   fhabo7t.vf
+    |                   fhabo8t.vf
+    |                   fhar7t.vf
+    |                   fhar8t.vf
+    |                   fharc6a.vf
+    |                   fharc7t.vf
+    |                   fharc8t.vf
+    |                   fhari7t.vf
+    |                   fhari8t.vf
+    |                   fharo7t.vf
+    |                   fharo8t.vf
+    |                   fjnb7t.vf
+    |                   fjnb8t.vf
+    |                   fjnbc6a.vf
+    |                   fjnbo7t.vf
+    |                   fjnbo8t.vf
+    |                   fjnr7t.vf
+    |                   fjnr8t.vf
+    |                   fjnrc6a.vf
+    |                   fjnrc7t.vf
+    |                   fjnrc8t.vf
+    |                   fjnri7t.vf
+    |                   fjnri8t.vf
+    |                   fjnro7t.vf
+    |                   fjnro8t.vf
+    |                   flzr6t.vf
+    |                   flzr7t.vf
+    |                   flzrc6t.vf
+    |                   flzrc7t.vf
+    |                   flzro6t.vf
+    |                   flzro7t.vf
+    |                   fmab7t.vf
+    |                   fmab8t.vf
+    |                   fmabc6a.vf
+    |                   fmabo7t.vf
+    |                   fmabo8t.vf
+    |                   fmar7t.vf
+    |                   fmar8t.vf
+    |                   fmarc6a.vf
+    |                   fmarc7t.vf
+    |                   fmarc8t.vf
+    |                   fmari7t.vf
+    |                   fmari8t.vf
+    |                   fmaro7t.vf
+    |                   fmaro8t.vf
+    |                   fsvb7t.vf
+    |                   fsvb8t.vf
+    |                   fsvbc6a.vf
+    |                   fsvbo7t.vf
+    |                   fsvbo8t.vf
+    |                   fsvr7t.vf
+    |                   fsvr8t.vf
+    |                   fsvrc6a.vf
+    |                   fsvrc7t.vf
+    |                   fsvrc8t.vf
+    |                   fsvro7t.vf
+    |                   fsvro8t.vf
+    |                   ftmb6t.vf
+    |                   ftmb7t.vf
+    |                   ftmb8t.vf
+    |                   ftmbi6t.vf
+    |                   ftmbi7t.vf
+    |                   ftmbi8t.vf
+    |                   ftmbo6t.vf
+    |                   ftmbo7t.vf
+    |                   ftmbo8t.vf
+    |                   ftmr6t.vf
+    |                   ftmr7t.vf
+    |                   ftmr8t.vf
+    |                   ftmrc6t.vf
+    |                   ftmrc7t.vf
+    |                   ftmrc8t.vf
+    |                   ftmri6t.vf
+    |                   ftmri7t.vf
+    |                   ftmri8t.vf
+    |                   ftmro6t.vf
+    |                   ftmro7t.vf
+    |                   ftmro8t.vf
+    |                   ftxb7t.vf
+    |                   ftxb8t.vf
+    |                   ftxbc6a.vf
+    |                   ftxbo7t.vf
+    |                   ftxbo8t.vf
+    |                   ftxr7t.vf
+    |                   ftxr8t.vf
+    |                   ftxrc6a.vf
+    |                   ftxrc7t.vf
+    |                   ftxrc8t.vf
+    |                   ftxri7t.vf
+    |                   ftxri8t.vf
+    |                   ftxro7t.vf
+    |                   ftxro8t.vf
+    |                   zfaqcmbm.vf
+    |                   zfaqcmrm.vf
+    |                   
+    '----tex
+         '----latex
+              '----pscyr
+                    omlfaq.fd
+                    ot1fac.fd
+                    ot1fad.fd
+                    ot1faq.fd
+                    ot1far.fd
+                    ot1fco.fd
+                    ot1fcp.fd
+                    ot1fcr.fd
+                    ot1fer.fd
+                    ot1fha.fd
+                    ot1fjn.fd
+                    ot1flz.fd
+                    ot1fma.fd
+                    ot1fsv.fd
+                    ot1ftm.fd
+                    ot1ftx.fd
+                    pscyr.sty
+                    t1fac.fd
+                    t1fad.fd
+                    t1faq.fd
+                    t1far.fd
+                    t1fco.fd
+                    t1fcp.fd
+                    t1fcr.fd
+                    t1fer.fd
+                    t1fha.fd
+                    t1fjn.fd
+                    t1fma.fd
+                    t1fsv.fd
+                    t1ftm.fd
+                    t1ftx.fd
+                    t2afac.fd
+                    t2afad.fd
+                    t2afaq.fd
+                    t2afar.fd
+                    t2afco.fd
+                    t2afcp.fd
+                    t2afcr.fd
+                    t2afer.fd
+                    t2afha.fd
+                    t2afjn.fd
+                    t2aflz.fd
+                    t2afma.fd
+                    t2afsv.fd
+                    t2aftm.fd
+                    t2aftx.fd
+                    t2dfaq.fd
+                    t2dfjn.fd
+                    t2dftx.fd
+\end{lstlisting}
+
+
+

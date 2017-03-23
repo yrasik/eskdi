@@ -1,0 +1,238 @@
+\section{Команды eskdi}
+\sectionmark{Команды eskdi}
+
+
+\subsection{Настройки документа eskdi}
+
+\noindent \verb|"MakeStamp"|~– Включение рамок в докуументе.
+
+\noindent \verb|"twoside"|~– Включение двусторонней печати.
+
+\noindent \verb|"SubSectInToc"|~– Включение глав и подглав в содержание.
+
+\noindent \verb|"SubSubSectInToc"|~– Включение глав, подглав, подподглав в содержание.
+
+\noindent \verb|"ParagraphInToc"|~– Включение глав, подглав, подподглав, параграфов в содержание.
+
+\noindent \verb|"MakeEmptyStamp"|~– Печатается вместо рамок только децимальный номер внизу и номер страницы. Только для двусторонней печати.
+
+\noindent \verb|"NumIntoSections"|~–  Включение нумерации формул, рисунков, таблиц внутри глав.
+
+
+
+Примеры использования:
+\begin{lstlisting}[language=TeX, style=FrameStyle]
+\usepackage{eskdi}
+\end{lstlisting}
+или
+\begin{lstlisting}[language=TeX, style=FrameStyle]
+\usepackage[MakeStamp]{eskdi}
+\end{lstlisting}
+или
+\begin{lstlisting}[language=TeX, style=FrameStyle]
+\usepackage[MakeStamp, SubSectInToc]{eskdi}
+\end{lstlisting}
+или
+\begin{lstlisting}[language=TeX, style=FrameStyle]
+\usepackage[MakeStamp, SubSubSectInToc]{eskdi}
+\end{lstlisting}
+или
+\begin{lstlisting}[language=TeX, style=FrameStyle]
+\usepackage[twoside, MakeStamp, ParagraphInToc]{eskdi}
+\end{lstlisting}
+или
+\begin{lstlisting}[language=TeX, style=FrameStyle]
+\usepackage[SubSectInToc]{eskdi}
+\end{lstlisting}
+или
+\begin{lstlisting}[language=TeX, style=FrameStyle]
+\usepackage[twoside, ParagraphInToc]{eskdi}
+\end{lstlisting}
+или
+\begin{lstlisting}[language=TeX, style=FrameStyle]
+\usepackage[twoside, MakeEmptyStamp, ParagraphInToc]{eskdi}
+\end{lstlisting}
+
+
+\subsection{Управление шрифтами документа eskdi}
+
+
+\noindent \verb|"\gostSetRomanfont{}%"|~– Выбор шрифта "romanfont".  Располагать в преамбуле.
+
+\noindent \verb|"\gostSetSansfont{}%"|~– Выбор шрифта "sansfont".  Располагать в преамбуле.
+
+\noindent \verb|"\gostSetMonofont{}%"|~– Выбор шрифта "monofont".  Располагать в преамбуле.
+
+\noindent \verb|"\gostSetMainfont{}%"|~– Выбор шрифта "mainfont".  Располагать в преамбуле.
+Пример:
+\begin{lstlisting}[language=TeX, style=FrameStyle]
+\gostSetRomanfont{Times New Roman}%
+\end{lstlisting}
+
+
+
+
+\subsection{Управление рамками документа eskdi}
+
+
+\noindent \verb|"\gostSetStampLineThick{}"|~– Толщина толстых линий рамки. Располагать в преамбуле. Пример:
+\begin{lstlisting}[language=TeX, style=FrameStyle]
+\gostSetStampLineThick{0.4mm}%
+\end{lstlisting}
+
+\noindent \verb|"\gostSetStampLineThick{}"|~– Толщина тонких линий рамки. Располагать в преамбуле. Пример:
+\begin{lstlisting}[language=TeX, style=FrameStyle]
+\gostSetStampLineThin{0.2mm}%
+\end{lstlisting}
+
+
+\noindent \verb|"\gostSetStampfont{}"|~– Шрифт текста в рамках. Располагать в преамбуле. Пример:
+\begin{lstlisting}[language=TeX, style=FrameStyle]
+\gostSetStampfont{Arial}%
+\end{lstlisting}
+
+
+
+
+
+\subsection{Управление подписями документа eskdi}
+
+\noindent \verb|"\gostklgi{}"|~– Децимальный номер.
+
+\noindent \verb|"\gostferstklgi{}"|~– Первичное применение.
+
+\noindent \verb|"\gosttitleobject{}"|~– Название документа. На титульном листе.
+
+\noindent \verb|"\gosttitleobjectI{}"|~– Название документа. В основную надпись.
+
+\noindent \verb|"\gosttitledocument{}"|~– Класс документа. Идёт на титульный лист под название и идёт в основную надпись.
+
+Если документ имеет длинное название, не умещающееся в основную надпись, нужно воспользоваться этим:
+
+\begin{Verbatim}[frame=single]
+% Раскомментировать если совсем уж длинное название документа
+\renewcommand\SetTitleDocumentInSecondPage{%
+  \spboxmm{65}{0}{135}{25}{c}{\parbox{65mm}{\renewcommand
+  \baselinestretch{0.6} \centering\footnotesize{Совсем уж 
+  длинное, такое длинное, аж до неприличия название для широко 
+  известного в узких кругах расширения eskdi (V 1.5b)} 
+  \footnotesize{\\ Инструкция по настройке и эксплуатации} }}
+}%
+\end{Verbatim}
+
+
+\noindent \verb|"\gostreshenie{}"|~– Идёт в основную надпись в графу для решений.
+
+\noindent \verb|"\gostrazrabotchik{}"|~– Фамилия разработчика. В основную надпись.
+
+\noindent \verb|"\gostrazrabotchikFIO{}"|~– Фамилия и инициалы разработчика. На титульный лист для свободного стиля.
+
+\noindent \verb|"\gostDATErazrabotchik{}"|~– Дата подписи разработчика. В основную надпись.
+
+\noindent \verb|"\gostproveril{}"|~– Фамилия проверяющего. В основную надпись.
+
+\noindent \verb|"\gostDATEproveril{}"|~– Дата подписи проверяющего. В основную надпись.
+  
+\noindent \verb|"\gostnormokontroler{}"|~– Фамилия нормоконтролёра. В основную надпись.
+
+\noindent \verb|"\gostDATEnormokontroler{}"|~– Дата подписи нормоконтролёра. В основную надпись.
+
+\noindent \verb|"\gostutverdil{}"|~– Фамилия утвердившего. В основную надпись.
+
+\noindent \verb|"\gostDATEutverdil{}"|~– Дата подписи утвердившего. В основную надпись.
+  
+\noindent \verb|"\gostliteraI{}"|~– Литера. Поле 1.
+
+\noindent \verb|"\gostliteraII{}"|~– Литера. Поле 2.
+
+\noindent \verb|"\gostDATE{}"|~– Дата. На титульный лист для свободного стиля.
+
+\noindent \verb|"\titleLEFT{}"|~– Утверждающая надпись на титульном листе слева. Используется в таком виде:
+\begin{Verbatim}[frame=single]
+% Раскомментировать если необходима утверждающая надпись на 
+%титульном листе
+\renewcommand\titleLEFT{%
+  \spboxmm{0}{260}{70}{250}{lc}{\parbox{70mm}{\centering
+  \normalsize{Утверждён \\} \large{АБВГ.123456.789 --ЛУ} }}
+}%
+\end{Verbatim}
+
+\noindent \verb|"\titleRIGHT{}"|~– Утверждающая надпись на титульном листе слева. Используется в таком виде:
+\begin{Verbatim}[frame=single]
+% Раскомментировать если необходима утверждающая надпись на
+%титульном листе
+\renewcommand\titleRIGHT{%
+  \spboxmm{110}{260}{185}{250}{lc}{\parbox{70mm}{\normalsize{
+  \begin{center}УТВЕРЖДАЮ\end{center} Генеральный директор\\ 
+  ЧОП ''В два глаза''\\ \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_А.Р.Бородач\\
+  ''\_\_\_\_\_''\_\_\_\_\_\_\_\_\_\_2015~г.  }  }   }
+}%
+\end{Verbatim}
+
+
+
+
+\subsection{Управление разделами документа eskdi}
+
+
+\noindent \verb|"\maketitle"|~– Создание титульного листа.
+
+\noindent \verb|"\makesecondpage"|~– Создание листа с основной надписью.
+
+\noindent \verb|"\regChanges"|~– Создание листа регистрации изменений.
+
+\noindent \verb|"\tableofcontents"|~– Создание оглавления.
+
+\noindent \verb|"\thebibliography{}"|~– Создание списка литературы или библиографии.
+
+\noindent \verb|"\appendix"|~– Начало для приложений.
+
+\noindent \verb|"\section{}"|~– Название главы. Нумерованное.
+
+\noindent \verb|"\section*{}"|~– Название главы. Ненумерованное.
+
+\noindent \verb|"\sectionmark{}"|~– Название подраздела, идущее в колонтитул для свободного стиля.
+
+\noindent \verb|"\subsection{}"|~– Название подглавы. Нумерованное.
+
+\noindent \verb|"\subsubsection{}"|~– Название подподглавы. Нумерованное.
+
+\noindent \verb|"\paragraph{}"|~– Название параграфа. Нумерованное.
+
+\noindent \verb|"\subparagraph{}"|~– Название подпараграфа. Нумерованное.
+
+\noindent \verb|"\subsubparagraph{}"|~– Название подподпараграфа. Нумерованное.
+
+
+
+
+\subsection{Управление форматированием документа eskdi}
+
+\noindent \verb|"\titlePicture{}"|~– Добавление фонового рисунка на титульный лист для свободного стиля. Используется в таком виде:
+\begin{Verbatim}[frame=single]
+\renewcommand\titlePicture{\AddToShipoutPicture{\AtPageLowerLeft
+{\includegraphics[width=210mm, height=297mm, viewport=2.0mm 14.0mm
+210.0mm 311.0mm]{\pathtosharedresource background13}}}}%
+\end{Verbatim}
+
+
+\noindent \verb|"\SetEmptyPage"|~– Если текущая страница нечётная, то сделать пустую страницу (не включенную в нумерацию) и сделать следующую страницу нечётной. Если текущая страница нечётная - то команда игнорируется. Режим двусторонней печати. 
+
+\noindent \verb|"\SetEvenPage"|~– Экспериментальная.
+
+
+%\verb|"\verbatimfont{1}"|~–
+%\verb|"\spboxmm"|~–
+%\verb|"\spformedboxmm"|~–
+%\verb|"\vspboxmm"|~–
+%\verb|"\vspformedboxmm"|~–
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,301 @@
+%  Copyright (C) 2017 Yuri Stepanenko stepanenkoyra@gmail.com
+
+% This program is free software; you can redistribute it
+% and/or modify it under the terms of the GNU Library General Public
+% License as published by the Free Software Foundation; either version 2
+% of the License, or (at your option) any later version.
+
+% The GNU LIBICONV Library is distributed in the hope that it will be
+% useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+% Library General Public License for more details. 
+
+% You should have received a copy of the GNU Library General Public
+% License along with the 'eskdi'; see the file License.gpl.
+% If not, write to the Free Software Foundation, Inc., 59 Temple Place -
+% Suite 330, Boston, MA 02111-1307, USA.
+
+\NeedsTeXFormat{LaTeX2e}
+
+\RequirePackage{ifthen}
+\RequirePackage{eso-pic}
+\RequirePackage{everyshi}
+\RequirePackage{lastpage}
+\RequirePackage{everypage}
+
+
+\RequirePackage{ESKD_frames}
+
+\ProvidesPackage{G2-104-68_twoside} [2017/02/11 v4.2 GOST Frames]
+
+
+\newcounter{evenpage}%
+\setcounter{evenpage}{1}%
+
+
+\newcounter{clearpage}%
+\setcounter{clearpage}{0}%
+
+
+\newcounter{MaketitleDef}
+\setcounter{MaketitleDef}{0}%
+
+
+\newcounter{MakesecondDef}
+\setcounter{MakesecondDef}{0}%
+
+
+\newcounter{MakeregChanges}%
+\setcounter{MakeregChanges}{0}%
+
+
+\newcommand{\SetEmptyPage}% Совсем пустая страници, не нумерованная
+{%
+   \ifthenelse{\equal{\value{evenpage}}{1}}%
+   {%
+     \newpage
+     \
+     \addtocounter{page}{-1}%
+     \setcounter{clearpage}{1}%
+     \newpage
+   }%
+   {%
+   }%
+}%
+
+
+% Двигает поля для четных и нечетных страниц
+\AddEverypageHook
+{%
+  \setcounter{footnote}{0} % Сбрасываем счётчик сносок в начале каждой страницы (не всегда срабатывает :( )
+  \ifthenelse{\equal{\value{clearpage}}{1}}%
+  {%
+    \setlength{\oddsidemargin}{0mm}%
+    \setcounter{evenpage}{1}%
+  }%
+  {%
+    \ifthenelse{\equal{\value{evenpage}}{1}}%
+    {%     
+      \setlength{\oddsidemargin}{0mm}%
+    }%
+    {%
+      \ifthenelse{\equal{\value{evenpage}}{2}}%
+      {%
+        \setlength{\oddsidemargin}{-15mm}%
+      }%
+      {%
+        \setlength{\oddsidemargin}{0mm}%
+      }% 
+    }%
+  }%
+}%
+
+
+% begin{Верхний колонтитул. Заполняем рамки текстом. Координаты задаются в pt, соответствующие координатам в просмотре}
+\renewcommand{\@oddhead}%
+{%
+  \ifthenelse{\equal{\value{clearpage}}{1}}%
+  {%
+  }%
+  {%
+    \setlength{\unitlength}{1mm}%
+    \ifcase\value{StampACounter}
+       %% Default format
+    \or
+      \begin{picture}(100,100)(5, 473.5)%
+        \DrawAI%
+      \end{picture}%
+    \or
+      \begin{picture}(100,100)(5, 299.5)%
+        \DrawAII%
+      \end{picture}%
+    \or
+      \begin{picture}(100,100)(5, 176.3)%
+        \DrawAIII%
+      \end{picture}%
+    \or
+      \ifthenelse{\equal{\value{MakesecondDef}}{1}}%
+      {%
+        \begin{picture}(100,100)(5, 176.3)%
+          \DrawStampPage%
+        \end{picture}%
+      }%
+      {%
+        \ifthenelse{\equal{\value{MakeregChanges}}{1}}%
+        {%
+          \begin{picture}(100,100)(5, 176.3)%
+            \DrawRegChanges%
+          \end{picture}%
+        }%
+        {% 
+          \ifthenelse{\equal{\value{evenpage}}{1}}%
+          {%  A4
+            \begin{picture}(100,100)(5, 176.3)%
+              \DrawAIV%
+            \end{picture}%
+          }%
+          {%  A4 mirror
+            \begin{picture}(100,100)(5, 176.3)%
+              \DrawAIVmirrored%
+            \end{picture}%
+          }% 
+        }%  
+      }% 
+  \or  \or  \or  \or  \or  \or %10
+  \or  \or  \or  \or  \or  \or  \or  \or  \or  \or  %20
+  \or  \or  \or  \or  \or  \or  \or  \or  \or  \or  %30
+  \or  \or  \or  \or  \or  \or  \or  \or  \or  \or  %40
+  \or \or %42
+  \or  
+    %StampACounter=43
+    \begin{picture}(100,100)(5, 176.3)%
+      \DrawAIVxIII%
+    \end{picture}%
+  \or
+    %StampACounter=44
+    \begin{picture}(100,100)(5, 176.3)%
+      \DrawAIVxIV%
+    \end{picture}%
+  \or
+    %StampACounter=45
+    \begin{picture}(100,100)(5, 176.3)%
+      \DrawAIVxV%
+    \end{picture}%
+  \or
+    %StampACounter=46
+    \begin{picture}(100,100)(5, 176.3)%
+      \DrawAIVxVI%
+    \end{picture}%	  
+     \else
+  \typeout{}
+     \fi
+  }%    
+}%
+% end{Верхний колонтитул. Заполняем рамки текстом. Координаты задаются в pt, соответствующие координатам в просмотре}
+
+
+%  собственно команды формирования титульного листа
+\renewcommand{\maketitle}%
+{%
+  \setcounter{MaketitleDef}{1}%
+  \begin{titlepage}%
+    \setlength{\unitlength}{1mm}%
+    \begin{picture}(100,100)(-75, 147)%
+      \put(-92.8,-29.5){\DrawBorder}%
+      \put(-92.8,-29.5){\DrawFieldBottomNext}%
+      \put(-92.8,-29.5){\DrawFieldBottomBotTitle}%
+      \put(-92.8,-29.5){\spboxmm{22}{150}{162}{180}{lc}{\parbox{140mm}{\centering\largeit\@gosttitleobject \vskip 1mm \largeit\@gosttitledocument\\ \vskip 1mm \largeit\@gostklgi }} }%	   	   
+      \put(-92.8,-29.5){\titleLEFT}%
+      \put(-92.8,-29.5){\titleRIGHT}%
+      \put(-92.8,-29.5){\titleBotRIGHT}%
+      \put(-92.8,-29.5){\titleBotLEFT}%
+      \put(-92.8,-29.5){\titleTopRIGHT}%
+      \put(-92.8,-29.5){\titleTopLEFT}%
+      \put(-92.8,-29.5){\titleCENTER}%    
+    \end{picture}%
+  \end{titlepage}%
+  \addtocounter{page}{1}
+  \setcounter{footnote}{0}%
+}%
+
+
+\EveryShipout
+{%
+  \ClearShipoutPicture%
+  {% 
+      \ifthenelse{\equal{\value{MaketitleDef}}{1}}%
+      {%
+        \setcounter{clearpage}{0}%
+      }%
+      {%
+        \ifthenelse{\equal{\value{MakesecondDef}}{1}}%
+        {%
+           \setcounter{MakesecondDef}{0}%
+           \setcounter{evenpage}{2}%
+           \setcounter{clearpage}{0}%
+        }%
+        {%
+          \ifthenelse{\equal{\value{MakeregChanges}}{1}}%
+          {%
+            \setcounter{MakeregChanges}{0}%
+            \setcounter{evenpage}{2}%
+            \setcounter{clearpage}{0}%
+          }%
+          {%
+            \ifthenelse{\equal{\value{clearpage}}{1}}%
+            {%
+               % Пустая страница без рамки
+               \setcounter{clearpage}{0}%
+            }%
+            {%
+              \ifthenelse{\equal{\value{evenpage}}{1}}%
+              {%     
+                \setcounter{evenpage}{2}%
+              }%
+              {%
+                \ifthenelse{\equal{\value{evenpage}}{2}}%
+                {%
+                  \ifthenelse{\equal{\value{StampACounter}}{4}}%
+                   {%
+                   }%
+                   {%
+                   }%
+                   \setcounter{evenpage}{1}%
+                }%
+                {%
+                }% 
+              }%       
+            }%  
+          }%    
+        }%      
+      }%    
+  }%
+}%
+% end{После вывода  каждой страницы выполняем следующий код для вывода рамок}
+
+
+
+% begin{Нижний колонтитул. Заполняем рамки текстом. Координаты задаются в pt, соответствующие координатам в просмотре}
+\renewcommand{\@oddfoot}%
+{%
+   \ifthenelse{\equal{\value{MaketitleDef}}{1}}%
+   {%
+     \setcounter{MaketitleDef}{0}%
+   }%
+   {%
+     \ifthenelse{\equal{\value{MakesecondDef}}{1}}%
+     {%
+     }%
+     {%
+       \ifthenelse{\equal{\value{clearpage}}{1}}%
+       {%
+       }%
+       {%
+       }%
+     }%
+   }%
+}%
+% end{Нижний колонтитул. Заполняем рамки текстом. Координаты задаются в pt, соответствующие координатам в просмотре}
+
+
+
+%Для изменения размера страницы
+\newcommand{\FormatSizeA}[2]
+{%
+  \clearpage%
+  \setcounter{evenpage}{1}%  
+  \setlength{\oddsidemargin}{0mm}%  
+  \StampA{#1}%
+  \PageSizeFormat%
+  \TextSizeFormat{#1}%
+  \expandafter{#2}%
+  %Вернули всё назад
+  \clearpage%
+  \StampA{4}%
+  \PageSizeFormat%
+  \TextSizeFormat{4}%
+  \setcounter{evenpage}{1}%
+}%
+
+
+

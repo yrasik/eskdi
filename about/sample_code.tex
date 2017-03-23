@@ -1,0 +1,62 @@
+\section{Примеры включения кода в текст документа}
+\sectionmark{Примеры включения кода в текст документа}
+
+Код на языке С++ производит проверку создания дескриптора и вывода соответствующего сообщения:
+\begin{lstlisting}[language=C++, style=FrameStyle, keepspaces = true]
+  //проверка создания дескриптора
+  if (!target_file)
+  {
+    *log << "ERROR: Error creating '" << FullFileName << "' file;" << endl;
+    return false;
+  }
+  *log << "Creating '" << FullFileName << "' file;" << endl;
+\end{lstlisting}
+
+Код модуля на VerilogHDL, выделяющего фронты из медленной импульсной последовательности:
+\begin{lstlisting}[language=Verilog, style=FrameStyle, inputencoding=utf8x, extendedchars=\true, keepspaces = true]
+//Модуль, выделяющий фронты из медленной импульсной последовательности
+module GOIR
+(
+  input  wire CLK,Reset,DIN,
+  output wire PositiveFront,
+  output wire NegativeFront
+);
+
+parameter Mem_default = 2'b0;
+
+ reg [1:0] Mem;
+
+ always @(posedge CLK) // Сдвиговый регистр
+    if (Reset)
+      Mem <= #1 Mem_default;
+    else
+      Mem <= #1 {Mem[0], DIN};
+
+ assign PositiveFront = ~ Mem[1] & Mem[0];
+ assign NegativeFront = ~ Mem[0] & Mem[1];
+
+endmodule //GOIR
+\end{lstlisting}
+
+
+Наберите команду:
+\begin{lstlisting}[language=, style=FrameStyle]
+nand read 33000000 0 200000 
+\end{lstlisting}
+(считать 0x200000 байт из NAND–Flash–памяти начиная с адреса 0x00000000 в область памяти начиная с адреса 0x33000000). Появится отчёт:
+
+\begin{lstlisting}[language= , style=FrameStyle]
+NAND read: device 0 offset 0x0, size 0x200000
+ 2097152 bytes read: OK
+\end{lstlisting}
+
+
+
+
+
+
+
+
+
+
+

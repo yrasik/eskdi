@@ -1,0 +1,52 @@
+\section{Примеры создания мест для подписей}
+\sectionmark{Примеры создания мест для подписей}
+
+\subsection{Пример с точками}
+
+\noindent%Подавили абзацный отступ
+\begin{tabular}{p{70mm}p{10mm}p{75mm}}
+%\addtocounter{table}{-1}%откручиваем счётчик таблиц
+  Начальник цеха 123                  & & Заместитель директора     \\
+  ''Завод ООО''                       & & ''Завод ААА''     \\
+                                      & &      \\   
+\dotfill М.А. Суровый                 & & \dotfill К.В. Лютый\\
+   ''. . . . . .'' \dotfill 2012 г.   & & ''. . . . . .'' \dotfill 2012 г. \\
+\end{tabular}
+
+\vskip 10mm
+
+
+
+\subsection{Пример с подчеркиванием}
+
+\noindent%Подавили абзацный отступ
+\begin{tabular}{p{70mm}p{10mm}p{75mm}}
+%\addtocounter{table}{-1}%откручиваем счётчик таблиц
+                                      & & Заместитель директора     \\
+                                      & & ''Завод ААА''     \\
+                                      & &      \\   
+                                      & & \hrulefill\ К.В. Лютый\\
+                                      & & ''\hrulefill'' \hrulefill\hrulefill\ 2012 г. \\
+\end{tabular}
+
+\vskip 10mm
+
+
+
+
+\begin{longtable}{|p{60mm}|p{100mm}|}
+  \caption{Простая} \label{appendix_signature:t:1} \\
+  \hline
+  \multicolumn{1}{|p{60mm}|}{\centering Обозначение} &
+  \multicolumn{1}{p{100mm}|}{\centering Наименование} \\\hline
+  \endfirsthead
+  \caption*{Продолжение таблицы \ref{appendix_signature:t:1}} \\
+ \hline
+  \multicolumn{1}{|p{60mm}|}{\centering Обозначение} &
+  \multicolumn{1}{p{100mm}|}{\centering Наименование} \\\hline
+  \endhead
+   1    &   2   \\ \hline
+   3    &   4   \\ \hline
+   5    &   6   \\ \hline
+\end{longtable}
+

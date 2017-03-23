@@ -1,0 +1,94 @@
+\section{Пример построения диаграммы состояний}
+\sectionmark{Пример построения диаграммы состояний}
+
+\begin{figure}[!h]\center
+  \captionsetup{singlelinecheck=true} 
+
+\tikzset{
+    state/.style={
+           rectangle,
+           rounded corners,
+           draw=black, very thick,
+           minimum height=2em,
+           inner sep=2pt,
+           text centered,
+           },
+}
+
+\begin{tikzpicture}[->,>=stealth']
+ % Position of QUERY 
+ % Use previously defined 'state' as layout (see above)
+ % use tabular for content to get columns/rows
+ % parbox to limit width of the listing
+ \node[state] (QUERY) 
+ {\begin{tabular}{l}
+  \textbf{Query}\\
+  \parbox{4cm}{\begin{itemize}
+   \item Start
+   \item Parameter $Q$
+   \item Zufallszahl aus \mbox{$[0, 2^Q-1]$} in Slotzhler $SC$
+  \end{itemize}
+  }\\[4em]
+  \textbf{QueryAdjust}\\
+  \parbox{4cm}{\begin{itemize}
+   \item Variiere Q
+   \item neue Zufallszahl
+  \end{itemize}
+  }
+ \end{tabular}};
+  
+ % State: ACK with different content
+ \node[state,    	% layout (defined above)
+  text width=3cm, 	% max text width
+  yshift=2cm, 		% move 2cm in y
+  right of=QUERY, 	% Position is to the right of QUERY
+  node distance=6.5cm, 	% distance to QUERY
+  anchor=center] (ACK) 	% posistion relative to the center of the 'box'
+ {%
+ \begin{tabular}{l} 	% content
+  \textbf{Ack}\\
+  \parbox{2.8cm}{Besttigen mit $RN_{16}$}
+ \end{tabular}
+ };
+ 
+ % STATE QUERYREP
+ \node[state,
+  below of=ACK,
+  yshift=-2cm,
+  anchor=center,
+  text width=3cm] (QUERYREP) 
+ {%
+ \begin{tabular}{l}
+  \textbf{QueryRep}\\
+  \parbox{2.8cm}{Dekrementiere Slotzhler}
+ \end{tabular}
+ };
+
+ % STATE EPC
+ \node[state,
+  right of=ACK,
+  node distance=5cm,
+  anchor=center] (EPC) 
+ {%
+ \begin{tabular}{l}
+  Antwort: \textbf{EPC}\\
+  \parbox{4cm}{Mit nchstem \mbox{\textbf{QueryRep}} als ''inventoried'' markieren.}
+ \end{tabular}
+ };
+
+ % draw the paths and and print some Text below/above the graph
+ \path (QUERY) 	edge[bend left=20]  node[anchor=south,above]{$SC_n=0$}
+                                    node[anchor=north,below]{$RN_{16}$} (ACK)
+ (QUERY)     	edge[bend right=20] node[anchor=south,above]{$SC_n\neq 0$} (QUERYREP)
+ (ACK)       	edge                                                     (EPC)
+ (EPC)       	edge[bend left]                                          (QUERYREP)
+ (QUERYREP)  	edge[loop below]    node[anchor=north,below]{$SC_n\neq 0$} (QUERYREP)
+ (QUERYREP)  	edge                node[anchor=left,right]{$SC_n = 0$} (ACK);
+
+\end{tikzpicture}
+
+\caption{Диаграмма состояний системы} \label{p:state_diagr}
+\end{figure}
+
+
+

@@ -1,0 +1,191 @@
+%  Copyright (C) 2017 Yuri Stepanenko stepanenkoyra@gmail.com
+
+% This program is free software; you can redistribute it
+% and/or modify it under the terms of the GNU Library General Public
+% License as published by the Free Software Foundation; either version 2
+% of the License, or (at your option) any later version.
+
+% The GNU LIBICONV Library is distributed in the hope that it will be
+% useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+% Library General Public License for more details. 
+
+% You should have received a copy of the GNU Library General Public
+% License along with the 'eskdi'; see the file License.gpl.
+% If not, write to the Free Software Foundation, Inc., 59 Temple Place -
+% Suite 330, Boston, MA 02111-1307, USA.
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{G2-105-95} [2017/02/11 v4.0 General reqs.]
+
+
+\RequirePackage{ifthen}
+\RequirePackage{float}
+\RequirePackage{rotating}       % Вращение объектов
+\RequirePackage{calc}           % Для возможности численных расчетов
+\RequirePackage{geometry}       % Для остановки плавающих объектов
+\RequirePackage{indentfirst}    % Начинать абзацы с красной строки
+%\RequirePackage[margin=0mm,format=plain,
+%                labelsep=endash,
+%               % width=0.9\textwidth,
+%                singlelinecheck=false %центрирование подписи отключено
+%                ]{caption}
+
+\RequirePackage{caption}
+\captionsetup[table]{margin=0mm,format=plain,
+                labelsep=endash,
+              %  width=0.85\textwidth,
+                singlelinecheck=false %центрирование подписи отключено
+}%
+\captionsetup[figure]{margin=0mm,format=plain,
+                labelsep=endash,
+                width=0.8\textwidth,
+                singlelinecheck=true %центрирование подписи отключено
+}%
+
+
+
+\renewcommand{\textbf}[1]
+{%
+  \fontseries{b} \selectfont #1 \normalfont%
+}%
+
+
+% begin {Переопределение вида разделов Задаются отступы в тексте и наличие разделов в содержании}
+\renewcommand*{\sectionmark}[1]
+{%
+  \markright{\small\upshape\thesection.\ #1}%
+  \gostCurrentSection{#1}%
+}%
+% end {Переопределение вида разделов Задаются отступы в тексте и наличие разделов в содержании}
+
+
+% begin {Исключение двусмысленных русских букв из алфавита для нумерации приложений (типа буквы Ё)}
+\newcommand{\GostAsbuk}[1]
+{%
+  \expandafter\@GostAsbuk\csname c@#1\endcsname%
+}%
+
+                       
+\newcommand{\@GostAsbuk}[1]
+{%
+  \ifcase#1\or А\or Б\or В\or Г\or Д\or Е\or Ж\or И\or К\or Л\or М\or Н\or П\or Р\or С\or Т\or У\or Ф\or Х\or Ц\or Ш\or Щ\or Э\or Ю\or Я\or АА\or АБ\or АВ\or АГ\or АД\or АЕ\or АЖ\or АИ\or АК\or АЛ\or АМ\or АН\or АН\or АП\or АР\or АС\or АТ\or АУ\or АФ\or АХ\or АЦ\or АШ\or АЩ\or АЭ\or АЮ\or АЯ
+  \else\@ctrerr\fi%
+}%
+% end {Исключение двусмысленных русских букв из алфавита для нумерации приложений (типа буквы Ё)}
+
+
+% begin {Переопределение вида списка литературы}
+\renewcommand{\@biblabel}[1]{#1.}
+
+\def\thebibliography#1
+{%
+  \newpage%
+  \refstepcounter{section}%
+  \ifx\gostMakeStamp\undefined%
+    \Large\textbf{\refname}\normalsize%
+  \else%
+    \textbf{\refname}%
+  \fi%
+  \vskip 5mm%
+  \addcontentsline{toc}{section}{\refname}%  
+  \list{\@biblabel{\@arabic\c@enumiv}}%
+  {%
+    \settowidth\labelwidth{\@biblabel{#1}}%
+    \leftmargin\labelwidth%
+    \advance\leftmargin\labelsep%
+    \@openbib@code%
+    \usecounter{enumiv}%
+    \let\p@enumiv\@empty%
+    \renewcommand\theenumiv{\@arabic\c@enumiv}%
+  }%
+    \sloppy%
+    \clubpenalty4000%
+    \@clubpenalty \clubpenalty%
+    \widowpenalty4000%
+    \sfcode`\.\@m%
+}% 
+% end {Переопределение вида списка литературы}
+
+
+% begin {Настройки размера страницы}
+\newcommand{\setpage}
+{%
+  \geometry{verbose,a4paper}%установка полей
+  \linespread{1.3}%междустрочный интервал
+  \setlength{\textwidth}{17.5cm}%
+  \setlength{\oddsidemargin}{0mm}%
+  \setlength{\evensidemargin}{0pt}%
+  \setlength{\marginparsep}{0pt}%
+  \setlength{\marginparpush}{0pt}%
+  \parindent=12.5mm  % Абзацный отступ (п.3.6)
+  \setlength{\leftmargini}{\parindent}%
+  \addtolength{\leftmargini}{5mm}%
+  \ifx\gostMakeStamp\undefined%
+    \setlength{\voffset}{-14mm}%
+    \setlength{\topmargin}{0mm}%
+    \setlength{\headheight}{5mm}%
+    \setlength{\headsep}{7mm}%
+    \setlength{\textheight}{24.7cm}%
+    \setlength{\footskip}{15mm}%
+  \else%
+    \setlength{\voffset}{0mm}%
+    \setlength{\topmargin}{-10mm}%
+    \setlength{\headheight}{0mm}%
+    \setlength{\headsep}{0mm}%
+    \setlength{\textheight}{24.7cm}%
+    \setlength{\footskip}{0mm}%
+  \fi%
+  
+}%
+% end {Настройки размера страницы}
+
+
+% begin {Настройка вида подписей к рисункам и таблицам}
+\addto\captionsrussian
+{%
+  \def\figurename{{Рисунок}}%
+  \def\tablename{{Таблица}}%
+}%
+% end {Настройка вида подписей к рисункам и таблицам}
+
+
+
+
+
+
+% begin {Переопределяем форматирование перечислений как в ЕСКД. Другим способом не получается}
+\renewenvironment{itemize}%
+{%
+  \begin{trivlist}%
+    \let\olditem\item% Переопределяем название \item
+    \renewcommand\item{\olditem[ –]}%
+    \newcommand{\itemb}{\olditem[\hspace{4em}•]}%  
+    \setlength{\itemindent}{15mm}% 
+}%
+{%
+  \end{trivlist}%
+}%
+% end {Переопределяем форматирование перечислений как в ЕСКД. Другим способом не получается}
+
+
+% begin {Переопределяем форматирование перечислений как в ЕСКД. Другим способом не получается}
+\newcounter{gostenumerateCount}%  
+
+
+\renewenvironment{enumerate}
+{%
+  \setcounter{gostenumerateCount}{0}%   
+  \begin{trivlist}%
+    \let\olditem\item% Переопределяем название \item
+    \renewcommand\item{\stepcounter{gostenumerateCount}\olditem[\asbuk{gostenumerateCount})] } 
+    %\setlength{\itemindent}{\parindent}
+    \newcommand{\itemb}{\olditem[\hspace{4em}–]}% 
+    \setlength{\itemindent}{15mm}    
+}%
+{%
+  \end{trivlist}%
+}%
+% end {Переопределяем форматирование перечислений как в ЕСКД. Другим способом не получается}
+
+

@@ -1,0 +1,485 @@
+%  Copyright (C) 2017 Yuri Stepanenko stepanenkoyra@gmail.com
+
+% This program is free software; you can redistribute it
+% and/or modify it under the terms of the GNU Library General Public
+% License as published by the Free Software Foundation; either version 2
+% of the License, or (at your option) any later version.
+
+% The GNU LIBICONV Library is distributed in the hope that it will be
+% useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+% Library General Public License for more details. 
+
+% You should have received a copy of the GNU Library General Public
+% License along with the 'eskdi'; see the file License.gpl.
+% If not, write to the Free Software Foundation, Inc., 59 Temple Place -
+% Suite 330, Boston, MA 02111-1307, USA.
+
+\NeedsTeXFormat{LaTeX2e}
+
+\ProvidesPackage{eskdi_G2-105-95_emptystamp} [2017/02/11 v4.2 Unified system for design documentation]
+
+
+
+%  собственно команды формирования титульного листа
+\renewcommand{\maketitle}
+{%
+  \setcounter{MaketitleDef}{1}%
+  \begin{titlepage}%
+    \unitlength=1mm%
+    \begin{picture}(100,100)(-75, 147)%
+      \put(-92.8,-29.5){\spboxmm{22}{150}{162}{180}{lc}{\parbox{140mm}{\centering \large\@gosttitleobject \vskip 1mm \@gosttitledocument\\ \vskip 1mm \@gostklgi }} }%
+      \put(-92.8,-29.5){\titleLEFT}%
+      \put(-92.8,-29.5){\titleRIGHT}%
+      \put(-92.8,-29.5){\titleBotRIGHT}%
+      \put(-92.8,-29.5){\titleBotLEFT}%
+      \put(-92.8,-29.5){\titleTopRIGHT}%
+      \put(-92.8,-29.5){\titleTopLEFT}%
+      \put(-92.8,-29.5){\titleCENTER}%        
+    \end{picture}%
+  \end{titlepage}%
+  \addtocounter{page}{1}%
+  \setcounter{footnote}{0}%
+}%
+
+
+\renewcommand{\tableofcontents}
+{%
+  \addtocontents{toc}{\protect\tocformat{1}}%
+  \begin{center}%
+    {\bf\contentsname}\normalsize%
+  \end{center}%
+  \@starttoc{toc}%
+  \newpage%
+}%
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Команды, формирующие представление названия раздела
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\section}[1]
+{%
+  \newpage%
+  \refstepcounter{section}%
+  \ifx\gostParagraphInToc\undefined%
+    \ifx\gostSubSubSectInToc\undefined%
+      \ifx\gostSubSectInToc\undefined%
+        %В оглавлении печатаются только секции
+        {\bf\thesection \ #1}%
+		 \addtocontents{toc}{\vskip 1em }%Расстояние в оглавлении между приложениями  
+        \addcontentsline{toc}{section}{\hspace{1.0em}\thesection\hspace{0.3em}#1}%
+      \else% В оглавлении печатаются секции, подсекции
+        \large{\bf\thesection \ #1}\normalsize%
+		 \addtocontents{toc}{\vskip 1em }%Расстояние в оглавлении между приложениями  
+        \addcontentsline{toc}{section}{\hspace{1.0em}\thesection\hspace{0.3em}#1}%
+      \fi%
+    \else% В оглавлении печатаются секции, подсекции, поподсекции
+      \Large{\bf\thesection \ #1}\normalsize%
+	  \addtocontents{toc}{\vskip 1em }%Расстояние в оглавлении между приложениями  
+      \addcontentsline{toc}{section}{{\bf\hspace{1.0em}\thesection\hspace{0.3em}#1}}%
+    \fi%
+  \else% В оглавлении печатаются секции, подсекции, поподсекции и параграфы
+    \Large{\bf\thesection \ #1}\normalsize%
+	 \addtocontents{toc}{\vskip 1em }%Расстояние в оглавлении между приложениями  
+    \addcontentsline{toc}{section}{{\bf\hspace{1.0em}\thesection\hspace{0.3em}#1}}%
+  \fi%
+  \vskip 0.8em%  Расстояние между пунктом и основным текстом
+}%
+
+
+\WithSuffix\newcommand\section*[1]
+{%
+  \newpage%
+  \ifx\gostParagraphInToc\undefined%
+    \ifx\gostSubSubSectInToc\undefined%
+      \ifx\gostSubSectInToc\undefined%
+        %В оглавлении печатаются только секции
+        {\bf#1}%
+		 \addtocontents{toc}{\vskip 1em }%Расстояние в оглавлении между приложениями  
+        \addcontentsline{toc}{section}{\hspace{1.0em}#1}%
+      \else% В оглавлении печатаются секции, подсекции
+        \large{\bf#1}\normalsize%
+		 \addtocontents{toc}{\vskip 1em }%Расстояние в оглавлении между приложениями  
+        \addcontentsline{toc}{section}{\hspace{1.0em}#1}%
+      \fi%
+    \else% В оглавлении печатаются секции, подсекции, поподсекции
+      \Large{\bf#1}\normalsize%
+	   \addtocontents{toc}{\vskip 1em }%Расстояние в оглавлении между приложениями  
+      \addcontentsline{toc}{section}{{\bf\hspace{1.0em}#1}}%
+    \fi%
+  \else% В оглавлении печатаются секции, подсекции, поподсекции и параграфы
+    \Large{\bf#1}\normalsize%
+	 \addtocontents{toc}{\vskip 1em }%Расстояние в оглавлении между приложениями  
+    \addcontentsline{toc}{section}{{\bf\hspace{1.0em}#1}}%
+  \fi%
+  \vskip 0.8em%  Расстояние между пунктом и основным текстом
+}%
+
+
+\renewcommand{\subsection}[1]
+{%
+  \refstepcounter{subsection}%
+  \vskip 1.0em%  Расстояние между пунктом и подпунктом
+  \ifx\gostParagraphInToc\undefined%
+    \ifx\gostSubSubSectInToc\undefined%
+      \ifx\gostSubSectInToc\undefined%
+        %В оглавлении печатаются только секции
+        {\bf\thesubsection \ #1}%
+      \else% В оглавлении печатаются секции, подсекции
+        {\bf\thesubsection \ #1}%
+        \addcontentsline{toc}{subsection}{\hspace{2em}\thesubsection\hspace{0.3em}#1}%
+      \fi%
+    \else% В оглавлении печатаются секции, подсекции, поподсекции
+      \large{\bf\thesubsection \ #1}\normalsize%
+      \addcontentsline{toc}{subsection}{\hspace{2em}\thesubsection\hspace{0.3em}#1}%
+    \fi%
+  \else% В оглавлении печатаются секции, подсекции, поподсекции и параграфы
+    \large{\bf\thesubsection \ #1}\normalsize%
+    \addcontentsline{toc}{subsection}{\hspace{2em}\thesubsection\hspace{0.3em}#1}%
+  \fi%
+  \vskip 0.8em%  Расстояние между подпунктом и основным текстом
+}%
+
+
+\renewcommand{\subsubsection}[1]
+{%
+  \refstepcounter{subsubsection}%
+  \ifx\gostParagraphInToc\undefined%
+    \ifx\gostSubSubSectInToc\undefined%
+      \ifx\gostSubSectInToc\undefined%
+        %В оглавлении печатаются только секции
+        \thesubsubsection\ #1%
+      \else% В оглавлении печатаются секции, подсекции
+        \thesubsubsection\ #1%
+      \fi%
+    \else% В оглавлении печатаются секции, подсекции, поподсекции
+      \vskip 0.8em% 
+      {\bf\thesubsubsection\ #1}%
+      \addcontentsline{toc}{subsubsection}{\hspace{3em}\thesubsubsection\hspace{0.3em}#1}%
+    \fi%
+  \else% В оглавлении печатаются секции, подсекции, поподсекции и параграфы
+    \vskip 0.8em% 
+    {\bf\thesubsubsection\ #1}%
+    \addcontentsline{toc}{subsubsection}{\hspace{3em}\thesubsubsection\hspace{0.3em}#1}%
+  \fi%
+}%
+
+
+\renewcommand\paragraph[1]
+{%
+  \refstepcounter{paragraph}%
+  \ifx\gostParagraphInToc\undefined%
+    \ifx\gostSubSubSectInToc\undefined%
+      \ifx\gostSubSectInToc\undefined%
+        %В оглавлении печатаются только секции
+        \theparagraph\ #1%
+      \else% В оглавлении печатаются секции, подсекции
+        \theparagraph\ #1%
+      \fi%
+    \else% В оглавлении печатаются секции, подсекции, поподсекции
+      \theparagraph\ #1%
+    \fi%
+  \else% В оглавлении печатаются секции, подсекции, поподсекции и параграфы
+    \vskip 0.8em% 
+    \theparagraph\ #1%
+    \addcontentsline{toc}{paragraph}{\hspace{4em}\theparagraph\hspace{0.3em}#1}%
+  \fi%
+}%
+
+
+
+\makeatletter
+\ifx\gostNumIntoSections\undefined%
+%Сквозная нумерация формул, рисунков, таблиц.
+\else% 
+%Нумерация формул, рисунков, таблиц в пределах раздела.
+  \@addtoreset{figure}{section}%                                                   
+  \renewcommand{\thefigure}{\thesection.\arabic{figure}}%
+  
+  % Нумерация таблиц с указанием номера приложения
+  \@addtoreset{table}{section}%                                                   
+  \renewcommand{\thetable}{\thesection.\arabic{table}}%
+  
+  % Нумерация формул с указанием номера приложения
+  \renewcommand{\theequation}{\thesection.\arabic{equation}}%
+  
+  %Чтобы гиперссылки на формулы в приложениях работали корректно в том числе и из основного текста
+%  \let\oldequation\equation
+ % \let\oldendequation\endequation
+ % \def\equation{\addtocounter{equation}{1} \begingroup \oldequation }
+ % \def\endequation{ \oldendequation \endgroup}
+\fi%
+\makeatother 
+
+
+
+
+
+
+
+
+% begin {Определение изменений в оформлении приложений}
+\makeatletter
+\renewcommand\appendix
+{%
+  \addtocontents{toc}{\protect\tocformat{2}}%
+
+  \@addtoreset{subsectionI}{sectionI}% 
+  \@addtoreset{subsubsectionI}{subsectionI}% 
+  \@addtoreset{paragraphI}{subsubsectionI}% 
+  \@addtoreset{subparagraphI}{paragraphI}%
+  \@addtoreset{subsubparagraphI}{subparagraphI}%
+
+  \renewcommand{\thesection}{\GostAsbuk{sectionI}}%
+  \renewcommand{\thesubsection}{\GostAsbuk{sectionI}.\@arabic\c@subsectionI}%
+  \renewcommand{\thesubsubsection}{\GostAsbuk{sectionI}.\@arabic\c@subsectionI.\@arabic\c@subsubsectionI}%
+  \renewcommand{\theparagraph}{\GostAsbuk{sectionI}.\@arabic\c@subsectionI.\@arabic\c@subsubsectionI.\@arabic\c@paragraphI}%
+  \renewcommand{\thesubparagraph}{\GostAsbuk{sectionI}.\@arabic\c@subsectionI.\@arabic\c@subsubsectionI.\@arabic\c@paragraphI.\@arabic\c@subparagraphI}%
+  \renewcommand{\thesubsubparagraph}{\GostAsbuk{sectionI}.\@arabic\c@subsectionI.\@arabic\c@subsubsectionI.\@arabic\c@paragraphI.\@arabic\c@subparagraphI.\@arabic\c@subsubparagraphI}% 
+  
+  \renewcommand{\thesectionI}{\thesection}%Чтобы из основного текста ссылки на главы приложений корректные были
+  \renewcommand{\thesubsectionI}{\thesubsection}%Чтобы из основного текста ссылки на главы приложений корректные были
+  \renewcommand{\thesubsubsectionI}{\thesubsubsection}%Чтобы из основного текста ссылки на главы приложений корректные были
+  \renewcommand{\theparagraphI}{\theparagraph}%Чтобы из основного текста ссылки на главы приложений корректные были
+  \renewcommand{\thesubparagraphI}{\thesubparagraph}%Чтобы из основного текста ссылки на главы приложений корректные были
+  \renewcommand{\thesubsubparagraphI}{\thesubsubparagraph}%Чтобы из основного текста ссылки на главы приложений корректные были
+
+
+  \renewcommand{\section}[2][]
+  {%
+    \newpage%
+    \refstepcounter{sectionI}%
+    \setcounter{equationI}{1}%
+    \ifthenelse{\isempty{##1}}%
+    {%
+      \begin{center}%
+        \ifx\gostParagraphInToc\undefined%
+          \ifx\gostSubSubSectInToc\undefined%
+            \ifx\gostSubSectInToc\undefined%
+              %В оглавлении печатаются только секции
+              {\bf\appendixname \enskip \thesection}%
+              \addtocontents{toc}{\vskip 1em }%Расстояние в оглавлении между приложениями  
+              \addcontentsline{toc}{section}{\hspace{1.0em}\appendixname\hspace{0.3em}\thesection\hspace{0.3em}##2}%
+            \else% В оглавлении печатаются секции, подсекции
+              \large{\bf\appendixname \enskip \thesection}\normalsize%
+              \addtocontents{toc}{\vskip 1em }%Расстояние в оглавлении между приложениями  
+              \addcontentsline{toc}{section}{\hspace{1.0em}\appendixname\hspace{0.3em}\thesection\hspace{0.3em}##2}%
+            \fi%
+          \else% В оглавлении печатаются секции, подсекции, поподсекции
+            \Large{\bf\appendixname \enskip \thesection}\normalsize%
+            \addtocontents{toc}{\vskip 1em }%Расстояние в оглавлении между приложениями  
+            \addcontentsline{toc}{section}{{\bf\hspace{1.0em}\appendixname\hspace{0.3em}\thesection\hspace{0.3em}##2}}%
+          \fi%
+        \else% В оглавлении печатаются секции, подсекции, поподсекции и параграфы
+          \Large{\bf\appendixname \enskip \thesection}\normalsize%
+          \addtocontents{toc}{\vskip 1em }%Расстояние в оглавлении между приложениями  
+          \addcontentsline{toc}{section}{{\bf\hspace{1.0em}\appendixname\hspace{0.3em}\thesection\hspace{0.3em}##2}}%
+        \fi%
+      \end{center}%
+      \begin{center}%
+        \parbox[t]{0.7\textwidth}{\centering{\bf##2}}%Это для слов 'справочное'  'обязательное' .... %Чтобы название приложения печаталось по центру страницы, но не во всю ширину...
+      \end{center}%
+      \vskip 0.5em%  Расстояние между пунктом и основным текстом в приложении 
+    }%
+    {%
+      \begin{center}%
+        \ifx\gostParagraphInToc\undefined%
+          \ifx\gostSubSubSectInToc\undefined%
+            \ifx\gostSubSectInToc\undefined%
+              %В оглавлении печатаются только секции
+              {\bf\appendixname \enskip \thesection}%
+              \addtocontents{toc}{\vskip 1em}%Расстояние в оглавлении между приложениями    
+              \addcontentsline{toc}{section}{\hspace{1.0em}\appendixname\hspace{0.3em}\thesection\hspace{0.3em}##1}%
+            \else% В оглавлении печатаются секции, подсекции
+              \large{\bf\appendixname \enskip \thesection}\normalsize%
+              \addtocontents{toc}{\vskip 1em}%Расстояние в оглавлении между приложениями    
+              \addcontentsline{toc}{section}{\hspace{1.0em}\appendixname\hspace{0.3em}\thesection\hspace{0.3em}##1}%
+            \fi%
+          \else% В оглавлении печатаются секции, подсекции, поподсекции
+            \Large{\bf\appendixname \enskip \thesection}\normalsize%
+            \addtocontents{toc}{\vskip 1em}%Расстояние в оглавлении между приложениями    
+            \addcontentsline{toc}{section}{{\bf\hspace{1.0em}\appendixname\hspace{0.3em}\thesection\hspace{0.3em}##1}}%
+          \fi%
+        \else% В оглавлении печатаются секции, подсекции, поподсекции и параграфы
+          \Large{\bf\appendixname \enskip \thesection}\normalsize%
+          \addtocontents{toc}{\vskip 1em}%Расстояние в оглавлении между приложениями    
+          \addcontentsline{toc}{section}{{\bf\hspace{1.0em}\appendixname\hspace{0.3em}\thesection\hspace{0.3em}##1}}% 
+        \fi%
+      \end{center}%
+      \begin{center}%
+        {\bf({##2})}%
+      \end{center}%
+      \vskip 0.5em%Расстояние между словом 'справочное' и названием приложения
+      \begin{center}%
+        \parbox[t]{0.7\textwidth}{\centering{\bf##1}}%Чтобы название приложения печаталось по центру страницы, но не во всю ширину...
+      \end{center}%
+      \vskip 0.5em%  Расстояние между пунктом и основным текстом в приложении
+    }%
+  }%
+
+
+  \renewcommand{\subsection}[1]
+  {%
+    \refstepcounter{subsectionI}%
+    \vskip 1.0em%  Расстояние между пунктом и подпунктом приложении
+      \ifx\gostParagraphInToc\undefined%
+        \ifx\gostSubSubSectInToc\undefined%
+          \ifx\gostSubSectInToc\undefined%
+            %В оглавлении печатаются только секции
+            {\bf\thesubsection\ ##1}%
+          \else% В оглавлении печатаются секции, подсекции
+            {\bf\thesubsection\ ##1}%
+            \addcontentsline{toc}{subsection}{\hspace{7.5em}\thesubsection\hspace{0.3em}##1}%
+          \fi%
+        \else% В оглавлении печатаются секции, подсекции, поподсекции
+          \large{\bf\thesubsection \ ##1}\normalsize%
+          \addcontentsline{toc}{subsection}{\hspace{7.5em}\thesubsection\hspace{0.3em}##1}%
+        \fi%
+      \else% В оглавлении печатаются секции, подсекции, поподсекции и параграфы
+        \large{\bf\thesubsection \ ##1}\normalsize%
+        \addcontentsline{toc}{subsection}{\hspace{7.5em}\thesubsection\hspace{0.3em}##1}%
+      \fi%
+    \vskip 0.8em%  Расстояние между подпунктом и основным текстом в приложении
+  }%
+
+
+  \renewcommand{\subsubsection}[1]
+  {%
+    \refstepcounter{subsubsectionI}%
+    \ifx\gostParagraphInToc\undefined%
+      \ifx\gostSubSubSectInToc\undefined%
+        \ifx\gostSubSectInToc\undefined%
+          %В оглавлении печатаются только секции
+          \thesubsubsection\ ##1%
+        \else% В оглавлении печатаются секции, подсекции
+          \thesubsubsection\ ##1%
+        \fi%
+      \else% В оглавлении печатаются секции, подсекции, поподсекции
+        \vskip 0.5em%
+        {\bf\thesubsubsection\ ##1}%
+        \addcontentsline{toc}{subsubsection}{\hspace{8.5em}\thesubsubsection\hspace{0.3em}##1}%
+      \fi%
+    \else% В оглавлении печатаются секции, подсекции, поподсекции и параграфы
+      \vskip 0.5em%
+      {\bf\thesubsubsection\ ##1}%
+      \addcontentsline{toc}{subsubsection}{\hspace{8.5em}\thesubsubsection\hspace{0.3em}##1}%
+    \fi%
+  }%
+
+
+  \renewcommand{\paragraph}[1]
+  {%
+    \refstepcounter{paragraphI}% 
+    \ifx\gostParagraphInToc\undefined%
+      \ifx\gostSubSubSectInToc\undefined%
+        \ifx\gostSubSectInToc\undefined%
+          %В оглавлении печатаются только секции
+          \theparagraph\ ##1%
+        \else% В оглавлении печатаются секции, подсекции
+          \theparagraph\ ##1%
+        \fi%
+      \else% В оглавлении печатаются секции, подсекции, поподсекции
+        \theparagraph\ ##1%
+      \fi%
+    \else% В оглавлении печатаются секции, подсекции, поподсекции и параграфы
+      \theparagraph\ ##1%
+      \addcontentsline{toc}{paragraph}{\hspace{9.0em}\theparagraph\hspace{0.3em}##1}%
+    \fi%
+  }%
+
+
+  \renewcommand{\subparagraph}[1]
+  {%
+    \refstepcounter{subparagraphI}%
+    \thesubparagraph\ ##1%
+  }%
+
+
+  \renewcommand{\subsubparagraph}[1]
+  {%
+    \refstepcounter{subsubparagraphI}%
+    \thesubsubparagraph\ ##1%
+  }%
+
+
+  \renewcommand{\thebibliography}[1]
+  {%   
+    \section[Библиография]{справочное}%
+    \list{\@biblabel{\@arabic\c@enumiv}}%
+    {\settowidth\labelwidth{\@biblabel{##1}}%
+    \leftmargin\labelwidth%
+    \advance\leftmargin\labelsep%
+    \@openbib@code%
+    \usecounter{enumiv}%
+    \let\p@enumiv\@empty%
+    \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+    \sloppy%
+    \clubpenalty4000%
+    \@clubpenalty \clubpenalty%
+    \widowpenalty4000%
+    \sfcode`\.\@m%
+  }%
+
+  
+% Отвечает за представление номера раздела в приложении
+  \renewcommand{\sectname}[2]
+  {%
+    \ifnum ##2 > 1%
+      \csname the##1\endcsname \quad%
+    \else
+      \appendixname\ \csname the##1\endcsname%
+    \fi%
+  }%
+
+
+  % Отвечает за представление названия раздела в содержании
+  \renewcommand{\sectnameintoc}[2]
+  {%
+    \ifnum ##2 > 1%
+      \protect\numberline{\csname the##1\endcsname}%
+    \else%
+      \protect\appendixname\ \numberline{\csname the##1\endcsname}%
+    \fi
+  }%
+
+
+  % Отвечает за перенесение названия раздела на другую строку в приложении
+  \renewcommand{\sectdop}[1]
+  {%
+    \ifnum ##1 > 1%
+    \else%
+      \\%
+    \fi%
+  }%
+
+
+  % Нумерация рисунков с указанием номера приложения
+  \@addtoreset{figure}{sectionI}%                                                   
+  \renewcommand{\thefigure}{\thesection.\arabic{figure}}%
+
+  
+  % Нумерация таблиц с указанием номера приложения
+  \@addtoreset{table}{sectionI}%                                                   
+  \renewcommand{\thetable}{\thesection.\arabic{table}}%
+
+  
+  % Нумерация формул с указанием номера приложения
+  \renewcommand{\theequation}{\thesection.\arabic{equationI}}%
+  
+  %Чтобы гиперссылки на формулы в приложениях работали корректно в том числе и из основного текста
+  \let\oldequation\equation
+  \let\oldendequation\endequation
+  \def\equation{\addtocounter{equationI}{1} \begingroup \oldequation }
+  \def\endequation{ \oldendequation \endgroup}
+
+}%
+
+\makeatother 
+% end {Определение изменений в оформлении приложений}
+
+
+
+

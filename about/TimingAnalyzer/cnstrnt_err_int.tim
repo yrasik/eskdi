@@ -1,0 +1,787 @@
+Timing Analyzer Settings 
+     TA_Version:        0.963
+     Time_Scale:        1.0E-9
+     Time_Per_Division: 34
+     Number_Divisions:  8
+     Start_Time:        0
+     End_Time:          1120
+Part_Delay
+     Name:               tpd1
+     Min_Delay:          4
+     Typ_Delay:          5
+     Max_Delay:          6
+     Description:        Propagation delay for general use
+Part_Delay_End
+Part_Delay
+     Name:               tpd2
+     Min_Delay:          2
+     Typ_Delay:          3
+     Max_Delay:          4
+     Description:        Propagation delay for general use
+Part_Delay_End
+Part_Delay
+     Name:               tclkq
+     Min_Delay:          2
+     Typ_Delay:          3
+     Max_Delay:          4
+     Description:        
+Part_Delay_End
+Part_Delay
+     Name:               tclkadd
+     Min_Delay:          7
+     Typ_Delay:          10
+     Max_Delay:          12
+     Description:        
+Part_Delay_End
+Part_Delay
+     Name:               tpd
+     Min_Delay:          7
+     Typ_Delay:          10
+     Max_Delay:          12
+     Description:        
+Part_Delay_End
+Part_Delay
+     Name:               tacc
+     Min_Delay:          15
+     Typ_Delay:          20
+     Max_Delay:          25
+     Description:        
+Part_Delay_End
+Part_Constraint
+     Name:               tsetup
+     Min_Constraint:     12
+     Max_Constraint:     12
+     Description:        
+Part_Constraint_End
+Part_Constraint
+     Name:               tsu_wr
+     Min_Constraint:     12
+     Max_Constraint:     12
+     Description:        
+Part_Constraint_End
+Part_Constraint
+     Name:               thold
+     Min_Constraint:     1
+     Max_Constraint:     1
+     Description:        
+Part_Constraint_End
+Time_Warp
+     StartTime:          160
+     EndTime:            1000
+Time_Warp_End
+Digital_Clock
+     Position:          1
+     Name:              CLOCK
+     Frequency:         5.0E7
+     Duty_Cycle:        50
+     Start_Delay:       0
+     Start_State:       H
+     Rise_Time:         2
+     Fall_Time:         2
+     Space_Above:       70
+Digital_Clock_End
+Digital_Bus
+     Position:          2
+     Name:              ADD[15:0]
+     Start_State:       Z
+     State_Format:      Hex
+     Rise_Time:         2
+     Fall_Time:         2
+          Edge
+              Min:             27
+              Max:             32
+              State:            FFC0
+          Edge_End
+          Edge
+              Min:             82
+              Max:             84
+              State:            Z
+          Edge_End
+          Edge
+              Min:             1027
+              Max:             1032
+              State:            DC00
+          Edge_End
+          Edge
+              Min:             1082
+              Max:             1084
+              State:            Z
+          Edge_End
+Digital_Bus_End
+Digital_Signal
+     Position:          3
+     Name:              CS
+     Start_State:       H
+     Rise_Time:         2
+     Fall_Time:         2
+          Edge
+              Min:             34
+              Max:             44
+              State:            L
+          Edge_End
+          Edge
+              Min:             82
+              Max:             84
+              State:            H
+          Edge_End
+          Edge
+              Min:             1034
+              Max:             1044
+              State:            L
+          Edge_End
+          Edge
+              Min:             1082
+              Max:             1084
+              State:            H
+          Edge_End
+Digital_Signal_End
+Digital_Bus
+     Position:          4
+     Name:              DATA[7:0]
+     Start_State:       Z
+     State_Format:      Hex
+     Rise_Time:         2
+     Fall_Time:         2
+          Edge
+              Min:             49
+              Max:             69
+              State:            55
+          Edge_End
+          Edge
+              Min:             82
+              Max:             84
+              State:            Z
+          Edge_End
+          Edge
+              Min:             1041
+              Max:             1056
+              State:            AA
+          Edge_End
+          Edge
+              Min:             1082
+              Max:             1084
+              State:            Z
+          Edge_End
+Digital_Bus_End
+Digital_Signal
+     Position:          5
+     Name:              RD_STROBE*
+     Start_State:       H
+     Rise_Time:         2
+     Fall_Time:         2
+          Edge
+              Min:             42
+              Max:             44
+              State:            L
+          Edge_End
+          Edge
+              Min:             82
+              Max:             84
+              State:            H
+          Edge_End
+Digital_Signal_End
+Digital_Signal
+     Position:          6
+     Name:              WR_STROBE*
+     Start_State:       H
+     Rise_Time:         2
+     Fall_Time:         2
+          Edge
+              Min:             1042
+              Max:             1044
+              State:            L
+          Edge_End
+          Edge
+              Min:             1082
+              Max:             1084
+              State:            H
+          Edge_End
+Digital_Signal_End
+Digital_Signal
+     Position:          1
+     Name:              GND
+     Start_State:       L
+     Rise_Time:         0
+     Fall_Time:         0
+     Visible:           false
+Digital_Signal_End
+Digital_Signal
+     Position:          1
+     Name:              VCC
+     Start_State:       H
+     Rise_Time:         0
+     Fall_Time:         0
+     Visible:           false
+Digital_Signal_End
+Text_Object
+     Text:              Memory Read Cycle
+     Text_Color:        #666666
+     Font_Name:         Dialog
+     Font_Size:         14
+     Font_Style:        1
+     X_Time:            249e-1
+     Y_Pos:             35
+Text_Object_End
+Text_Object
+     Text:              Memory Write Cycle
+     Text_Color:        #666666
+     Font_Name:         Dialog
+     Font_Size:         14
+     Font_Style:        1
+     X_Time:            10197e-1
+     Y_Pos:             31
+Text_Object_End
+Text_Object
+     Text:              Pulse Width Labels, Delays, and Constraints can cross TimeWarps
+     Text_Color:        #000000
+     Font_Name:         Dialog
+     Font_Size:         12
+     Font_Style:        0
+     X_Time:            7616e-2
+     Y_Pos:             341
+Text_Object_End
+PulseWidthLabel
+     Text:              tclk
+     Text_Color:        #666666
+     Text_YPos:         107
+     Text_Position:     Center
+     Font_Name:         Dialog
+     Font_Size:         12
+     Font_Style:        0
+     Signal1_Name:      CLOCK
+     Edge1_Position:    50
+     Edge1_Num:         11
+     Signal2_Name:      CLOCK
+     Edge2_Position:    50
+     Edge2_Num:         13
+PulseWidthLabel_End
+PulseWidthLabel
+     Text:              tclk * 2
+     Text_Color:        #666666
+     Text_YPos:         60
+     Text_Position:     Center
+     Font_Name:         Dialog
+     Font_Size:         12
+     Font_Style:        0
+     Signal1_Name:      CLOCK
+     Edge1_Position:    50
+     Edge1_Num:         10
+     Signal2_Name:      CLOCK
+     Edge2_Position:    50
+     Edge2_Num:         14
+PulseWidthLabel_End
+PulseWidthLabel
+     Text:              tmin
+     Text_Color:        #000000
+     Text_YPos:         310
+     Text_Position:     Center
+     Font_Name:         Dialog
+     Font_Size:         12
+     Font_Style:        0
+     Signal1_Name:      CLOCK
+     Edge1_Position:    50
+     Edge1_Num:         8
+     Signal2_Name:      CLOCK
+     Edge2_Position:    50
+     Edge2_Num:         102
+PulseWidthLabel_End
+Delay 
+     Part_Delay:        tclkq
+     Name_YPos:         260
+     Name_Position:     Right
+     Name_Color:        #666666
+     Name_Font:         Dialog
+     Name_Font_Size:    10
+     Name_Font_Style:   0
+     Edge_1_Position:   50
+     Edge_2_Position:   50
+     1st_Edge:  
+         From:          DigitalClock
+         Name:          CLOCK
+         Edge_From:     8
+     2nd_Edge:  
+         From:          DigitalSignal
+         Name:          RD_STROBE*
+         Edge_To:       2
+Delay_End
+Delay 
+     Part_Delay:        tclkadd
+     Name_YPos:         180
+     Name_Position:     Center
+     Name_Color:        #808080
+     Name_Font:         Dialog
+     Name_Font_Size:    10
+     Name_Font_Style:   0
+     Edge_1_Position:   50
+     Edge_2_Position:   50
+     1st_Edge:  
+         From:          DigitalClock
+         Name:          CLOCK
+         Edge_From:     2
+     2nd_Edge:  
+         From:          DigitalBus
+         Name:          ADD[15:0]
+         Edge_To:       1
+Delay_End
+Delay 
+     Part_Delay:        tclkq
+     Name_YPos:         100
+     Name_Position:     Left
+     Name_Color:        #666666
+     Name_Font:         Dialog
+     Name_Font_Size:    10
+     Name_Font_Style:   0
+     Edge_1_Position:   50
+     Edge_2_Position:   50
+     1st_Edge:  
+         From:          DigitalClock
+         Name:          CLOCK
+         Edge_From:     8
+     2nd_Edge:  
+         From:          DigitalBus
+         Name:          ADD[15:0]
+         Edge_To:       2
+Delay_End
+Delay 
+     Part_Delay:        tpd
+     Name_YPos:         180
+     Name_Position:     Center
+     Name_Color:        #666666
+     Name_Font:         Dialog
+     Name_Font_Size:    10
+     Name_Font_Style:   0
+     Edge_1_Position:   50
+     Edge_2_Position:   50
+     1st_Edge:  
+         From:          DigitalBus
+         Name:          ADD[15:0]
+         Edge_From:     1
+     2nd_Edge:  
+         From:          DigitalSignal
+         Name:          CS
+         Edge_To:       1
+Delay_End
+Delay 
+     Part_Delay:        tclkq
+     Name_YPos:         140
+     Name_Position:     Left
+     Name_Color:        #666666
+     Name_Font:         Dialog
+     Name_Font_Size:    10
+     Name_Font_Style:   0
+     Edge_1_Position:   50
+     Edge_2_Position:   50
+     1st_Edge:  
+         From:          DigitalClock
+         Name:          CLOCK
+         Edge_From:     8
+     2nd_Edge:  
+         From:          DigitalSignal
+         Name:          CS
+         Edge_To:       2
+Delay_End
+Delay 
+     Part_Delay:        tacc
+     Name_YPos:         180
+     Name_Position:     Center
+     Name_Color:        #666666
+     Name_Font:         Dialog
+     Name_Font_Size:    10
+     Name_Font_Style:   0
+     Edge_1_Position:   50
+     Edge_2_Position:   50
+     1st_Edge:  
+         From:          DigitalSignal
+         Name:          CS
+         Edge_From:     1
+     2nd_Edge:  
+         From:          DigitalBus
+         Name:          DATA[7:0]
+         Edge_To:       1
+Delay_End
+Delay 
+     Part_Delay:        tclkq
+     Name_YPos:         180
+     Name_Position:     Right
+     Name_Color:        #666666
+     Name_Font:         Dialog
+     Name_Font_Size:    10
+     Name_Font_Style:   0
+     Edge_1_Position:   50
+     Edge_2_Position:   50
+     1st_Edge:  
+         From:          DigitalClock
+         Name:          CLOCK
+         Edge_From:     8
+     2nd_Edge:  
+         From:          DigitalBus
+         Name:          DATA[7:0]
+         Edge_To:       2
+Delay_End
+Delay 
+     Part_Delay:        tclkq
+     Name_YPos:         220
+     Name_Position:     Left
+     Name_Color:        #666666
+     Name_Font:         Dialog
+     Name_Font_Size:    10
+     Name_Font_Style:   0
+     Edge_1_Position:   50
+     Edge_2_Position:   50
+     1st_Edge:  
+         From:          DigitalClock
+         Name:          CLOCK
+         Edge_From:     4
+     2nd_Edge:  
+         From:          DigitalSignal
+         Name:          RD_STROBE*
+         Edge_To:       1
+Delay_End
+Delay 
+     Part_Delay:        tclkadd
+     Name_YPos:         180
+     Name_Position:     Center
+     Name_Color:        #666666
+     Name_Font:         Dialog
+     Name_Font_Size:    10
+     Name_Font_Style:   0
+     Edge_1_Position:   50
+     Edge_2_Position:   50
+     1st_Edge:  
+         From:          DigitalClock
+         Name:          CLOCK
+         Edge_From:     102
+     2nd_Edge:  
+         From:          DigitalBus
+         Name:          ADD[15:0]
+         Edge_To:       3
+Delay_End
+Delay 
+     Part_Delay:        tpd
+     Name_YPos:         180
+     Name_Position:     Center
+     Name_Color:        #666666
+     Name_Font:         Dialog
+     Name_Font_Size:    10
+     Name_Font_Style:   0
+     Edge_1_Position:   50
+     Edge_2_Position:   50
+     1st_Edge:  
+         From:          DigitalBus
+         Name:          ADD[15:0]
+         Edge_From:     3
+     2nd_Edge:  
+         From:          DigitalSignal
+         Name:          CS
+         Edge_To:       3
+Delay_End
+Delay 
+     Part_Delay:        tclkq
+     Name_YPos:         100
+     Name_Position:     Right
+     Name_Color:        #666666
+     Name_Font:         Dialog
+     Name_Font_Size:    10
+     Name_Font_Style:   0
+     Edge_1_Position:   50
+     Edge_2_Position:   50
+     1st_Edge:  
+         From:          DigitalClock
+         Name:          CLOCK
+         Edge_From:     108
+     2nd_Edge:  
+         From:          DigitalBus
+         Name:          ADD[15:0]
+         Edge_To:       4
+Delay_End
+Delay 
+     Part_Delay:        tclkq
+     Name_YPos:         220
+     Name_Position:     Right
+     Name_Color:        #666666
+     Name_Font:         Dialog
+     Name_Font_Size:    10
+     Name_Font_Style:   0
+     Edge_1_Position:   50
+     Edge_2_Position:   50
+     1st_Edge:  
+         From:          DigitalClock
+         Name:          CLOCK
+         Edge_From:     108
+     2nd_Edge:  
+         From:          DigitalBus
+         Name:          DATA[7:0]
+         Edge_To:       4
+Delay_End
+Delay 
+     Part_Delay:        tclkq
+     Name_YPos:         259
+     Name_Position:     Left
+     Name_Color:        #666666
+     Name_Font:         Dialog
+     Name_Font_Size:    10
+     Name_Font_Style:   0
+     Edge_1_Position:   50
+     Edge_2_Position:   50
+     1st_Edge:  
+         From:          DigitalClock
+         Name:          CLOCK
+         Edge_From:     104
+     2nd_Edge:  
+         From:          DigitalSignal
+         Name:          WR_STROBE*
+         Edge_To:       1
+Delay_End
+Delay 
+     Part_Delay:        tclkq
+     Name_YPos:         260
+     Name_Position:     Right
+     Name_Color:        #666666
+     Name_Font:         Dialog
+     Name_Font_Size:    10
+     Name_Font_Style:   0
+     Edge_1_Position:   50
+     Edge_2_Position:   50
+     1st_Edge:  
+         From:          DigitalClock
+         Name:          CLOCK
+         Edge_From:     108
+     2nd_Edge:  
+         From:          DigitalSignal
+         Name:          WR_STROBE*
+         Edge_To:       2
+Delay_End
+Delay 
+     Part_Delay:        tclkq
+     Name_YPos:         140
+     Name_Position:     Right
+     Name_Color:        #666666
+     Name_Font:         Dialog
+     Name_Font_Size:    10
+     Name_Font_Style:   0
+     Edge_1_Position:   50
+     Edge_2_Position:   50
+     1st_Edge:  
+         From:          DigitalClock
+         Name:          CLOCK
+         Edge_From:     108
+     2nd_Edge:  
+         From:          DigitalSignal
+         Name:          CS
+         Edge_To:       4
+Delay_End
+Delay 
+     Part_Delay:        tpd
+     Name_YPos:         180
+     Name_Position:     Center
+     Name_Color:        #666666
+     Name_Font:         Dialog
+     Name_Font_Size:    10
+     Name_Font_Style:   0
+     Edge_1_Position:   50
+     Edge_2_Position:   50
+     1st_Edge:  
+         From:          DigitalSignal
+         Name:          CS
+         Edge_From:     3
+     2nd_Edge:  
+         From:          DigitalBus
+         Name:          DATA[7:0]
+         Edge_To:       3
+Delay_End
+Constraint 
+     Part_Constraint:   tsetup
+     Name_YPos:         220
+     Name_Position:     Center
+     Name_Color:        #000000
+     Name_Font:         Dialog
+     Name_Font_Size:    10
+     Name_Font_Style:   0
+     Edge_1_Position:   50
+     Edge_2_Position:   50
+     1st_Edge:  
+         From:          DigitalBus
+         Name:          DATA[7:0]
+         Edge_From:     1
+     2nd_Edge:  
+         From:          DigitalClock
+         Name:          CLOCK
+         Edge_To:       8
+     Min_Constraint:    12.0
+     Type:              Max-Min
+Constraint_End
+Constraint 
+     Part_Constraint:   tsu_wr
+     Name_YPos:         180
+     Name_Position:     Center
+     Name_Color:        #000000
+     Name_Font:         Dialog
+     Name_Font_Size:    10
+     Name_Font_Style:   0
+     Edge_1_Position:   50
+     Edge_2_Position:   50
+     1st_Edge:  
+         From:          DigitalBus
+         Name:          DATA[7:0]
+         Edge_From:     3
+     2nd_Edge:  
+         From:          DigitalClock
+         Name:          CLOCK
+         Edge_To:       108
+     Min_Constraint:    12.0
+     Type:              Max-Min
+Constraint_End
+Constraint 
+     Part_Constraint:   thold
+     Name_YPos:         180
+     Name_Position:     Right
+     Name_Color:        #000000
+     Name_Font:         Dialog
+     Name_Font_Size:    10
+     Name_Font_Style:   0
+     Edge_1_Position:   50
+     Edge_2_Position:   50
+     1st_Edge:  
+         From:          DigitalClock
+         Name:          CLOCK
+         Edge_From:     108
+     2nd_Edge:  
+         From:          DigitalBus
+         Name:          DATA[7:0]
+         Edge_To:       4
+     Min_Constraint:    1.0
+     Type:              Max-Min
+Constraint_End
+Constraint 
+     Part_Constraint:   thold
+     Name_YPos:         220
+     Name_Position:     Right
+     Name_Color:        #000000
+     Name_Font:         Dialog
+     Name_Font_Size:    10
+     Name_Font_Style:   0
+     Edge_1_Position:   50
+     Edge_2_Position:   50
+     1st_Edge:  
+         From:          DigitalClock
+         Name:          CLOCK
+         Edge_From:     8
+     2nd_Edge:  
+         From:          DigitalBus
+         Name:          DATA[7:0]
+         Edge_To:       2
+     Min_Constraint:    1.0
+     Type:              Max-Min
+Constraint_End
+StateBar
+     State_Name:        S1
+     Line_Type:         Dashed
+     Edge_Position:     50
+     State_Color:       #666666
+     Font_Name:         Dialog
+     Font_Style:        0
+     Font_Size:         12
+     Signal_Type:       DigitalClock
+     Signal_Name:       CLOCK
+     Edge_At:           2
+     OffsetX:           0
+     OffsetY:           0
+StateBar_End
+StateBar
+     State_Name:        S2
+     Line_Type:         Dashed
+     Edge_Position:     50
+     State_Color:       #666666
+     Font_Name:         Dialog
+     Font_Style:        0
+     Font_Size:         12
+     Signal_Type:       DigitalClock
+     Signal_Name:       CLOCK
+     Edge_At:           4
+     OffsetX:           0
+     OffsetY:           0
+StateBar_End
+StateBar
+     State_Name:        S3
+     Line_Type:         Dashed
+     Edge_Position:     50
+     State_Color:       #666666
+     Font_Name:         Dialog
+     Font_Style:        0
+     Font_Size:         12
+     Signal_Type:       DigitalClock
+     Signal_Name:       CLOCK
+     Edge_At:           6
+     OffsetX:           0
+     OffsetY:           0
+StateBar_End
+StateBar
+     State_Name:        S1
+     Line_Type:         Dashed
+     Edge_Position:     50
+     State_Color:       #666666
+     Font_Name:         Dialog
+     Font_Style:        0
+     Font_Size:         12
+     Signal_Type:       DigitalClock
+     Signal_Name:       CLOCK
+     Edge_At:           8
+     OffsetX:           0
+     OffsetY:           0
+StateBar_End
+StateBar
+     State_Name:        S1
+     Line_Type:         Dashed
+     Edge_Position:     50
+     State_Color:       #666666
+     Font_Name:         Dialog
+     Font_Style:        0
+     Font_Size:         12
+     Signal_Type:       DigitalClock
+     Signal_Name:       CLOCK
+     Edge_At:           102
+     OffsetX:           0
+     OffsetY:           0
+StateBar_End
+StateBar
+     State_Name:        S2
+     Line_Type:         Dashed
+     Edge_Position:     50
+     State_Color:       #666666
+     Font_Name:         Dialog
+     Font_Style:        0
+     Font_Size:         12
+     Signal_Type:       DigitalClock
+     Signal_Name:       CLOCK
+     Edge_At:           104
+     OffsetX:           0
+     OffsetY:           0
+StateBar_End
+StateBar
+     State_Name:        S3
+     Line_Type:         Dashed
+     Edge_Position:     50
+     State_Color:       #666666
+     Font_Name:         Dialog
+     Font_Style:        0
+     Font_Size:         12
+     Signal_Type:       DigitalClock
+     Signal_Name:       CLOCK
+     Edge_At:           106
+     OffsetX:           0
+     OffsetY:           0
+StateBar_End
+StateBar
+     State_Name:        S1
+     Line_Type:         Dashed
+     Edge_Position:     50
+     State_Color:       #666666
+     Font_Name:         Dialog
+     Font_Style:        0
+     Font_Size:         12
+     Signal_Type:       DigitalClock
+     Signal_Name:       CLOCK
+     Edge_At:           108
+     OffsetX:           0
+     OffsetY:           0
+StateBar_End

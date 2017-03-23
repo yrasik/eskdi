@@ -1,0 +1,262 @@
+\section{Инструкция по установке окружения SystemC + SystemC-AMS + TUV\_AMS\_Library под Win7}
+\sectionmark{Инструкция по установке SystemC под Win7}
+
+\subsection{О SystemC}
+
+SystemC — язык проектирования и верификации моделей системного уровня, реализованный в виде C++ библиотеки с открытым исходным кодом. Библиотека включает в себя ядро событийного моделирования, что позволяет получить исполняемую модель устройства.
+
+SystemC~AMS — дополнительная библиотека, реализованная на C++ с открытым исходным кодом, позволяющая моделировать аналоговые и гетерогенные системы.
+
+TUV\_AMS\_Library — набор библиотечных модулей обработки сигналов, выполненный в виде классов SystemC~AMS.
+
+SystemC + SystemC-AMS + TUV\_AMS\_Library представляют собой бесплатную альтернативу Matlab Simulink Toolbox.
+
+
+\subsection{Необходимые пакеты}
+
+\subsubsection{Библиотеки SystemC}
+
+systemc-2.3.1.tgz  - ядро SystemC.
+
+systemc-ams-2\_beta1.zip - рашширение, позволяющее моделировать аналоговые системы.
+
+TUV\_AMS\_Library.tar.gz - библиотека с готовыми и отлаженными функциональными модулями.
+
+
+\subsubsection{Интегрированная среда ''Microsoft Visual C++''}
+
+В документации на библиотеки фигурирует ''Microsoft Visual C++ 2008'' и выше...
+
+
+Сборка библиотек осуществлялась ''Microsoft Visual C++ 2008 Express''.
+
+\subsubsection{Утилита для сборки ''cmake''}
+
+
+cmake-3.3.0-rc2-win32-x86.exe - нужна для создания файлов проекта "Microsoft Visual C++" для "TUV\_AMS\_Library".
+
+
+
+
+
+
+\subsection{Руководство по установке}
+
+\subsubsection{Установка ''Microsoft Visual C++ 2008 Express''}
+  Устанавливается согласно приложенной инструкции.
+  
+  
+\subsubsection{Сборка библиотеки ''SystemC.lib''}
+
+Запускается ''Microsoft Visual C++ 2008 Express Edition.exe''.
+
+Распаковывается архив ''systemc-2.3.1.tgz'':
+\begin{lstlisting}[language=, style=FrameStyleI]
+d:\systemc\systemc-2.3.1
+\end{lstlisting}
+
+
+Открывается из ''Visual C++'' проект:
+\begin{lstlisting}[language=, style=FrameStyleI]
+d:\systemc\systemc-2.3.1\msvc80\SystemC.sln 
+\end{lstlisting}
+
+Запускается сборка: Build -> Build SystemC.
+
+Получается библиотека в:
+
+\begin{lstlisting}[language=, style=FrameStyleI]
+d:\systemc\systemc-2.3.1\msvc80\SystemC\Debug\SystemC.lib
+\end{lstlisting}
+
+
+
+
+
+\subsubsection{Сборка библиотеки ''systemc\_ams.lib''}
+
+
+Распаковывается архив ''systemc-ams-2\_beta1.zip'':
+\begin{lstlisting}[language=, style=FrameStyleI]
+d:\systemc\systemc-ams-2.0_beta1
+\end{lstlisting}
+
+
+
+
+Открывается из ''Visual C++'' проект:
+\begin{lstlisting}[language=, style=FrameStyleI]
+d:\systemc\systemc-ams-2.0_beta1\msvc80\systemc_ams.sln
+\end{lstlisting}
+
+Заголовочныые файлы от ''SystemC.lib'':
+
+\begin{lstlisting}[language=, style=FrameStyleI]
+Progect -> Properties ->  C/C++ -> General-> Additional Include Directories:
+\end{lstlisting}
+
+добавляем:
+
+\begin{lstlisting}[language=, style=FrameStyleI]
+"d:\systemc\systemc-2.3.1\include"
+\end{lstlisting}
+
+Путь к библиотеке ''SystemC.lib'':
+
+\begin{lstlisting}[language=, style=FrameStyleI]
+Progect -> Properties ->  Librarian -> General-> Additional Library Directories
+\end{lstlisting}
+
+добавляем:
+
+\begin{lstlisting}[language=, style=FrameStyleI]
+"d:\systemc\systemc-2.3.1\msvc80\SystemC\Debug"
+\end{lstlisting}
+
+
+
+
+Запускаем сборку:
+
+\begin{lstlisting}[language=, style=FrameStyleI]
+Build -> Build system_ams
+\end{lstlisting}
+
+
+Получаем библиотеку в:
+
+\begin{lstlisting}[language=, style=FrameStyleI]
+"d:\systemc\systemc-ams-2.0_beta1\msvc80\Debug\systemc_ams.lib"
+\end{lstlisting}
+
+
+
+\subsubsection{Сборка библиотеки ''tuv\_ams\_libraryd.lib''}
+
+Запустить ''Visual Studio 2008 Command Prompt.exe''
+
+Зайти в директорию:
+\begin{lstlisting}[language=, style=FrameStyleI]
+"d:\systemc\TUV_AMS_Library\build"
+\end{lstlisting}
+
+
+
+Прописать переменные окружения в консоли:
+
+\begin{lstlisting}[language=, style=FrameStyleI]
+set SYSTEMC_HOME=d:\systemc_2015\systemc-2.3.1\
+\end{lstlisting}
+
+\begin{lstlisting}[language=, style=FrameStyleI]
+set SYSTEMCAMS_HOME=d:\systemc_2015\systemc-ams-2.0_beta1\
+\end{lstlisting}
+
+
+
+
+
+Скопировать библиотеки :
+
+\begin{lstlisting}[language=, style=FrameStyleI]
+d:\systemc\systemc-2.3.1\msvc80\SystemC\Debug\SystemC.lib
+->
+d:\systemc\systemc-2.3.1\SystemC.lib
+\end{lstlisting}
+
+\begin{lstlisting}[language=, style=FrameStyleI]
+d:\systemc\systemc-ams-2.0_beta1\msvc80\Debug\systemc_ams.lib
+->
+d:\systemc\systemc-ams-2.0_beta1\systemc_ams.lib
+\end{lstlisting}
+
+
+
+Вбить в консоли команду
+
+\begin{lstlisting}[language=, style=FrameStyleI]
+cmake ..
+\end{lstlisting}
+
+Побежит лог конфигуратора. Сообщений об ошибках в логе не должно быть.
+
+
+
+
+Открываем проект в ''Visual C++'' по адресу:
+
+\begin{lstlisting}[language=, style=FrameStyleI]
+"d:\systemc\TUV_AMS_Library\build\TUV_AMS.sln"
+\end{lstlisting}
+
+Запускаем сборку:
+
+
+\begin{lstlisting}[language=, style=FrameStyleI]
+Build -> Build system_ams
+\end{lstlisting}
+
+
+Получаем библиотеку в
+
+\begin{lstlisting}[language=, style=FrameStyleI]
+"d:\systemc\TUV_AMS_Library\build\Debug\tuv_ams_libraryd.lib"
+\end{lstlisting}
+
+
+
+
+\subsubsection{Сборка тестового примера ''Frequency\_shifter''}
+
+
+Чтобы собрался проект ''Frequency\_shifter'' нужно:
+
+закомментировать строчку :
+
+\begin{lstlisting}[language=C++, style=FrameStyleI]
+ReadWaveFile.out.set_timestep(0.01, SC_US);
+\end{lstlisting}        
+
+вписать метод в:
+     
+\begin{lstlisting}[language=C++, style=FrameStyleI]
+SCA_TDF_MODULE(Input)
+{
+  ...
+  void set_attributes()
+  {
+    out.set_timestep(0.01, SC_US);
+  }
+  ...
+}
+\end{lstlisting}     
+     
+     
+
+
+
+
+
+Пример собирается, но вылетает с ошибкой переполнение стэка с параметром N = 256 (размерность БПФ преобразований). При N = 64 пример работает.  Оно и после сборки под cygwin ведёт себя подобным образом.
+
+
+
+!!! УВЕЛИЧИТЬ СТЭК ПРИЛОЖЕНИЯ (т.к. Frequency\_shifter вылетает с настройками по умолчанию):
+
+\begin{lstlisting}[language=, style=FrameStyleI]
+MVS -> Properties -> Linker -> System -> Stack Reserve Size = 100000000
+&
+MVS -> Properties -> Linker -> System -> Stack Commit Size = 100000000
+\end{lstlisting}
+
+
+
+
+
+
+
+
+
+
+
+

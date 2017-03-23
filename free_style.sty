@@ -1,0 +1,123 @@
+%  Copyright (C) 2017 Yuri Stepanenko stepanenkoyra@gmail.com
+
+% This program is free software; you can redistribute it
+% and/or modify it under the terms of the GNU Library General Public
+% License as published by the Free Software Foundation; either version 2
+% of the License, or (at your option) any later version.
+
+% The GNU LIBICONV Library is distributed in the hope that it will be
+% useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+% Library General Public License for more details. 
+
+% You should have received a copy of the GNU Library General Public
+% License along with the 'eskdi'; see the file License.gpl.
+% If not, write to the Free Software Foundation, Inc., 59 Temple Place -
+% Suite 330, Boston, MA 02111-1307, USA.
+
+\NeedsTeXFormat{LaTeX2e}
+
+\RequirePackage{ifthen}
+\RequirePackage{eso-pic}
+\RequirePackage{everyshi}
+\RequirePackage{lastpage}
+\RequirePackage{everypage}
+
+\RequirePackage{for_all_styles}
+
+
+\ProvidesPackage{free_style} [2017/02/11 v4.2 GOST Frames]
+
+
+\newcounter{MaketitleDef}
+\setcounter{MaketitleDef}{0}%
+
+
+\newcounter{MakesecondDef}
+\setcounter{MakesecondDef}{0}%
+
+
+\newcounter{MakeregChanges}%
+\setcounter{MakeregChanges}{0}%
+
+
+
+\newcommand{\SetEmptyPage}{}% Совсем пустая страници, не нумерованная
+
+
+\AddEverypageHook{}%
+
+
+% begin{Верхний колонтитул. Заполняем рамки текстом. Координаты задаются в pt, соответствующие координатам в просмотре}
+\renewcommand{\@oddhead}%
+{%
+  \raisebox{0pt}[\headheight][0pt]
+  {%
+    \vbox%
+    {%
+      \hbox to \textwidth{\parbox[c][1.2\height]{0.4\textwidth}{\textbf{\@gosttitleobjectI} \hfil} \parbox{0.02\textwidth}{\ } \parbox[c][1.2\height]{0.58\textwidth}{\@gostCurrentSection \hfil}}%    
+      {\color{white} \hrule height 0.4mm } % Без этого текст наползает на подчёркивание
+       \hrule height 1.2mm%
+    }%
+  }%
+  \unitlength=1pt%
+  \StampFormatI%
+  \vbox
+  {%
+    \hrule height 1.2mm%
+    {\color{white} \hrule height 0.4mm } % Без этого текст наползает на надчёркивание
+    \hbox to \textwidth{\parbox[c][1.2\height]{0.3\textwidth}{\@gostDATE \hfil} \parbox[c][1.2\height]{0.6\textwidth}{\@gosttitledocument \hfil} \parbox[c][1.2\height]{0.1\textwidth}{\hbox to \hsize{\hfil \thepage (\pageref{LastPage})}}}%   
+  }%
+  \end{picture}%
+}%
+% end{Верхний колонтитул. Заполняем рамки текстом. Координаты задаются в pt, соответствующие координатам в просмотре}
+
+
+\EveryShipout
+{%
+  \ClearShipoutPicture
+  {% 
+    \ifthenelse{\equal{\value{MaketitleDef}}{1}}%
+    {%
+      \titlePicture%
+    }%
+    {%
+    }%
+  }%
+}%
+
+
+% begin{Нижний колонтитул. Заполняем рамки текстом. Координаты задаются в pt, соответствующие координатам в просмотре}
+\renewcommand{\@oddfoot}%
+{%
+  \ifthenelse{\equal{\value{MaketitleDef}}{1}}%
+  {%
+    \setcounter{MaketitleDef}{0}%
+  }%
+  {%
+  }%
+}
+% end{Нижний колонтитул. Заполняем рамки текстом. Координаты задаются в pt, соответствующие координатам в просмотре}
+
+
+
+%Для изменения размера страницы
+\newcommand{\FormatSizeA}[2]
+{%
+  \clearpage%
+  \setlength{\oddsidemargin}{0mm}%  
+  \StampA{#1}%
+  \PageSizeFormat%
+  \TextSizeFormat{#1}%
+  \expandafter{#2}%
+  %Вернули всё назад
+  \clearpage%
+  \StampA{4}%
+  \PageSizeFormat%
+  \TextSizeFormat{4}%
+}
+
+
+
+
+

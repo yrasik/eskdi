@@ -1,0 +1,542 @@
+\section{Примеры создания таблиц} \label{app:tables}
+\sectionmark{Примеры создания таблиц}
+
+В этом разделе приводятся таблицы, разной сложности.
+
+\subsection{Таблицы общего назначения}
+
+Таблица~\ref{appendix:t:1} простая.
+
+\begin{longtable}{|p{60mm}|p{100mm}|}
+  \caption{Простая} \label{appendix:t:1} \\
+  \hline
+  \multicolumn{1}{|p{60mm}|}{\centering Обозначение} &
+  \multicolumn{1}{p{100mm}|}{\centering Наименование} \\\hline
+  \endfirsthead
+  \caption*{Продолжение таблицы \ref{appendix:t:1}} \\
+ \hline
+  \multicolumn{1}{|p{60mm}|}{\centering Обозначение} &
+  \multicolumn{1}{p{100mm}|}{\centering Наименование} \\\hline
+  \endhead
+   1    &   2   \\ \hline
+   3    &   4   \\ \hline
+   5    &   6   \\ \hline
+\end{longtable}
+
+Таблица~\ref{appendix:t:2} более сложная.
+
+\begin{longtable}{|p{50mm}|p{25mm}|p{50mm}|p{25mm}|}
+  \caption{Посложнее} \label{appendix:t:2} \\
+  \hline
+  \multicolumn{1}{|p{50mm}|}{Наименование файла} &
+  \multicolumn{1}{p{25mm}|}{\centering Объем, байт} & 
+  \multicolumn{1}{p{50mm}|}{\centering Контрольная сумма по программе CRC32} &
+  \multicolumn{1}{p{25mm}|}{Примечание} \\\hline
+  \endfirsthead
+  \caption*{Продолжение таблицы \ref{appendix:t:2}} \\
+ \hline
+  \multicolumn{1}{|p{50mm}|}{Наименование файла} &
+  \multicolumn{1}{p{25mm}|}{\centering Объем, байт} & 
+  \multicolumn{1}{p{50mm}|}{\centering Контрольная сумма по программе CRC32} &
+  \multicolumn{1}{p{25mm}|}{Примечание} \\\hline
+  \endhead
+   1   &  \centering 2   &  3    &  4      \\ \hline
+   5   &  \centering 6   &  7    &  8      \\ \hline
+   9   &  \centering 10  &  11   &  12     \\ \hline
+\end{longtable}
+
+
+Таблица~\ref{appendix:t:3} ещё сложнее.
+
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}% Выравнивание столбца по левому краю
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}% Выравнивание столбца по левому центру
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}% Выравнивание столбца по правому краю
+
+
+\begin{longtable}{|R{75mm}|C{25mm}|L{25mm}|}
+  \caption{Сложноватая} \label{appendix:t:31} \\
+  \hline
+  & \multicolumn{2}{p{50mm}|}{\centering Номер пункта инструкции} 
+              \\ \cline{2-3}
+  \multicolumn{1}{|p{75mm}|}{Наименование испытаний и проверок} &
+  \multicolumn{1}{p{25mm}|}{\centering раздела ''Требования к изделиям''} & 
+  \multicolumn{1}{p{25mm}|}{\centering раздела ''Методы испытаний''} \\\hline
+  \endfirsthead
+  \caption*{Продолжение таблицы \ref{appendix:t:3}} \\
+ \hline
+  &
+  \multicolumn{2}{p{50mm}|}{\centering Номер пункта инструкции} 
+              \\\cline{2-3}
+  \multicolumn{1}{|p{75mm}|}{Наименование испытаний и проверок} &
+  \multicolumn{1}{p{25mm}|}{\centering раздела ''Требования к изделиям''} & 
+  \multicolumn{1}{p{25mm}|}{\centering раздела ''Методы испытаний''} \\\hline
+  \endhead
+  \multicolumn{3}{|p{145mm}|}
+  {%\parbox{170cm}
+  {Примечание – Последовательность испытаний может изменяться по согласованию с кем – нибудь.}} \\ \hline
+\endlastfoot
+   1  &  4  &  7    \\ \hline
+   2  &  5  &  8    \\ \hline
+   3  &  6  &  9    \\ \hline
+\end{longtable}
+
+
+
+\begin{longtable}{|R{75mm}|C{25mm}|L{25mm}|p{25mm}|}
+  \caption{Сложноватая} \label{appendix:t:3} \\
+  \hline
+  &
+  \multicolumn{2}{p{50mm}|}{\centering Номер пункта инструкции} &
+              \\\cline{2-3}
+  \multicolumn{1}{|p{75mm}|}{Наименование испытаний и проверок} &
+  \multicolumn{1}{p{25mm}|}{\centering раздела ''Требования к изделиям''} & 
+  \multicolumn{1}{p{25mm}|}{\centering раздела ''Методы испытаний''} &
+  \multicolumn{1}{p{25mm}|}{\centering Примечание} \\\hline
+  \endfirsthead
+  \caption*{Продолжение таблицы \ref{appendix:t:3}} \\
+ \hline
+  &
+  \multicolumn{2}{p{50mm}|}{\centering Номер пункта инструкции} &
+              \\\cline{2-3}
+  \multicolumn{1}{|p{75mm}|}{Наименование испытаний и проверок} &
+  \multicolumn{1}{p{25mm}|}{\centering раздела ''Требования к изделиям''} & 
+  \multicolumn{1}{p{25mm}|}{\centering раздела ''Методы испытаний''} &
+  \multicolumn{1}{p{25mm}|}{\centering Примечание} \\\hline
+  \endhead
+  \multicolumn{4}{|p{170mm}|}
+  {%\parbox{170cm}
+  {Примечание – Последовательность испытаний может изменяться по согласованию с кем – нибудь.}} \\ \hline
+\endlastfoot
+   1  &  4  &  7  &  10  \\ \hline
+   2  &  5  &  8  &  11  \\ \hline
+   3  &  6  &  9  &  12  \\ \hline
+\end{longtable}
+
+
+Таблица~\ref{t:haracteristics} одна из самых сложных в приложении~\ref{app:tables}.
+
+\begin{longtable}{|p{42mm}|p{25mm}|p{25mm}|p{25mm}|p{10mm}|p{10mm}|p{10mm}|}
+  \caption{Совсем непростая} \label{t:haracteristics} \\
+  \hline
+  &  \multicolumn{2}{p{50mm}|}{Основные характеристики} &  &  &   &       \\ \cline{2-3}
+ 
+  \multicolumn{1}{|p{42mm}|}{\parbox[b]{4.0cm}{Наименование и обозначение средства
+                             измерения, контроля, испытания,
+                             вспомогательного оборудования}} &
+  \multicolumn{1}{p{25mm}|}{\centering \rotatebox{90}{\parbox{4cm}{Класс точности}}} & 
+  \multicolumn{1}{p{25mm}|}{\centering \rotatebox{90}{\parbox{4cm}{Используемые \\ характеристики}}} &
+  \multicolumn{1}{p{25mm}|}{\rotatebox{90}{\parbox{4cm}{Тип, соответствующий требованиям и основным характеристикам}}} &
+  \multicolumn{1}{p{10mm}|}{\rotatebox{90}{\parbox{4cm}{Номер пункта  \\ методов}}} &
+  \multicolumn{1}{p{10mm}|}{\rotatebox{90}{\parbox{4cm}{Количество на одно рабочее место}}} &
+  \multicolumn{1}{p{10mm}|}{\rotatebox{90}{\parbox{4cm}{Примечание}}} \\ \hline
+  \endfirsthead
+
+  \caption*{Продолжение таблицы \ref{t:haracteristics}} \\
+  \hline
+  &  \multicolumn{2}{p{50mm}|}{Основные характеристики} &  &  &   &       \\ \cline{2-3}
+ 
+  \multicolumn{1}{|p{42mm}|}{\parbox[b]{4.0cm}{Наименование и обозначение средства
+                             измерения, контроля, испытания,
+                             вспомогательного оборудования}} &
+  \multicolumn{1}{p{25mm}|}{\centering \rotatebox{90}{\parbox{4cm}{Класс точности}}} & 
+  \multicolumn{1}{p{25mm}|}{\centering \rotatebox{90}{\parbox{4cm}{Используемые \\ характеристики}}} &
+  \multicolumn{1}{p{25mm}|}{\rotatebox{90}{\parbox{4cm}{Тип, соответствующий требованиям и основным характеристикам}}} &
+  \multicolumn{1}{p{10mm}|}{\rotatebox{90}{\parbox{4cm}{Номер пункта  \\ методов}}} &
+  \multicolumn{1}{p{10mm}|}{\rotatebox{90}{\parbox{4cm}{Количество на одно рабочее место}}} &
+  \multicolumn{1}{p{10mm}|}{\rotatebox{90}{\parbox{4cm}{Примечание}}} \\ \hline
+  \endhead
+  
+  \multicolumn{7}{|p{170mm}|}
+  {%\parbox{170cm}
+  {Примечание – Средства измерений, контроля и испытаний, а также вспомогательное оборудование в 
+  процессе работы могут заменяться средствами другого типа, обеспечивающими
+  необходимую погрешность измерения и удовлетворяющими условиям испытаний.}} \\ \hline
+\endlastfoot
+       &    &    &    &   &   & \\ \hline
+       &    &    &    &   &   & \\ \hline
+       &    &    &    &   &   & \\ \hline
+       &    &    &    &   &   & \\ \hline
+\end{longtable}
+
+
+
+
+В таблице~\ref{t:par1} заголовочные надписи лучше выровнены.
+
+\begin{longtable}{|p{45mm}|p{25mm}|p{25mm}|p{25mm}|p{30mm}|}
+  \caption{} \label{t:par1} \\
+  \hline
+  \multicolumn{1}{|p{45mm}|}{\raisebox{-5mm}[0mm][6mm]{\parbox{45mm}{\small Наименование параметра, единица измерения}}} & \multicolumn{2}{p{55mm}|}{\small Величина параметра}                                                      &   \multicolumn{1}{p{25mm}|}{\raisebox{-8mm}[0mm][0mm]{\parbox{25mm}{\small Допустимая погрешность измерения}}} &   \multicolumn{1}{p{25mm}|}{\small Примечание} \\
+  \cline{2-3} 
+                                                                        & \multicolumn{1}{p{25mm}|}{\small Номинальное значение} & \multicolumn{1}{p{25mm}|}{\small Предельное отклонение} &                                                               &                                         \\\hline
+  \endfirsthead
+
+  \caption*{Продолжение таблицы \ref{t:par1}} \\
+  \hline
+  \multicolumn{1}{|p{45mm}|}{\raisebox{-5mm}[0mm][6mm]{\parbox{45mm}{\small Наименование параметра, единица измерения}}} & \multicolumn{2}{p{55mm}|}{\small Величина параметра}                                                      &   \multicolumn{1}{p{25mm}|}{\raisebox{-8mm}[0mm][0mm]{\parbox{25mm}{\small Допустимая погрешность измерения}}} &   \multicolumn{1}{p{25mm}|}{\small Примечание} \\
+  \cline{2-3} 
+                                                                        & \multicolumn{1}{p{25mm}|}{\small Номинальное значение} & \multicolumn{1}{p{25mm}|}{\small Предельное отклонение} &                                                               &                                         \\\hline
+  \endhead  
+     Ток потребления номинальный, мА											          & 750                   &       \textpm50       &                                  &     \\\hline
+     Ток потребления максимальный, мА											          & 950                   &       \textpm100       &                                  &    \\\hline
+\end{longtable}
+
+
+
+
+В таблице~\ref{t:har2} заголовочные надписи повёрнуты и выровнены.
+
+
+\begin{longtable}{|p{42mm}|p{22mm}|p{22mm}|p{25mm}|p{16mm}|p{10mm}|p{10mm}|}
+  \caption{} \label{t:har2} \\
+  \hline
+  &  \multicolumn{2}{p{44mm}|}{Основные характеристики} &  &  &   &       \\ \cline{2-3}
+ 
+  \multicolumn{1}{|p{42mm}|}{\raisebox{4mm}[0mm][0mm]{\parbox[b]{4.0cm}{\small Наименование и обозначение средства
+                             измерения, контроля, испытания,
+                             вспомогательного оборудования}}} &
+  \multicolumn{1}{p{22mm}|}{\rotatebox{90}{\parbox{3cm}{\small Класс \\точности}}} & 
+  \multicolumn{1}{p{22mm}|}{\rotatebox{90}{\parbox{3cm}{\footnotesize Используемые \\ характеристики}}} &
+  \multicolumn{1}{p{25mm}|}{\raisebox{0mm}[0mm][0mm]{\rotatebox{90}{\parbox{4cm}{\small Тип, соответствующий требованиям и основным характеристикам}}}} &
+  \multicolumn{1}{p{16mm}|}{\raisebox{0mm}[0mm][0mm]{\rotatebox{90}{\parbox{4cm}{\small Номер пункта  \\ методов}}}} &
+  \multicolumn{1}{p{10mm}|}{\raisebox{0mm}[0mm][0mm]{\rotatebox{90}{\parbox{4cm}{\small Количество на одно рабочее место}}}} &
+  \multicolumn{1}{p{10mm}|}{\raisebox{0mm}[0mm][0mm]{\rotatebox{90}{\parbox{4cm}{\small Примечание}}}} \\ \hline
+  \endfirsthead
+
+  \caption*{Продолжение таблицы \ref{t:har2}} \\
+  \hline
+  &  \multicolumn{2}{p{44mm}|}{Основные характеристики} &  &  &   &       \\ \cline{2-3}
+ 
+  \multicolumn{1}{|p{42mm}|}{\raisebox{4mm}[0mm][0mm]{\parbox[b]{4.0cm}{\small Наименование и обозначение средства
+                             измерения, контроля, испытания,
+                             вспомогательного оборудования}}} &
+  \multicolumn{1}{p{22mm}|}{\rotatebox{90}{\parbox{3cm}{\small Класс \\точности}}} & 
+  \multicolumn{1}{p{22mm}|}{\rotatebox{90}{\parbox{3cm}{\footnotesize Используемые \\ характеристики}}} &
+  \multicolumn{1}{p{25mm}|}{\raisebox{0mm}[0mm][0mm]{\rotatebox{90}{\parbox{4cm}{\small Тип, соответствующий требованиям и основным характеристикам}}}} &
+  \multicolumn{1}{p{16mm}|}{\raisebox{0mm}[0mm][0mm]{\rotatebox{90}{\parbox{4cm}{\small Номер пункта  \\ методов}}}} &
+  \multicolumn{1}{p{10mm}|}{\raisebox{0mm}[0mm][0mm]{\rotatebox{90}{\parbox{4cm}{\small Количество на одно рабочее место}}}} &
+  \multicolumn{1}{p{10mm}|}{\raisebox{0mm}[0mm][0mm]{\rotatebox{90}{\parbox{4cm}{\small Примечание}}}} \\ \hline
+  \endhead
+  
+  \multicolumn{7}{|p{170mm}|}
+  {%\parbox{170cm}
+  {\hspace*{10mm} Примечание – Средства измерений, контроля и испытаний, а также вспомогательное оборудование в процессе работы могут заменяться в установленном порядке средствами другого типа, обеспечивающими необходимую погрешность измерения и удовлетворяющими условиям испытаний. }} \\ \hline
+\endlastfoot
+
+Источник питания постоянного тока 
+ 
+                                   &                    & напряжение 7,5~В, ток до 1,5~А                                 &         &  & 1 &  \\ \hline
+
+\end{longtable}
+
+
+
+\newpage
+\subsection{Специализированные таблицы}
+
+
+\definecolor{ColorModbusSlaveAddr}{rgb}{0.588235, 0.788235, 0.690196}%Подобрать цвет поможет GIMP
+\definecolor{ColorModbusFunct}{rgb}{0.647059, 0.819608, 0.870588}%Подобрать цвет поможет GIMP
+\definecolor{ColorModbusData}{rgb}{1.000000, 0.752941, 0.796078}%Подобрать цвет поможет GIMP
+\definecolor{ColorModbusChecksumm}{rgb}{0.968627, 0.980392, 0.725490}%Подобрать цвет поможет GIMP
+
+
+
+\renewcommand\tablename{\hspace{0mm} Таблица}
+\setlength\LTleft{0mm}
+\setlength\LTright\fill
+\small
+\begin{longtable}{|C{15mm}|C{15mm}|C{25mm}|L{95mm}|}
+  \caption{Полный пакет Modbus с функцией \\MB\_FUNC\_OTHER\_REPORT\_SLAVEID. Запрос} \label{t:req:MB_FUNC_OTHER_REPORT_SLAVEID} \\
+  \hline
+  \multicolumn{1}{|p{15mm}|}{\centering Номер \mbox{байта}} &
+  \multicolumn{1}{p{15mm}|}{\centering Номера бит} & 
+  \multicolumn{1}{p{25mm}|}{\centering Принимаемые значения} &
+  \multicolumn{1}{p{95mm}|}{\centering Описание поля} \\\hline
+  \endfirsthead
+  \caption*{Продолжение таблицы \ref{t:req:MB_FUNC_OTHER_REPORT_SLAVEID}} \\
+ \hline
+  \multicolumn{1}{|p{15mm}|}{\centering Номер \mbox{байта}} &
+  \multicolumn{1}{p{15mm}|}{\centering Номера бит} & 
+  \multicolumn{1}{p{25mm}|}{\centering Принимаемые значения} &
+  \multicolumn{1}{p{95mm}|}{\centering Описание поля} \\\hline
+  \endhead
+\rowcolor{ColorModbusSlaveAddr}%
+    0  & 7-0 & 0x0A  &  Код манипулятора на шине Modbus\\ \hline  
+\rowcolor{ColorModbusFunct}%
+    1  & 7-0 & 0x11  &  Чтение информации об устройстве MB\_FUNC\_OTHER\_REPORT\_SLAVEID \\ \hline  
+\rowcolor{ColorModbusChecksumm}%    
+    2  & 7-0 & 0xC7  &  Контрольная сумма. Биты: [\ \ 7:\ \ 0]. \\ \hline 
+\rowcolor{ColorModbusChecksumm}%    
+    3  & 7-0 & 0x1C  &  Контрольная сумма. Биты: [15:\ \ 8]. \\ \hline
+\end{longtable}
+\normalsize
+
+
+
+\renewcommand\tablename{\hspace{20mm} Таблица}
+\setlength\LTleft\fill
+\setlength\LTright{0mm}
+\small
+\begin{longtable}{|C{15mm}|C{15mm}|C{30mm}|L{80mm}|}
+\caption{Полный пакет Modbus с функцией \\MB\_FUNC\_OTHER\_REPORT\_SLAVEID. Ответ} \label{t:answer:MB_FUNC_OTHER_REPORT_SLAVEID} \\
+  \hline
+  \multicolumn{1}{|p{15mm}|}{\centering Номер байта} &
+  \multicolumn{1}{p{15mm}|}{\centering Номер бита} &
+  \multicolumn{1}{p{30mm}|}{\centering Принимаемые значения} &  
+  \multicolumn{1}{p{80mm}|}{\centering Описание} \\\hline
+  \endfirsthead
+  \caption*{\hspace{20mm} Продолжение таблицы \ref{t:answer:MB_FUNC_OTHER_REPORT_SLAVEID}} \\
+ \hline
+  \multicolumn{1}{|p{15mm}|}{\centering Номер байта} &
+  \multicolumn{1}{p{15mm}|}{\centering Номер бита} &
+  \multicolumn{1}{p{30mm}|}{\centering Принимаемые значения} &  
+  \multicolumn{1}{p{80mm}|}{\centering Описание} \\\hline
+  \endhead
+\rowcolor{ColorModbusSlaveAddr}%
+     0  & 7-0 & 0x0A  &  Код манипулятора на шине Modbus\\ \hline  
+\rowcolor{ColorModbusFunct}%
+     1  & 7-0 & 0x11  &  Чтение информации об устройстве MB\_FUNC\_OTHER\_REPORT\_SLAVEID \\ \hline   
+     2  & 7-0 & 0x10  &  Размер пакета (16 байт). Для данного пакета [3...18] (с 3 до 18 байта включительно). Данный байт формирует протокол Modbus~RTU.\\ \hline
+\rowcolor{ColorModbusData}%
+     3  & 7-0 & 0xFF  &  \\ \hline 
+\rowcolor{ColorModbusData}%     
+     4  & 7-0 & 0x44  & 'D' \\ \hline 
+\rowcolor{ColorModbusData}%     
+     5  & 7-0 & 0x65  &  'e' \\ \hline 
+\rowcolor{ColorModbusData}%     
+     6  & 7-0 & 0x76  &  'v'\\ \hline 
+\rowcolor{ColorModbusData}%    
+    7  & 7-0 & 0x20  &  '\ \ '\\ \hline
+\rowcolor{ColorModbusData}%    
+    8  & 7-0 & 0x76  &  'v'\\ \hline
+\rowcolor{ColorModbusData}%    
+    9  & 7-0 & 0x2E  &  '.'\\ \hline
+\rowcolor{ColorModbusData}%    
+    10  & 7-0 & 0x31  &  '1'\\ \hline
+\rowcolor{ColorModbusData}%    
+    11  & 7-0 & 0x2E  &  '.'\\ \hline
+\rowcolor{ColorModbusData}%    
+    12  & 7-0 & 0x30  &  '0'\\ \hline
+\rowcolor{ColorModbusData}%    
+    13  & 7-0 & 0x2E  &  '.'\\ \hline
+\rowcolor{ColorModbusData}%    
+    14  & 7-0 & 0x30  &  '0'\\ \hline
+\rowcolor{ColorModbusData}%    
+    15  & 7-0 & 0x30  &  '0'\\ \hline
+\rowcolor{ColorModbusData}%    
+    16  & 7-0 & 0x61  &  'a'\\ \hline 
+\rowcolor{ColorModbusData}%    
+    17  & 7-0 & 0x0A  &  '\textbackslash n' \\ \hline
+\rowcolor{ColorModbusData}%    
+    18  & 7-0 & 0x00  & Конец с-строки (0x00)\\ \hline 
+\rowcolor{ColorModbusChecksumm}%
+    19  & 7-0 & 0x1A  & Контрольная сумма. Биты: [\ \ 7:\ \ 0]. \\ \hline  
+\rowcolor{ColorModbusChecksumm}%    
+    20  & 7-0 & 0x9A  & Контрольная сумма. Биты: [15:\ \ 8]. \\ \hline  
+\end{longtable} \normalsize
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{longtable}{|p{10mm}|p{55mm}|p{66mm}|p{10mm}|p{12mm}|}
+  \caption{Регистр OCP\_DEBUG\_STATUS} \label{t:bytefield:1} \\
+  \hline
+  \multicolumn{5}{|p{158mm}|}{%
+    \begin{tabular}{p{39.5mm}p{39.5mm}p{39.5mm}p{39.5mm}}
+      \textbf{Address Offset} & 0x0000\ FF0C  &  &  \\
+      \textbf{Physical Address} & 0x5600\ FF0C  & Instance & SGX \\
+      \textbf{Description} & Status of debug.  &  &  \\
+      \textbf{Type} & RW  &  &  \\
+    \end{tabular}%
+  } \\%
+  \hline%
+  \multicolumn{5}{|p{158mm}|}{%
+   \resizebox{174mm}{30mm}{%
+  \hspace{-2.2mm}%
+  \renewcommand{\arraystretch}{1}\addtolength{\tabcolsep}{-1.215mm}%
+  \definecolor{Gray}{gray}{0.8}%
+    \begin{tabular}{cccccccc|cccccccc|cccccccc|cccccccc}% 
+   \cellcolor{Gray}31 & \cellcolor{Gray}30 & \cellcolor{Gray}29 & \cellcolor{Gray}28 & \cellcolor{Gray}27 & \cellcolor{Gray}26 & \cellcolor{Gray}25 & \cellcolor{Gray}24 & 23 & 22 & 21 & 20 & 19 & 18 & 17 & 16 & \cellcolor{Gray}15 & \cellcolor{Gray}14 & \cellcolor{Gray}13 & \cellcolor{Gray}12 & \cellcolor{Gray}11 & \cellcolor{Gray}10 & \cellcolor{Gray}9 & \cellcolor{Gray}8 & 7 & 6 & 5 & 4 & 3 & 2 & 1 & 0 \\ \hline
+   \multicolumn{1}{c}{\rotatebox{90}{CMD\_DEBUG\_STATE}}&
+   \multicolumn{1}{|c}{\rotatebox{90}{CMD\_RESP\_DEBUG\_STATE}}&
+   \multicolumn{1}{|c}{\rotatebox{90}{TARGET\_IDLE}}&
+   \multicolumn{1}{|c}{\rotatebox{90}{RESP\_FIFO\_FULL}}&
+     \multicolumn{1}{|c}{\rotatebox{90}{CMD\_FIFO\_FULL}}&
+     \multicolumn{1}{|c}{\rotatebox{90}{RESP\_ERROR}}&
+     \multicolumn{5}{|c}{\rotatebox{90}{WHICH\_TARGET\_REGISTER\ }}&
+     \multicolumn{3}{|c}{\rotatebox{90}{TARGET\_CMD\_OUT}}&
+     \multicolumn{1}{|c}{\cellcolor{Gray}\rotatebox{90}{RESERVED}}&
+     \multicolumn{1}{|c}{\rotatebox{90}{INIT\_MWAIT}}&
+     \multicolumn{2}{|c}{\rotatebox{90}{INIT\_MDISCREQ}}&
+     \multicolumn{1}{|c}{\rotatebox{90}{INIT\_MDISCACK}}&
+     \multicolumn{1}{|c}{\rotatebox{90}{INIT\_SCONNECT2}}&
+     \multicolumn{1}{|c}{\rotatebox{90}{INIT\_SCONNECT1}}&
+     \multicolumn{1}{|c}{\rotatebox{90}{INIT\_SCONNECT0}}&
+     \multicolumn{2}{|c}{\rotatebox{90}{INIT\_MCONNECT}}&
+     \multicolumn{2}{|c}{\rotatebox{90}{TARGET\_SIDLEACK}}&
+     \multicolumn{2}{|c}{\rotatebox{90}{TARGET\_SDISCACK}}&
+     \multicolumn{1}{|c}{\rotatebox{90}{TARGET\_SIDLEREQ}}&
+     \multicolumn{1}{|c}{\rotatebox{90}{TARGET\_SCONNECT}}&
+     \multicolumn{2}{|c}{\rotatebox{90}{TARGET\_MCONNECT}} \\ 
+    \end{tabular}
+}%
+ }%
+ \\
+   \hline%
+  \endfirsthead
+\caption*{Продолжение таблицы \ref{t:bytefield:1}} \\
+  \hline
+   \textbf{Bits} & \textbf{Field Name} & \textbf{Description} & \textbf{Type} & \textbf{Reset} \\ \hline
+  \endhead
+\textbf{Bits} & \textbf{Field Name} & \textbf{Description} & \textbf{Type} & \textbf{Reset} \\ \hline
+31 & CMD\_DEBUG\_STATE & \makecell[tl]{Target command state-machine\\0x0: Idle\\0x1: Accept command.} & RW & - \\ \hline
+30 & CMD\_RESP\_DEBUG\_STATE & \makecell[tl]{Target response state-machine\\0x0: Send accept.\\0x1: Wait accept.} & RW & - \\ \hline
+29 & TARGET\_IDLE            &Target idle & R & - \\ \hline
+28 & RESP\_FIFO\_FULL & Target response FIFO full & R & - \\ \hline
+27 & CMD\_FIFO\_FULL & Target command FIFO full & R & - \\ \hline
+26 & RESP\_ERROR & Respond to OCP with error, which could be caused by either address misalignment or invalid byte enable. & R & - \\ \hline
+25:21 & WHICH\_TARGET\_REGISTER & Indicates which OCP target registers to read & RW & \footnotesize{0bxxxxx} \\ \hline
+20:18 & TARGET\_CMD\_OUT & \makecell[tl]{Command received from OCP\\Read 0x0: Command WRSYS received\\Read 0x1: Command RDSYS received\\Read 0x2: Command WR\_ERROR\\ received\\Read 0x3: Command RD\_ERROR\\ received\\Read 0x4: Command \\CHK\_WRADDR\_PAGE received.\\Not used.\\Read 0x5: Command \\CHK\_RDADDR\_PAGE received.\\Not used.\\Read 0x6: Command \\TARGET\_REG\_WRITE received.\\Read 0x7: Command \\TARGET\_REG\_READ received} & R & 0bxxx \\ \hline
+
+\end{longtable}
+
+
+
+
+%\newcolumntype{L}{>{$}l<{$}}
+
+
+
+%\newcolumntype{L}{>{\verb|}l<{|}} }}
+
+
+
+%\newcolumntype{L}{>{  \resizebox{30mm}{\height}{             }l<{    } }}
+
+
+%\resizebox{30mm}{\height}{ ghfhfghfhl;';l'l;'l;';oioioifhghth }
+     
+     
+     
+
+%\resizebox{30mm}{\height}{  \verb|kghkhjnbvnvbnjhmnhjmnmnmnmnbmnmb| }
+
+%\resizebox{30mm}{\height}{ \usebox{ \verb|kghkhjnbvnvbnjhmnhjmnmnmnmnbmnmb|} }
+
+
+
+
+
+%\begin{tabular}[t]{lL}
+%\resizebox{30mm}{!}{ ghfhfghfhfhghth } & 123, \\
+%если & a=b,  \\
+%если & a<b, 
+%\end{tabular}
+
+
+
+
+%\begin{tabular}{ ll }
+%sample &
+%\begin{minipage}{3in}
+%\begin{verbatim}
+%<how>
+%%   <to value="make" />
+ %  <this value="work" />
+%</how>
+%\end{verbatim}
+%\end{minipage}
+%\end{tabular}
+
+
+
+
+%\newcolumntype {I}{ %
+%> {\begin{verbatim}\raggedright\arraybackslash}
+%l
+%<{\end{verbatim}}
+%} % 
+
+
+
+%\begin{tabular}{ lI }
+%sample & gfgdfgdfg
+%\end{tabular}
+
+
+
+
+%\begin{tabularx}{100mm}{|l|I|l|}
+%\resizebox{30mm}{!}{ ghfhfghfhfhghth } & 123, \\
+%если & a=b, & если  \\
+%если & hghg &  hgfhgh
+%\end{tabularx}
+
+
+
+
+%\String{dfghfdgfd} 11111%
+
+
+
+
+%\newcolumntype{L}{>{\Verb|}l<{|}}
+
+
+%\ResI{hfghfg;'kj;kl;hgoiioiuouioiuoiuofhgfh}
+
+%\newcolumntype{L}{>{ \begin{itemizeI}  }l<{ \end{itemizeI} }}
+
+%\begin{itemizeI}
+%iuiuiui
+%\end{itemizeI}
+
+
+%\newcolumntype{L}{>{ \begin{itemizeI}\raggedright\arraybackslash  }l<{ \end{itemizeI} }}
+
+
+%\ResII{если}{a=b}{то}{|a-b|=0}
+
+
+%\begin{tabular}[t]{llll}
+%\resizebox{30mm}{\height}{ ghfhfghfhl;';l'l;'l;';oioioifhghth } & 1_2_3, & то & |a-b|=a-b \\
+%\ResIII{еnmnbmm_ngghсли\%}{a=b}{то}{a-b=0}
+%если & a=b, & то & a-b=0 \\
+%если & a<b, & то & a-b=b-a
+%\end{tabular}
+
+
+%\spformedboxmmI{10mm}{c}{bvnbnmnbjghjhbjkhbjkhb}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

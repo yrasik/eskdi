@@ -1,0 +1,70 @@
+\section{Проверка системы питания  сложных плат} \label{power_check}
+\sectionmark{Проверка системы питания}
+
+\subsection{Схема стенда для проверки системы питания} \label{spar:stend}
+
+На рисунке~\ref{p:report_powe_stend} приведена схема стенда для проверки системы питания на короткое замыкание.
+
+\begin{figure}[H]
+  \captionsetup{singlelinecheck=true} %центрируем подрисуночную подпись
+  \center{\includegraphics*[viewport=0mm 0mm 210mm 240mm, angle=-90, clip,width=0.7\textwidth]{./about/sample_report_power/stend}}
+  %\includegraphics*[viewport=0mm 0mm 270mm 210mm,clip, scale=0.2]{./images/stend}  
+  %\includegraphics*[scale=0.6]{./images/stend}
+  %\includegraphics*[angle=90, scale=0.3]{images/bin/SDR1}
+  \caption{Схема стенда для проверки системы питания на короткое замыкание} \label{p:report_powe_stend}
+\end{figure}
+
+Генератор вырабатывает прямоугольные импульсы частотой 100~Гц в диапазоне напряжений от 0~В до 200~мВ на холостом ходу. Через резистор порядка 680~Ом (конкретный номинал значения не имеет так как исследование носит оценочный характер), напряжение поочерёдно прикладывается к цепям питания исследуемого изделия, результат оценивается по виду временной диаграммы осциллографа (50 мВ/делении, открытый вход, полоса пропускания ограничена 20 МГц).
+
+Такие амплитудные параметры сигнала лежат вне динамического диапазона по постоянному току современной полупроводниковой элементной базы. Грубо говоря, сопротивление диода (как и p--n перехода), измеренное на напряжении 200~мВ, приложенном в прямом направлении, при комнатной температуре, будет составлять единицы кОм. Подобного рода утверждение можно распространить на структуры биполярных и полевых транзисторов (достаточно открыть документацию на представителей соответствующих классов устройств и проанализировать Вольт-Амперные характеристики). Исключение составляют диоды Шоттки, включённые в прямом направлении (их сопротивление в тех же условиях составляет от единиц до десятков Ом). С определённой степенью достоверности можно сказать, что во внутренних цепях распределения питания по кристаллу микросхемы, не содержится структур, которые будут эквивалентны диодам Шоттки, включённым в прямом направлении (несмотря на технологию, позволяющую использовать напряжения питания порядка 1.2~В).
+ 
+Отметим, что метод можно модифицировать, уменьшив напряжение и перейдя на постоянный ток, но выгода от этого не очевидна. Использование переменного тока позволяет дополнительно качественно оценить суммарную ёмкость блокирующих конденсаторов в цепи питания.
+
+На рисунке~\ref{p:report_powe_tuning_generator} приведены установки генератора Tektronix AFG3021B для стенда. 
+
+\begin{figure}[H]
+  \captionsetup{singlelinecheck=true} %центрируем подрисуночную подпись
+  \center{\includegraphics*[width=0.7\textwidth]{./about/sample_report_power/tuning_generator}}
+  \caption{Установки генератора Tektronix AFG3021B для стенда} \label{p:report_powe_tuning_generator}
+\end{figure}
+
+Отметим, что верхний уровень напряжения 100~мВ в генераторе рассчитывается исходя из предположения, что он работает на согласованную нагрузку 50~Ом. Значение верхнего уровня напряжения на холостом ходу будет 200~мВ. При попытке заменить стенд тестером (омметром, особенно китайским) необходимо знать значение напряжения на выходе тестера т.к. в низкоомном диапазоне оно может составлять единицы Вольт, что недопустимо в данном случае.
+
+На рисунке~\label{p:report_powe_probe} показан вариант исполнения пробника для стенда.
+
+\begin{figure}[H]
+  \captionsetup{singlelinecheck=true} %центрируем подрисуночную подпись
+  \center{\includegraphics*[width=0.7\textwidth]{./about/sample_report_power/probe}}
+  \caption{Пробник стенда} \label{p:report_powe_probe}
+\end{figure}
+
+Ниже приведены осциллограммы для разных результатов исследования цепи питания.
+
+\begin{figure}[H]
+  \captionsetup{singlelinecheck=true} %центрируем подрисуночную подпись
+  \center{\includegraphics*[width=0.7\textwidth]{./about/sample_report_power/stend_holost_hod}}
+  \caption{Включение пробника на холостом ходу} \label{p:report_powe_stend_holost_hod}
+\end{figure}
+
+\begin{figure}[H]
+  \captionsetup{singlelinecheck=true} %центрируем подрисуночную подпись
+  \center{\includegraphics*[width=0.7\textwidth]{./about/sample_report_power/stend_kz}}
+  \caption{Включение пробника в цепь питания с коротким замыканием} \label{p:report_powe_stend_kz}
+\end{figure}
+
+\begin{figure}[H]
+  \captionsetup{singlelinecheck=true} %центрируем подрисуночную подпись
+  \center{\includegraphics*[width=0.7\textwidth]{./about/sample_report_power/stend_norm_low_capasitor}}
+  \caption{Включение пробника в цепь питания с конденсаторами средней ёмкости} \label{p:report_powe_stend_norm_low_capasitor}
+\end{figure}
+
+\begin{figure}[H]
+  \captionsetup{singlelinecheck=true} %центрируем подрисуночную подпись
+  \center{\includegraphics*[width=0.7\textwidth]{./about/sample_report_power/stend_hi_capasitor}}
+  \caption{Включение пробника в цепь питания с конденсаторами большой ёмкости} \label{p:report_powe_stend_hi_capasitor}
+\end{figure}
+
+
+
+
+

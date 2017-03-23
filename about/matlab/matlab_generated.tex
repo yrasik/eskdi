@@ -1,0 +1,44 @@
+%Этот файл создан автоматически сценарием mallab.m
+\section{Пример работы совместно с Matlab} \label{app:matlab}
+\sectionmark{Пример работы совместно с Matlab}
+
+Идея заключается в создании m--файла сценария таким образом, чтобы он выполнял следующие функции:
+\begin{itemize}
+\item выполнял необходимые расчёты;
+\item строил графики и печатал их в файлы;
+\item все пояснения к расчётам печатал в файл *.tex;
+\item включал в этот же файл ссылки на рирсунки из Matlab;
+\item печатал формулы в формате LaTeX.
+\end{itemize}
+
+Один из вариантов решения представлен здесь.
+Формула~(\ref{matlab_eq:1}) создана оперетором Matlab latex():
+\begin{eqnarray}
+y=x^2
+\label{matlab_eq:1}
+\end{eqnarray}
+Это может быть иногда полезно.
+\newpage
+
+\begin{figure}[!h]\center
+\captionsetup{singlelinecheck=true}
+\includegraphics*[scale=0.4]{./about/matlab/matlab_figure_001}
+\caption{Графики функций} \label{matlab_figure_001}
+\end{figure}
+\newpage
+Простые формулы $y=x^3$ также можно вставлять в текст.
+
+\begin{figure}[!h]\center
+\captionsetup{singlelinecheck=true}
+\includegraphics*[scale=0.4]{./about/matlab/matlab_figure_002}
+\caption{Графики функций} \label{matlab_figure_002}
+\end{figure}
+
+Ниже приведён листинг данного m--файла
+\lstinputlisting[style=MatlabStyle]{./about/matlab/mallab.m}
+
+
+
+%\fvset{frame=lines, numbers=left, numbersep=5pt, fontshape=sl, fontsize=\footnotesize}
+%\VerbatimInput{./about/matlab/mallab.m}
+

@@ -1,0 +1,297 @@
+% МАКРОСЫ, СПЕЦИФИЧЕСКИЕ ДЛЯ ДАННОГО ДОКУМЕНТА   Подключается в преамбуле
+
+\hyphenation{классицис-ти-чес-кой} % Помогаем LaTeX с переносами
+\hyphenation{кирил-ли-чес-ких} % Помогаем LaTeX с переносами
+
+
+
+
+
+\lstdefinestyle{numbers} {numbers=left, stepnumber=1, numberstyle=\footnotesize} % Настройки нумерации строк для листинга
+
+\lstdefinestyle{MatlabStyle}{% Профиль листинга для Matlab
+language=Matlab,%
+inputencoding=utf8x,% Глючат русские буквы, но xelatex на другие кодировки ругается
+extendedchars=\true,%
+%escapeinside={\%*}{*)},
+style=numbers,%
+showstringspaces=true,%
+showspaces=true,% Раскомментировать, если нужна визуализация пробелов
+frame={tb},%
+lineskip=-1pt,%
+basicstyle=\footnotesize,%
+commentstyle=\footnotesize,%
+xleftmargin=2em,%
+keepspaces = true,
+breaklines%,%
+%escapechar=|
+}
+\lstdefinestyle{BashStyle}{% Профиль листинга для Bash
+language=bash,%
+style=numbers,%
+showstringspaces=\true,%
+%showspaces=true,% Раскомментировать, если нужна визуализация пробелов
+frame={tb},%
+lineskip=-1pt,%
+extendedchars=true,%
+basicstyle=\footnotesize,%
+commentstyle=\footnotesize,%
+xleftmargin=2em,%
+keepspaces = true,%
+breaklines%
+}
+
+\lstdefinestyle{LaTeXStyle}{% Профиль листинга для LaTeX
+language=[LaTeX]TeX,%
+style=numbers,%
+showstringspaces=true,%
+%showspaces=true,% Раскомментировать, если нужна визуализация пробелов
+frame={tb},%
+lineskip=-1pt,%
+%extendedchars=true,%
+basicstyle=\footnotesize,%
+commentstyle=\footnotesize,%
+xleftmargin=2em,%
+inputencoding=utf8x,
+extendedchars=\true,
+keepspaces = true,%
+breaklines%
+}%
+
+
+\lstdefinestyle{FrameStyle}{%
+        frame=tlbr,%
+        %escapechar=|,%
+        extendedchars=true,%
+        %commentstyle=\itshape,%
+        commentstyle=,%
+        %stringstyle=\bfseries%
+        breaklines=true, % перенос слов кода на другую строку
+}%
+
+
+\lstdefinestyle{FrameStyleI}{%
+        frame=tlbr,%
+        %escapechar=|,%
+        extendedchars=true,%
+        %commentstyle=\itshape,%
+        commentstyle=,%
+        %stringstyle=\bfseries%
+	basicstyle=\footnotesize,%
+        breaklines=false, % перенос слов кода на другую строку
+}%
+
+
+
+
+
+
+
+
+% запись единицы измерения физ. величины
+\newcommand{\edizm}[1]{$#1$}
+
+% значение физ. величины с единицей измерения
+\newcommand{\numval}[2]{#1~#2}
+
+% запись диапазона величин по ГОСТ
+%\newcommand{\gostrng}[4]{#1~#3\ldots#2~#4}
+\newcommand{\gostrng}[4]{от #1~#3 до #2~#4}
+
+% пропорциональные круглые скобки
+\newcommand{\brkt}[1]{\left(#1\right)}
+
+% пропорциональные квадратные скобки
+\newcommand{\brktsq}[1]{\left[#1\right]}
+
+% запись с.к.о
+\newcommand{\sko}[1]{\sigma\brktsq{#1}}
+
+% запись квадрата с.к.о
+\newcommand{\skosq}[1]{\sigma^2\brktsq{#1}}
+
+% запись мат. ожидания
+\newcommand{\mozh}[1]{M\brktsq{#1}}
+
+% запись дисперсии
+\newcommand{\disp}[1]{D\brktsq{#1}}
+
+% мат.ож. погрешности деления
+\newcommand{\mozhdel}[3]{-2^{-\brkt{#1+1}} \brktsq{1+\frac{#2}{#3}}}
+
+% дисперсия погрешности деления
+\newcommand{\dispdel}[3]{
+	\frac{1}{3} 2^{-2\brkt{#1+1}}
+		\brktsq{1+2\brkt{\frac{#2}{#3}}^2}
+}
+
+% дисперсия погрешности умножения
+\newcommand{\dispumn}[1]{
+	\frac{1}{3} 2^{-2\brkt{#1+1}}
+}
+
+% коэффициент предварительного МП в синхр. детектора
+\newcommand{\kmp}{K_1 K_{У1} K_{У2} K_{У3}}
+
+% синус с пропорц. скобками
+\newcommand{\mysin}[1]{\sin\brkt{#1}}
+
+% косинус с пропорц. скобками
+\newcommand{\mycos}[1]{\cos\brkt{#1}}
+
+% мульт. относительная погрешность
+\newcommand{\motn}[1]{\delta_{#1}}
+
+% мульт. относительная случайная погрешность
+\newcommand{\rmotn}[1]{{\stackrel{\circ}{\delta}}_{#1}}
+
+% мульт. относительная систематическая погрешность
+\newcommand{\smotn}[1]{\delta_{s#1}}
+
+% (1 + мульт. отн.)
+\newcommand{\motned}[1]{\brkt{1 + \motn{#1}}}
+
+% аддит. относительная погрешность
+\newcommand{\aotn}[1]{\gamma_{#1}}
+
+% аддит. относительная случайная погрешность
+\newcommand{\raotn}[1]{{\stackrel{\circ}{\gamma}}_{#1}}
+
+% аддит. относительная систематическая погрешность
+\newcommand{\saotn}[1]{\gamma_{s#1}}
+
+% абсолютная погрешность
+\newcommand{\absp}[1]{\Delta_{#1}}
+
+% абсолютная случайная погрешность
+\newcommand{\rabsp}[1]{{\stackrel{\circ}{\Delta}}_{#1}}
+
+% абсолютная систематическая погрешность
+\newcommand{\sabsp}[1]{\Delta_{s#1}}
+
+% производная
+\newcommand{\deriv}[2]{\frac{\partial #1} {\partial #2}}
+
+% экспонентциальная запись числа
+\newcommand{\nexp}[2]{#1 * 10^{#2}}
+
+% перенос ф-лы на другую строку
+\newcommand{\eqnewline}[1]{#1 \nonumber\\ {} #1}
+
+
+
+
+% Команда для того чтобы ТУ не переносилось
+\newcommand{\ESKDty}[1]{\linebreak[3] \mbox{#1}}
+
+% Ставит черту над выражением (выражение латинскими буквами) - инверсный сигнал
+\newcommand{\ESKDoverline}[1]{
+  $\overline{\mathrm{#1}}$}
+
+% Ставит черту над выражением (выражение русскими буквами) - инверсный сигнал
+\newcommand{\ESKDoverlineRUS}[1]{
+  $\overline{#1}$}
+
+
+% \slshape - переключает шрифт на наклонный
+
+\newcommand\subsectionImit[1]{%
+    \vskip 5mm 
+    \textbf{#1}
+    \vskip 3mm
+}
+
+
+
+%\graphicspath{{./about/inkscape/}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newcommand{\String}[1]{%
+\Verb|#1|}%
+
+
+
+\newcommand{\Res}[1]{\resizebox{30mm}{\height}{#1}}
+
+
+
+
+\newcommand{\ResI}[1]{\resizebox{30mm}{\height}{\Verb|#1|}}
+
+
+
+
+
+\newenvironment{itemizeI}%
+{%
+\ResI{
+}%
+{%
+}
+}%
+
+
+
+\newcommand{\ResII}[4]{\resizebox{20mm}{\height}{\Verb|#1|} & \resizebox{20mm}{\height}{\Verb|#2|} & \resizebox{20mm}{\height}{\Verb|#3|} & \resizebox{20mm}{\height}{\Verb|#4|} \\}
+
+
+
+
+
+
+
+
+\newcommand{\ResIII}[4]{\spformedboxmmI{20mm}{c}{\Verb|#1|} & \spformedboxmmI{20mm}{c}{\Verb|#2|} & \spformedboxmmI{20mm}{c}{\Verb|#3|} & \spformedboxmmI{20mm}{c}{\Verb|#4|} \\}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
