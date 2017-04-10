@@ -1,0 +1,137 @@
+\documentclass[a4paper,14pt,russian]{article} %draft
+\usepackage[T2A]{fontenc}% Поддержка русских букв
+
+
+
+% XeTeX packages
+\usepackage[cm-default]{fontspec} % or install lmodern and remove cm-default opt
+\usepackage{xunicode} % some extra unicode support
+\usepackage{xltxtra} % \XeLaTeX macro
+
+
+\tolerance=1000
+\emergencystretch=0.74cm
+\usepackage{indentfirst} %делать отступ в начале параграфа
+
+\usepackage[pdfborder = {0 0 0}]{hyperref} %гиперссылки в документе.
+
+\usepackage[utf8]{inputenc}	% кодировка текста
+\usepackage[russian]{babel}	% руссификация по Бабелю
+\usepackage{graphics}
+
+\usepackage[clean,pdf]{svg}
+
+\usepackage{amsmath, amsfonts} % для расширенных настроек ссылок на формулы
+\usepackage{extsizes}	% использование шрифтов большего кегля 
+
+\usepackage{fancyvrb} % Добавляет продвинутые Verbatim и Verb
+
+\usepackage{epsfig} % удобно вставлять рисунки в строку текста
+\usepackage[usenames,dvipsnames]{pstricks}
+\usepackage{pst-grad} % For gradients
+\usepackage{pst-plot} % For axes
+
+\usepackage{graphicx,xcolor}
+\usepackage{minted}
+
+
+%\usepackage[MakeStamp]{eskdi}
+%\usepackage[MakeStamp, SubSectInToc]{eskdi}
+%\usepackage[MakeStamp, SubSubSectInToc]{eskdi}
+%\usepackage[MakeStamp, ParagraphInToc]{eskdi}
+%\usepackage[twoside, MakeStamp, ParagraphInToc]{eskdi}
+%\usepackage{eskdi}
+%\usepackage[SubSectInToc]{eskdi}
+%\usepackage[SubSubSectInToc]{eskdi}
+%\usepackage[ParagraphInToc]{eskdi}
+%\usepackage[ParagraphInToc, NumIntoSections]{eskdi}
+%\usepackage[twoside, ParagraphInToc]{eskdi}
+%\usepackage[twoside, MakeEmptyStamp, ParagraphInToc]{eskdi}
+\usepackage[MakeEmptyStamp]{eskdi}
+%\usepackage[twoside, MakeEmptyStamp]{eskdi}
+%\usepackage[MakeEmptyStamp, ParagraphInToc]{eskdi}
+
+
+
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{supertabular}
+\usepackage{longtable} % для создания таблиц, переносящихся на другую страницу
+%\usepackage{listingsutf8}%
+\usepackage{listings} % для включения листинга кода в приложения. Русский язык глючит.
+
+
+\lstloadlanguages{bash,[LaTeX]TeX,MetaPost,Clean,Matlab}
+
+
+\usepackage{textcomp}	% Ввод различных знаков
+\usepackage{keystroke} % для отображения символов клавиш
+\usepackage{bytefield} %для создания таблиц с битовыми полями
+\usepackage{filecontents} %для включения в документ содержимого файлов
+
+\usepackage{tikz} % Пакет для рмсования диаграмм
+\usepackage{tikz-timing}[2009/12/09]
+\usetikzlibrary{positioning,arrows,automata,plotmarks} %В данном случае нам потребуются positioning и arrows, которые нужны для расположения элементов друг относительно друга и рисования стрелок между ними соответственно.
+\usetikzlibrary{shapes,snakes}
+\usepackage{schemabloc}
+
+\usepackage{makecell} % Для многострочных ячеек таблицы
+\usepackage{colortbl} % Для раскрашивания ячеек в таблицах
+
+
+%{Arial} {Courier New} 
+%{OpenGost Type A TT} {OpenGost Type B TT} % Свободный шрифт. Нет наклонного начертания и дирного начертания
+%{GOST type A} % Морально устарел, не свободный, не хватает символа тирэ. Не рекомендуется
+%{GOST type B} % Морально устарел, не свободный, не хватает символа тирэ. Не рекомендуется
+\gostSetRomanfont{Times New Roman}%
+\gostSetSansfont{Times New Roman}%
+\gostSetMonofont{Times New Roman}%
+\gostSetMainfont{Times New Roman}%
+\gostSetStampfont{Arial}%
+\verbatimfont{\fontspec[Scale=1.0]{Arial} \itshape}% % Для замены стиля начертания verbatim и verb
+
+%\renewcommand{\SetStampfontIt}{\itshape}%
+
+
+
+\input commands.tex %Файл включает такие команды как надчёркивание, запрещение переноса ТУ и др.
+
+
+
+
+\setpage % Разметка текста на странице
+
+
+
+
+\begin{document}% Начало самого документа (содержательной части)
+
+\input ./content/title.tex %Здесь информация о названии файла, авторах и т.д.
+
+\maketitle % Поместили Титульный лист
+
+
+%\SetEmptyPage
+%\SetEvenPage
+
+
+\makesecondpage
+
+
+\tableofcontents % Содержание
+
+
+
+\input ./content/begin.tex
+\input ./content/body.tex
+\input ./content/bibliography.tex
+
+\appendix % Приложения. Можно разместить перед списком литературы - тогда список литературы оформится как приложение
+\clearpage
+
+\input ./content/appendix_fss.tex
+
+%\regChanges %Вставляем лист регистрации изменений
+%\sectionmark{Лист замечаний}
+\end{document}
+
