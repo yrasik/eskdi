@@ -26,20 +26,60 @@ keepspaces = true,
 breaklines%,%
 %escapechar=|
 }
-\lstdefinestyle{BashStyle}{% Профиль листинга для Bash
+\lstdefinestyle{BashStyleII}{% Профиль листинга для Bash
 language=bash,%
 style=numbers,%
-showstringspaces=\true,%
-%showspaces=true,% Раскомментировать, если нужна визуализация пробелов
+showstringspaces=false,%
+showspaces=true,% Раскомментировать, если нужна визуализация пробелов
 frame={tb},%
 lineskip=-1pt,%
-extendedchars=true,%
+extendedchars=\true,%
 basicstyle=\footnotesize,%
 commentstyle=\footnotesize,%
 xleftmargin=2em,%
 keepspaces = true,%
+%basewidth={1pt, 1pt},%
 breaklines%
 }
+
+\lstdefinestyle{BashStyle}{% Профиль листинга для Bash
+language=bash,%
+%style=numbers,%
+showstringspaces=false,%
+showspaces=true,% Раскомментировать, если нужна визуализация пробелов
+frame=tlbr,%
+basicstyle=\gostListingfont,%\footnotesize,%
+lineskip=-0.5pt,%
+extendedchars=\true,%
+%commentstyle=\footnotesize,%
+xleftmargin=2em,%
+xrightmargin=2em,%
+keepspaces = true,%
+breaklines,%
+basewidth={6pt, 6pt}%,
+}
+
+\lstdefinestyle{FrameStyle}{%
+        frame=tlbr,%
+        showstringspaces=false,%
+        basicstyle=\gostListingfont,%
+        lineskip=-0.5pt,%
+        %escapechar=|,%
+        extendedchars=true,%
+        %commentstyle=\itshape,%
+        commentstyle=,%
+        %stringstyle=\bfseries%
+        breaklines=true, % перенос слов кода на другую строку
+        basewidth={6pt, 6pt},
+        xleftmargin=1em,%
+        xrightmargin=1em%,%
+}%
+
+
+
+
+%showstringspaces=\true,%
+
 
 \lstdefinestyle{LaTeXStyle}{% Профиль листинга для LaTeX
 language=[LaTeX]TeX,%
@@ -49,8 +89,8 @@ showstringspaces=true,%
 frame={tb},%
 lineskip=-1pt,%
 %extendedchars=true,%
-basicstyle=\footnotesize,%
-commentstyle=\footnotesize,%
+basicstyle=\gostListingfont\footnotesize,%
+commentstyle=\gostListingfont\footnotesize,%
 xleftmargin=2em,%
 inputencoding=utf8x,
 extendedchars=\true,
@@ -59,7 +99,28 @@ breaklines%
 }%
 
 
-\lstdefinestyle{FrameStyle}{%
+\lstdefinestyle{LaTeXStyleI}{% Профиль листинга для LaTeX
+language=[LaTeX]TeX,%
+style=numbers,%
+showstringspaces=true,%
+%showspaces=true,% Раскомментировать, если нужна визуализация пробелов
+frame=tlbr,%
+%lineskip=-1pt,%
+%extendedchars=true,%
+basicstyle=\gostListingfont,%
+commentstyle=\gostListingfont,%
+xleftmargin=2em,%
+inputencoding=utf8x,
+extendedchars=\true,
+keepspaces = true,%
+breaklines%
+}%
+
+
+
+
+
+\lstdefinestyle{FrameStyleII}{%
         frame=tlbr,%
         %escapechar=|,%
         extendedchars=true,%
