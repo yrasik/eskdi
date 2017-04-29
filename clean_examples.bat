@@ -1,6 +1,5 @@
-SET PATH=c:\texlive\2014\bin\win32
-
-SET TARGET=about
-
-xelatex  --shell-escape %TARGET%.tex
-rem pause
+@echo off
+call delete_eskdi.bat %CD%\example\simple1
+call delete_eskdi.bat %CD%\example\simple2
+call delete_eskdi.bat %CD%\example\simple3
+@echo on

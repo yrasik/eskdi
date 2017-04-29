@@ -26,7 +26,7 @@ keepspaces = true,
 breaklines%,%
 %escapechar=|
 }
-\lstdefinestyle{BashStyleII}{% Профиль листинга для Bash
+\lstdefinestyle{BashStyle}{% Профиль листинга для Bash
 language=bash,%
 style=numbers,%
 showstringspaces=false,%
@@ -38,11 +38,11 @@ basicstyle=\footnotesize,%
 commentstyle=\footnotesize,%
 xleftmargin=2em,%
 keepspaces = true,%
-%basewidth={1pt, 1pt},%
+basewidth={1pt, 1pt},%
 breaklines%
 }
 
-\lstdefinestyle{BashStyle}{% Профиль листинга для Bash
+\lstdefinestyle{BashStyleII}{% Профиль листинга для Bash
 language=bash,%
 %style=numbers,%
 showstringspaces=false,%
@@ -59,7 +59,7 @@ breaklines,%
 basewidth={6pt, 6pt}%,
 }
 
-\lstdefinestyle{FrameStyle}{%
+\lstdefinestyle{FrameStyleII}{%
         frame=tlbr,%
         showstringspaces=false,%
         basicstyle=\gostListingfont,%
@@ -89,8 +89,8 @@ showstringspaces=true,%
 frame={tb},%
 lineskip=-1pt,%
 %extendedchars=true,%
-basicstyle=\gostListingfont\footnotesize,%
-commentstyle=\gostListingfont\footnotesize,%
+basicstyle=\footnotesize,%
+commentstyle=\footnotesize,%
 xleftmargin=2em,%
 inputencoding=utf8x,
 extendedchars=\true,
@@ -99,28 +99,7 @@ breaklines%
 }%
 
 
-\lstdefinestyle{LaTeXStyleI}{% Профиль листинга для LaTeX
-language=[LaTeX]TeX,%
-style=numbers,%
-showstringspaces=true,%
-%showspaces=true,% Раскомментировать, если нужна визуализация пробелов
-frame=tlbr,%
-%lineskip=-1pt,%
-%extendedchars=true,%
-basicstyle=\gostListingfont,%
-commentstyle=\gostListingfont,%
-xleftmargin=2em,%
-inputencoding=utf8x,
-extendedchars=\true,
-keepspaces = true,%
-breaklines%
-}%
-
-
-
-
-
-\lstdefinestyle{FrameStyleII}{%
+\lstdefinestyle{FrameStyle}{%
         frame=tlbr,%
         %escapechar=|,%
         extendedchars=true,%
