@@ -1,4 +1,4 @@
-SET PATH=c:\texlive\2014\bin\win32
+SET PATH=c:\texlive\2019\bin\win32
 
 SET TARGET=about
 
