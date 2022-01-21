@@ -83,6 +83,9 @@ fprintf( fid, '%s\r\n', '\end{figure}');
 
 fprintf( fid, '%s\r\n','');
 fprintf( fid, '%s\r\n', 'Ниже приведён листинг данного m--файла');
-fprintf( fid, '%s\r\n', '\lstinputlisting[style=MatlabStyle]{./about/matlab/mallab.m}');
+%fprintf( fid, '%s\r\n', '\lstinputlisting[style=MatlabStyle]{./about/matlab/mallab.m}');
+fprintf( fid, '%s\r\n', '\inputminted[fontsize=\small, linenos, breaklines, numbersep=2mm, xleftmargin=5mm]{matlab}{./about/matlab/mallab.m}');
+
+
 
 fclose( fid ); 

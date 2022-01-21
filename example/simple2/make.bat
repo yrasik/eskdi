@@ -1,6 +1,6 @@
 @echo off
 
-set PATH=%PATH%;c:\texlive\2016\bin\win32;c:\Python27\Scripts
+set PATH=%PATH%;c:\texlive\2016\bin\win32;c:\Python36-32\Scripts
 
 rem echo %PATH%
 rem pause
