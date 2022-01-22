@@ -301,14 +301,7 @@ breaklines%
 }%
 
 
-
 \newcommand{\ResII}[4]{\resizebox{20mm}{\height}{\Verb|#1|} & \resizebox{20mm}{\height}{\Verb|#2|} & \resizebox{20mm}{\height}{\Verb|#3|} & \resizebox{20mm}{\height}{\Verb|#4|} \\}
-
-
-
-
-
-
 
 
 \newcommand{\ResIII}[4]{\spformedboxmmI{20mm}{c}{\Verb|#1|} & \spformedboxmmI{20mm}{c}{\Verb|#2|} & \spformedboxmmI{20mm}{c}{\Verb|#3|} & \spformedboxmmI{20mm}{c}{\Verb|#4|} \\}
@@ -318,20 +311,129 @@ breaklines%
 
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Таблица для регистров периферии ПЛИС %%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{ColorGUIREQESTS}{HTML}{FFDEE9}
+\definecolor{ColorREGNAME}{HTML}{DEF8BF}
+\definecolor{Gray}{gray}{0.94}%
+
+\newcommand{\TableForMemoryMapDevStart}[2]{%
+\renewcommand\tablename{\hspace{0mm} Таблица}
+\setlength\LTleft{0mm}
+\setlength\LTright\fill
+\small
+\begin{longtable}{|C{15mm}|C{15mm}|L{95mm}|C{12mm}|C{18mm}|}
+  \caption{#1} \label{#2} \\
+  \hline
+\rowcolor{ColorGUIREQESTS}
+  \multicolumn{1}{|p{15mm}|}{\centering Адрес} &
+  \multicolumn{1}{p{15mm}|}{\centering Номера бит} & 
+  \multicolumn{1}{p{95mm}|}{\centering Описание} &
+  \multicolumn{1}{p{12mm}|}{\centering Чтение/ запись} &
+  \multicolumn{1}{p{18mm}|}{\centering Значение после сброса}  \\\hhline{|=====|}
+  \endfirsthead
+  \caption*{\hspace{0mm} Продолжение таблицы \ref{#2}} \\
+ \hline
+\rowcolor{ColorGUIREQESTS}
+  \multicolumn{1}{|p{15mm}|}{\centering Адрес} &
+  \multicolumn{1}{p{15mm}|}{\centering Номера бит} & 
+  \multicolumn{1}{p{95mm}|}{\centering Описание} &
+  \multicolumn{1}{p{12mm}|}{\centering Чтение/ запись} &
+  \multicolumn{1}{p{18mm}|}{\centering Значение после сброса}  \\\hhline{|=====|}
+  \endhead
+}%
+
+\newcommand{\TableForMemoryMapDevEnd}{%
+    \end{longtable} \normalsize
+}%
+
+\newcommand{\RowRegNAME}[2]{% Имя регистра
+  \rowcolor{ColorREGNAME}%
+  #1 & \multicolumn{4}{l|}{\parbox{150mm}{\vspace{0.7mm} #2\vspace{0.7mm}} } \\%
+}%
+
+\newcommand{\RowBitsNAME}[4]{% Имя регистра
+  & #1  & \parbox{95mm}{#2 \vspace{0.7mm}} & #3 & #4 \\%
+}%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%% Таблица для описания дефектов РЭА  %%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\definecolor{ColorHead}{HTML}{FEFFC0}%
+
+\definecolor{ColorERROR}{HTML}{FFDEE9}%
+\definecolor{ColorERRORI}{HTML}{F9D8E3}%
+
+\definecolor{ColorWARNING}{HTML}{FFE7C0}%
+\definecolor{ColorWARNINGI}{HTML}{F9E1BA}%
+
+\newcounter{CounterForTableLine}%Для нумерации строк в таблице
+\newcounter{CounterForColumnIII}%
+\newcounter{CounterForTablesubLine}%
+
+
+\newlength{\ColumnI}%
+\newlength{\ColumnII}%
+\newlength{\ColumnIII}%
+\newlength{\ColumnIV}%
+
+
+\newcommand{\HardErrorTableBegin}[2]{%
+\setcounter{CounterForTableLine}{1}%
+\setlength{\ColumnI}{12mm}%
+\setlength{\ColumnII}{60mm}%
+\setlength{\ColumnIII}{60mm}%
+\setlength{\ColumnIV}{28mm}%
+\renewcommand\tablename{\hspace{0mm} Таблица}%
+\setlength\LTleft{0mm}%
+\setlength\LTright\fill%
+\small%
+\begin{longtable}{|C{\ColumnI}|L{\ColumnII}|L{\ColumnIII}|C{\ColumnIV}|}%
+  \caption{#1} \label{#2} \\%
+  \hline%
+\rowcolor{ColorHead}%
+  \multicolumn{1}{|p{\ColumnI}|}{\parbox{\ColumnI}{\vspace{1mm} \centering Номер \\\mbox{Дата}\vspace{1mm}}} &
+  \multicolumn{1}{p{\ColumnII}|}{\centering Описание проблемы} & 
+  \multicolumn{1}{p{\ColumnIII}|}{\centering Метод устранения} &
+  \multicolumn{1}{p{\ColumnIV}|}{\parbox{\ColumnIV}{\vspace{1mm} \centering Статус \\\mbox{Дата}\vspace{1mm}}} \\\hline
+  \endfirsthead
+  \caption*{\hspace{0mm} Продолжение таблицы \ref{#2}} \\%
+ \hline%
+\rowcolor{ColorHead}%
+  \multicolumn{1}{|p{\ColumnI}|}{\parbox{\ColumnI}{\vspace{1mm} \centering Номер \\\mbox{Дата}\vspace{1mm}}} &
+  \multicolumn{1}{p{\ColumnII}|}{\centering Описание проблемы} & 
+  \multicolumn{1}{p{\ColumnIII}|}{\centering Метод устранения} &
+  \multicolumn{1}{p{\ColumnIV}|}{\parbox{\ColumnIV}{\vspace{1mm} \centering Статус \\\mbox{Дата}\vspace{1mm}}} \\\hline
+  \endhead%
+}%
+
+\newcommand{\HardErrorTableEnd}{%
+    \end{longtable} \normalsize
+}%
 
 
 
+\newcommand{\AddRowERR}[4]{% Это для не работающей функции
+  \cellcolor{ColorERROR}\parbox{\ColumnI}{\setcounter{CounterForTablesubLine}{1}\vspace{1mm}\centering{\arabic{CounterForTableLine}\refstepcounter{CounterForTableLine}}\vspace{-2mm}\\\mbox{\scriptsize#1}\vspace{1mm}}&\cellcolor{ColorERROR}\parbox{\ColumnII}{\raggedright\vspace{1mm}#2\vspace{1mm}}&\cellcolor{ColorERROR}\parbox{\ColumnIII}{\setcounter{CounterForColumnIII}{1}\vspace{1mm}#3\vspace{1mm}}&\cellcolor{ColorERROR}\parbox{\ColumnIV}{\vspace{1mm}#4\vspace{1mm}}\\% \hline
+}%
+
+\newcommand{\AddRowWARN}[4]{% Это для не проверенной функции
+  \cellcolor{ColorWARNING}\parbox{\ColumnI}{\setcounter{CounterForTablesubLine}{1}\vspace{1mm}\centering{\arabic{CounterForTableLine}\refstepcounter{CounterForTableLine}}\vspace{-2mm}\\\mbox{\scriptsize#1}\vspace{1mm}}&\cellcolor{ColorWARNING}\parbox{\ColumnII}{\raggedright\vspace{1mm}#2\vspace{1mm}}&\cellcolor{ColorWARNING}\parbox{\ColumnIII}{\setcounter{CounterForColumnIII}{1}\vspace{1mm}#3\vspace{1mm}}&\cellcolor{ColorWARNING}\parbox{\ColumnIV}{\vspace{1mm}#4\vspace{1mm}}\\% \hline
+}%
+
+\newcommand{\AddRow}[4]{% Это для работающей функции
+  \parbox{\ColumnI}{\setcounter{CounterForTablesubLine}{1}\vspace{1mm}\centering{\arabic{CounterForTableLine}\refstepcounter{CounterForTableLine}}\vspace{-2mm}\\\mbox{\scriptsize#1}\vspace{1mm}}&\parbox{\ColumnII}{\raggedright\vspace{1mm}#2\vspace{1mm}}&\parbox{\ColumnIII}{\setcounter{CounterForColumnIII}{1}\vspace{1mm}#3\vspace{1mm}}&\parbox{\ColumnIV}{\vspace{1mm}#4\vspace{1mm}}\\% \hline
+}%
 
 
-
-
-
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 

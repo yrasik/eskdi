@@ -339,15 +339,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
 \begin{longtable}{|p{10mm}|p{55mm}|p{66mm}|p{10mm}|p{12mm}|}
   \caption{Регистр OCP\_DEBUG\_STATUS} \label{t:bytefield:1} \\
   \hline
@@ -409,6 +400,75 @@
 20:18 & TARGET\_CMD\_OUT & \makecell[tl]{Command received from OCP\\Read 0x0: Command WRSYS received\\Read 0x1: Command RDSYS received\\Read 0x2: Command WR\_ERROR\\ received\\Read 0x3: Command RD\_ERROR\\ received\\Read 0x4: Command \\CHK\_WRADDR\_PAGE received.\\Not used.\\Read 0x5: Command \\CHK\_RDADDR\_PAGE received.\\Not used.\\Read 0x6: Command \\TARGET\_REG\_WRITE received.\\Read 0x7: Command \\TARGET\_REG\_READ received} & R & 0bxxx \\ \hline
 
 \end{longtable}
+
+
+
+Таблицу~\ref{t:AAAftop} рекомендую для использования при описании регистров, управляющих
+периферией. Она наглядна и ее просто создать/модифицировать.
+
+\TableForMemoryMapDevStart{Карта памяти контроллера интерфейса AAA \\''AAA\_top.v''}{t:AAAftop}
+
+\RowRegNAME{0x0000}{AAA\_PRM - Передаваемый бит }
+\RowBitsNAME{15-1}{}{R}{15'b0}
+\rowcolor{Gray}
+\RowBitsNAME{0}{AAA\_PRM - Передаваемый бит: \\1'b0 - ??;\\1'b1 - ??.}{R/W}{1'b1*}
+\hline
+
+\multicolumn{5}{|p{170mm}|}
+{{\hspace*{10mm} * -- Параметризован. Значение уточняется в п.~\ref{ss:hardware}}} \\ \hline
+
+\TableForMemoryMapDevEnd
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\DevName}{''Модуль какой-то''}
+\newcommand{\DevFirm}{\mbox{АБВГ.123456.789}}
+\newcommand{\DevID}{12345}
+
+
+\subsubsection{\DevName\ \DevFirm\ №\DevID} \label{s:board_12345}
+
+
+Неисправности и ошибки монтажа \DevName\ №\DevID\ приведены в таблице~\ref{t:board_hard_err_12345}.
+
+
+\HardErrorTableBegin{Неисправности и ошибки \DevName\ №\DevID}{t:board_hard_err_12345}
+\AddRowERR
+  {23.10.2021}
+  {
+    Не установлен резистор R1 (CR0805±5 \%W-4,3 Ом) CR0805-JW-4R3Ex Bourns
+  }
+  {
+    Установить
+  }
+  {  }\hline
+  
+\AddRow
+  {23.10.2021}
+  {
+    Не установлен резистор R2 (CR0805±5 \%W-4,3 Ом) CR0805-JW-4R3Ex Bourns
+  }
+  {
+    Установить
+  }
+  { ВЫПОЛНЕНО 24.10.2021 }\hline
+  
+\HardErrorTableEnd
+
+
+
+
+
+
+
 
 
 
