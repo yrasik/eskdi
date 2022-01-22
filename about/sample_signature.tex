@@ -29,7 +29,37 @@
                                       & & ''\hrulefill'' \hrulefill\hrulefill\ 2012 г. \\
 \end{tabular}
 
-\vskip 10mm
+
+
+
+\subsection{Пример более замороченный}
+
+
+\newcommand\titleCENTERI{%
+  \spboxmm{10}{10}{80}{10}{lc}{\parbox{75mm}{%
+  \ \\
+  \vspace{0mm}\hspace{0mm} СОГЛАСОВАНО \\
+  \vspace{-6.5mm}\hspace{25mm} 123\\
+  \vspace{-4mm}Начальник \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ ПУ~ПС \\
+  \vspace{0mm}\hspace{40mm}\tiny{номер}\normalsize\\
+  \vspace{-6.5mm}\hspace{25mm} И.И. Иванов\\
+  \vspace{-4mm}\normalsize\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
+  \vspace{0mm}\hspace{17mm}\tiny{подпись, инициалы, фамилия}\normalsize\\
+  \vspace{-6.5mm}\hspace{4mm} 13 \hspace{17mm} января\\
+  \vspace{-4mm}\normalsize''\_\_\_\_\_''\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ 2022~г.
+  \vspace{0mm}\hspace{30mm}\tiny{дата}\normalsize
+}}}%
+
+\vspace{20mm}
+\begin{figure}[H]%
+  \unitlength=1mm%
+  \begin{picture}(0,0)(0,0)%
+    \put(0,0){\titleCENTERI}%
+  \end{picture}%
+\end{figure}
+
+\vspace{20mm}
+
 
 
 
