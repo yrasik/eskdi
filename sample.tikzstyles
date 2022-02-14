@@ -12,5 +12,5 @@
 
 % Edge styles
 \tikzstyle{dashed edge}=[dashed, <->]
-\tikzstyle{blue pointer}=[->, draw=blue]
+\tikzstyle{pointer}=[->, draw=black, -triangle 45]
 \tikzstyle{new edge style 0}=[<->]
