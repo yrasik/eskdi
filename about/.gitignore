@@ -1,0 +1,7 @@
+*.log
+*.aux
+*.toc
+*.out
+
+_minted-top/
+

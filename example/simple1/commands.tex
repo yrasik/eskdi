@@ -1,0 +1,439 @@
+% МАКРОСЫ, СПЕЦИФИЧЕСКИЕ ДЛЯ ДАННОГО ДОКУМЕНТА   Подключается в преамбуле
+
+\hyphenation{классицис-ти-чес-кой} % Помогаем LaTeX с переносами
+\hyphenation{кирил-ли-чес-ких} % Помогаем LaTeX с переносами
+
+
+
+
+
+\lstdefinestyle{numbers} {numbers=left, stepnumber=1, numberstyle=\footnotesize} % Настройки нумерации строк для листинга
+
+\lstdefinestyle{MatlabStyle}{% Профиль листинга для Matlab
+language=Matlab,%
+inputencoding=utf8x,% Глючат русские буквы, но xelatex на другие кодировки ругается
+extendedchars=\true,%
+%escapeinside={\%*}{*)},
+style=numbers,%
+showstringspaces=true,%
+showspaces=true,% Раскомментировать, если нужна визуализация пробелов
+frame={tb},%
+lineskip=-1pt,%
+basicstyle=\footnotesize,%
+commentstyle=\footnotesize,%
+xleftmargin=2em,%
+keepspaces = true,
+breaklines%,%
+%escapechar=|
+}
+\lstdefinestyle{BashStyle}{% Профиль листинга для Bash
+language=bash,%
+style=numbers,%
+showstringspaces=false,%
+showspaces=true,% Раскомментировать, если нужна визуализация пробелов
+frame={tb},%
+lineskip=-1pt,%
+extendedchars=\true,%
+basicstyle=\footnotesize,%
+commentstyle=\footnotesize,%
+xleftmargin=2em,%
+keepspaces = true,%
+basewidth={1pt, 1pt},%
+breaklines%
+}
+
+\lstdefinestyle{BashStyleII}{% Профиль листинга для Bash
+language=bash,%
+%style=numbers,%
+showstringspaces=false,%
+showspaces=true,% Раскомментировать, если нужна визуализация пробелов
+frame=tlbr,%
+basicstyle=\gostListingfont,%\footnotesize,%
+lineskip=-0.5pt,%
+extendedchars=\true,%
+%commentstyle=\footnotesize,%
+xleftmargin=2em,%
+xrightmargin=2em,%
+keepspaces = true,%
+breaklines,%
+basewidth={6pt, 6pt}%,
+}
+
+\lstdefinestyle{FrameStyleII}{%
+        frame=tlbr,%
+        showstringspaces=false,%
+        basicstyle=\gostListingfont,%
+        lineskip=-0.5pt,%
+        %escapechar=|,%
+        extendedchars=true,%
+        %commentstyle=\itshape,%
+        commentstyle=,%
+        %stringstyle=\bfseries%
+        breaklines=true, % перенос слов кода на другую строку
+        basewidth={6pt, 6pt},
+        xleftmargin=1em,%
+        xrightmargin=1em%,%
+}%
+
+
+
+
+%showstringspaces=\true,%
+
+
+\lstdefinestyle{LaTeXStyle}{% Профиль листинга для LaTeX
+language=[LaTeX]TeX,%
+style=numbers,%
+showstringspaces=true,%
+%showspaces=true,% Раскомментировать, если нужна визуализация пробелов
+frame={tb},%
+lineskip=-1pt,%
+%extendedchars=true,%
+basicstyle=\footnotesize,%
+commentstyle=\footnotesize,%
+xleftmargin=2em,%
+inputencoding=utf8x,
+extendedchars=\true,
+keepspaces = true,%
+breaklines%
+}%
+
+
+\lstdefinestyle{FrameStyle}{%
+        frame=tlbr,%
+        %escapechar=|,%
+        extendedchars=true,%
+        %commentstyle=\itshape,%
+        commentstyle=,%
+        %stringstyle=\bfseries%
+        breaklines=true, % перенос слов кода на другую строку
+}%
+
+
+\lstdefinestyle{FrameStyleI}{%
+        frame=tlbr,%
+        %escapechar=|,%
+        extendedchars=true,%
+        %commentstyle=\itshape,%
+        commentstyle=,%
+        %stringstyle=\bfseries%
+	basicstyle=\footnotesize,%
+        breaklines=false, % перенос слов кода на другую строку
+}%
+
+
+
+
+
+
+
+
+% запись единицы измерения физ. величины
+\newcommand{\edizm}[1]{$#1$}
+
+% значение физ. величины с единицей измерения
+\newcommand{\numval}[2]{#1~#2}
+
+% запись диапазона величин по ГОСТ
+%\newcommand{\gostrng}[4]{#1~#3\ldots#2~#4}
+\newcommand{\gostrng}[4]{от #1~#3 до #2~#4}
+
+% пропорциональные круглые скобки
+\newcommand{\brkt}[1]{\left(#1\right)}
+
+% пропорциональные квадратные скобки
+\newcommand{\brktsq}[1]{\left[#1\right]}
+
+% запись с.к.о
+\newcommand{\sko}[1]{\sigma\brktsq{#1}}
+
+% запись квадрата с.к.о
+\newcommand{\skosq}[1]{\sigma^2\brktsq{#1}}
+
+% запись мат. ожидания
+\newcommand{\mozh}[1]{M\brktsq{#1}}
+
+% запись дисперсии
+\newcommand{\disp}[1]{D\brktsq{#1}}
+
+% мат.ож. погрешности деления
+\newcommand{\mozhdel}[3]{-2^{-\brkt{#1+1}} \brktsq{1+\frac{#2}{#3}}}
+
+% дисперсия погрешности деления
+\newcommand{\dispdel}[3]{
+	\frac{1}{3} 2^{-2\brkt{#1+1}}
+		\brktsq{1+2\brkt{\frac{#2}{#3}}^2}
+}
+
+% дисперсия погрешности умножения
+\newcommand{\dispumn}[1]{
+	\frac{1}{3} 2^{-2\brkt{#1+1}}
+}
+
+% коэффициент предварительного МП в синхр. детектора
+\newcommand{\kmp}{K_1 K_{У1} K_{У2} K_{У3}}
+
+% синус с пропорц. скобками
+\newcommand{\mysin}[1]{\sin\brkt{#1}}
+
+% косинус с пропорц. скобками
+\newcommand{\mycos}[1]{\cos\brkt{#1}}
+
+% мульт. относительная погрешность
+\newcommand{\motn}[1]{\delta_{#1}}
+
+% мульт. относительная случайная погрешность
+\newcommand{\rmotn}[1]{{\stackrel{\circ}{\delta}}_{#1}}
+
+% мульт. относительная систематическая погрешность
+\newcommand{\smotn}[1]{\delta_{s#1}}
+
+% (1 + мульт. отн.)
+\newcommand{\motned}[1]{\brkt{1 + \motn{#1}}}
+
+% аддит. относительная погрешность
+\newcommand{\aotn}[1]{\gamma_{#1}}
+
+% аддит. относительная случайная погрешность
+\newcommand{\raotn}[1]{{\stackrel{\circ}{\gamma}}_{#1}}
+
+% аддит. относительная систематическая погрешность
+\newcommand{\saotn}[1]{\gamma_{s#1}}
+
+% абсолютная погрешность
+\newcommand{\absp}[1]{\Delta_{#1}}
+
+% абсолютная случайная погрешность
+\newcommand{\rabsp}[1]{{\stackrel{\circ}{\Delta}}_{#1}}
+
+% абсолютная систематическая погрешность
+\newcommand{\sabsp}[1]{\Delta_{s#1}}
+
+% производная
+\newcommand{\deriv}[2]{\frac{\partial #1} {\partial #2}}
+
+% экспонентциальная запись числа
+\newcommand{\nexp}[2]{#1 * 10^{#2}}
+
+% перенос ф-лы на другую строку
+\newcommand{\eqnewline}[1]{#1 \nonumber\\ {} #1}
+
+
+
+
+% Команда для того чтобы ТУ не переносилось
+\newcommand{\ESKDty}[1]{\linebreak[3] \mbox{#1}}
+
+% Ставит черту над выражением (выражение латинскими буквами) - инверсный сигнал
+\newcommand{\ESKDoverline}[1]{
+  $\overline{\mathrm{#1}}$}
+
+% Ставит черту над выражением (выражение русскими буквами) - инверсный сигнал
+\newcommand{\ESKDoverlineRUS}[1]{
+  $\overline{#1}$}
+
+
+% \slshape - переключает шрифт на наклонный
+
+\newcommand\subsectionImit[1]{%
+    \vskip 5mm 
+    \textbf{#1}
+    \vskip 3mm
+}
+
+
+
+%\graphicspath{{./about/inkscape/}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newcommand{\String}[1]{%
+\Verb|#1|}%
+
+
+
+\newcommand{\Res}[1]{\resizebox{30mm}{\height}{#1}}
+
+
+
+
+\newcommand{\ResI}[1]{\resizebox{30mm}{\height}{\Verb|#1|}}
+
+
+
+
+
+\newenvironment{itemizeI}%
+{%
+\ResI{
+}%
+{%
+}
+}%
+
+
+\newcommand{\ResII}[4]{\resizebox{20mm}{\height}{\Verb|#1|} & \resizebox{20mm}{\height}{\Verb|#2|} & \resizebox{20mm}{\height}{\Verb|#3|} & \resizebox{20mm}{\height}{\Verb|#4|} \\}
+
+
+\newcommand{\ResIII}[4]{\spformedboxmmI{20mm}{c}{\Verb|#1|} & \spformedboxmmI{20mm}{c}{\Verb|#2|} & \spformedboxmmI{20mm}{c}{\Verb|#3|} & \spformedboxmmI{20mm}{c}{\Verb|#4|} \\}
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Таблица для регистров периферии ПЛИС %%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{ColorGUIREQESTS}{HTML}{FFDEE9}
+\definecolor{ColorREGNAME}{HTML}{DEF8BF}
+\definecolor{Gray}{gray}{0.94}%
+
+\newcommand{\TableForMemoryMapDevStart}[2]{%
+\renewcommand\tablename{\hspace{0mm} Таблица}
+\setlength\LTleft{0mm}
+\setlength\LTright\fill
+\small
+\begin{longtable}{|C{15mm}|C{15mm}|L{95mm}|C{12mm}|C{18mm}|}
+  \caption{#1} \label{#2} \\
+  \hline
+\rowcolor{ColorGUIREQESTS}
+  \multicolumn{1}{|p{15mm}|}{\centering Адрес} &
+  \multicolumn{1}{p{15mm}|}{\centering Номера бит} & 
+  \multicolumn{1}{p{95mm}|}{\centering Описание} &
+  \multicolumn{1}{p{12mm}|}{\centering Чтение/ запись} &
+  \multicolumn{1}{p{18mm}|}{\centering Значение после сброса}  \\\hhline{|=====|}
+  \endfirsthead
+  \caption*{\hspace{0mm} Продолжение таблицы \ref{#2}} \\
+ \hline
+\rowcolor{ColorGUIREQESTS}
+  \multicolumn{1}{|p{15mm}|}{\centering Адрес} &
+  \multicolumn{1}{p{15mm}|}{\centering Номера бит} & 
+  \multicolumn{1}{p{95mm}|}{\centering Описание} &
+  \multicolumn{1}{p{12mm}|}{\centering Чтение/ запись} &
+  \multicolumn{1}{p{18mm}|}{\centering Значение после сброса}  \\\hhline{|=====|}
+  \endhead
+}%
+
+\newcommand{\TableForMemoryMapDevEnd}{%
+    \end{longtable} \normalsize
+}%
+
+\newcommand{\RowRegNAME}[2]{% Имя регистра
+  \rowcolor{ColorREGNAME}%
+  #1 & \multicolumn{4}{l|}{\parbox{150mm}{\vspace{0.7mm} #2\vspace{0.7mm}} } \\%
+}%
+
+\newcommand{\RowBitsNAME}[4]{% Имя регистра
+  & #1  & \parbox{95mm}{#2 \vspace{0.7mm}} & #3 & #4 \\%
+}%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%% Таблица для описания дефектов РЭА  %%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\definecolor{ColorHead}{HTML}{FEFFC0}%
+
+\definecolor{ColorERROR}{HTML}{FFDEE9}%
+\definecolor{ColorERRORI}{HTML}{F9D8E3}%
+
+\definecolor{ColorWARNING}{HTML}{FFE7C0}%
+\definecolor{ColorWARNINGI}{HTML}{F9E1BA}%
+
+\newcounter{CounterForTableLine}%Для нумерации строк в таблице
+\newcounter{CounterForColumnIII}%
+\newcounter{CounterForTablesubLine}%
+
+
+\newlength{\ColumnI}%
+\newlength{\ColumnII}%
+\newlength{\ColumnIII}%
+\newlength{\ColumnIV}%
+
+
+\newcommand{\HardErrorTableBegin}[2]{%
+\setcounter{CounterForTableLine}{1}%
+\setlength{\ColumnI}{12mm}%
+\setlength{\ColumnII}{60mm}%
+\setlength{\ColumnIII}{60mm}%
+\setlength{\ColumnIV}{28mm}%
+\renewcommand\tablename{\hspace{0mm} Таблица}%
+\setlength\LTleft{0mm}%
+\setlength\LTright\fill%
+\small%
+\begin{longtable}{|C{\ColumnI}|L{\ColumnII}|L{\ColumnIII}|C{\ColumnIV}|}%
+  \caption{#1} \label{#2} \\%
+  \hline%
+\rowcolor{ColorHead}%
+  \multicolumn{1}{|p{\ColumnI}|}{\parbox{\ColumnI}{\vspace{1mm} \centering Номер \\\mbox{Дата}\vspace{1mm}}} &
+  \multicolumn{1}{p{\ColumnII}|}{\centering Описание проблемы} & 
+  \multicolumn{1}{p{\ColumnIII}|}{\centering Метод устранения} &
+  \multicolumn{1}{p{\ColumnIV}|}{\parbox{\ColumnIV}{\vspace{1mm} \centering Статус \\\mbox{Дата}\vspace{1mm}}} \\\hline
+  \endfirsthead
+  \caption*{\hspace{0mm} Продолжение таблицы \ref{#2}} \\%
+ \hline%
+\rowcolor{ColorHead}%
+  \multicolumn{1}{|p{\ColumnI}|}{\parbox{\ColumnI}{\vspace{1mm} \centering Номер \\\mbox{Дата}\vspace{1mm}}} &
+  \multicolumn{1}{p{\ColumnII}|}{\centering Описание проблемы} & 
+  \multicolumn{1}{p{\ColumnIII}|}{\centering Метод устранения} &
+  \multicolumn{1}{p{\ColumnIV}|}{\parbox{\ColumnIV}{\vspace{1mm} \centering Статус \\\mbox{Дата}\vspace{1mm}}} \\\hline
+  \endhead%
+}%
+
+\newcommand{\HardErrorTableEnd}{%
+    \end{longtable} \normalsize
+}%
+
+
+
+\newcommand{\AddRowERR}[4]{% Это для не работающей функции
+  \cellcolor{ColorERROR}\parbox{\ColumnI}{\setcounter{CounterForTablesubLine}{1}\vspace{1mm}\centering{\arabic{CounterForTableLine}\refstepcounter{CounterForTableLine}}\vspace{-2mm}\\\mbox{\scriptsize#1}\vspace{1mm}}&\cellcolor{ColorERROR}\parbox{\ColumnII}{\raggedright\vspace{1mm}#2\vspace{1mm}}&\cellcolor{ColorERROR}\parbox{\ColumnIII}{\setcounter{CounterForColumnIII}{1}\vspace{1mm}#3\vspace{1mm}}&\cellcolor{ColorERROR}\parbox{\ColumnIV}{\vspace{1mm}#4\vspace{1mm}}\\% \hline
+}%
+
+\newcommand{\AddRowWARN}[4]{% Это для не проверенной функции
+  \cellcolor{ColorWARNING}\parbox{\ColumnI}{\setcounter{CounterForTablesubLine}{1}\vspace{1mm}\centering{\arabic{CounterForTableLine}\refstepcounter{CounterForTableLine}}\vspace{-2mm}\\\mbox{\scriptsize#1}\vspace{1mm}}&\cellcolor{ColorWARNING}\parbox{\ColumnII}{\raggedright\vspace{1mm}#2\vspace{1mm}}&\cellcolor{ColorWARNING}\parbox{\ColumnIII}{\setcounter{CounterForColumnIII}{1}\vspace{1mm}#3\vspace{1mm}}&\cellcolor{ColorWARNING}\parbox{\ColumnIV}{\vspace{1mm}#4\vspace{1mm}}\\% \hline
+}%
+
+\newcommand{\AddRow}[4]{% Это для работающей функции
+  \parbox{\ColumnI}{\setcounter{CounterForTablesubLine}{1}\vspace{1mm}\centering{\arabic{CounterForTableLine}\refstepcounter{CounterForTableLine}}\vspace{-2mm}\\\mbox{\scriptsize#1}\vspace{1mm}}&\parbox{\ColumnII}{\raggedright\vspace{1mm}#2\vspace{1mm}}&\parbox{\ColumnIII}{\setcounter{CounterForColumnIII}{1}\vspace{1mm}#3\vspace{1mm}}&\parbox{\ColumnIV}{\vspace{1mm}#4\vspace{1mm}}\\% \hline
+}%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
