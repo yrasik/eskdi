@@ -28,14 +28,24 @@
   \begin{titlepage}%
     \unitlength=1mm%
     \begin{picture}(100,100)(-75, 147)%
-      \put(-92.8,-29.5){\spboxmm{22}{150}{162}{180}{lc}{\parbox{140mm}{\centering \large\@gosttitleobject \vskip 1mm \@gosttitledocument\\ \vskip 1mm \@gostklgi }} }%
+%      \put(-92.8,-29.5){\spboxmm{22}{150}{162}{180}{lc}{\parbox{140mm}{\centering \large\@gosttitleobject \vskip 1mm \@gosttitledocument\\ \vskip 1mm \@gostklgi }} }%
       \put(-92.8,-29.5){\titleLEFT}%
       \put(-92.8,-29.5){\titleRIGHT}%
       \put(-92.8,-29.5){\titleBotRIGHT}%
       \put(-92.8,-29.5){\titleBotLEFT}%
       \put(-92.8,-29.5){\titleTopRIGHT}%
       \put(-92.8,-29.5){\titleTopLEFT}%
-      \put(-92.8,-29.5){\titleCENTER}%        
+      \put(-92.8,-29.5){\titleCENTER}%  
+      \put(-92.8,-29.5){\titleCENTERI}%
+      \put(-92.8,-29.5){\titleCENTERII}%
+      \put(-92.8,-29.5){\titleTopRIGHTI}%
+      \put(-92.8,-29.5){\titleTopLEFTI}%
+      \put(-92.8,-29.5){\titleTopRIGHTII}%
+      \put(-92.8,-29.5){\titleTopLEFTII}%
+      \put(-92.8,-29.5){\titleBotRIGHTI}%
+      \put(-92.8,-29.5){\titleBotLEFTI}%
+      \put(-92.8,-29.5){\titleBotRIGHTII}%
+      \put(-92.8,-29.5){\titleBotLEFTII}%
     \end{picture}%
   \end{titlepage}%
   \addtocounter{page}{1}%
@@ -69,21 +79,21 @@
       \ifx\gostSubSectInToc\undefined%
         %В оглавлении печатаются только секции
         {\bf\thesection \ #1}%
-		 \addtocontents{toc}{\vskip 1em }%Расстояние в оглавлении между приложениями  
+        \addtocontents{toc}{\vskip 1em }%Расстояние в оглавлении между приложениями  
         \addcontentsline{toc}{section}{\hspace{1.0em}\thesection\hspace{0.3em}#1}%
       \else% В оглавлении печатаются секции, подсекции
         \large{\bf\thesection \ #1}\normalsize%
-		 \addtocontents{toc}{\vskip 1em }%Расстояние в оглавлении между приложениями  
+        \addtocontents{toc}{\vskip 1em }%Расстояние в оглавлении между приложениями  
         \addcontentsline{toc}{section}{\hspace{1.0em}\thesection\hspace{0.3em}#1}%
       \fi%
     \else% В оглавлении печатаются секции, подсекции, поподсекции
       \Large{\bf\thesection \ #1}\normalsize%
-	  \addtocontents{toc}{\vskip 1em }%Расстояние в оглавлении между приложениями  
+      \addtocontents{toc}{\vskip 1em }%Расстояние в оглавлении между приложениями  
       \addcontentsline{toc}{section}{{\bf\hspace{1.0em}\thesection\hspace{0.3em}#1}}%
     \fi%
   \else% В оглавлении печатаются секции, подсекции, поподсекции и параграфы
     \Large{\bf\thesection \ #1}\normalsize%
-	 \addtocontents{toc}{\vskip 1em }%Расстояние в оглавлении между приложениями  
+    \addtocontents{toc}{\vskip 1em }%Расстояние в оглавлении между приложениями  
     \addcontentsline{toc}{section}{{\bf\hspace{1.0em}\thesection\hspace{0.3em}#1}}%
   \fi%
   \vskip 0.8em%  Расстояние между пунктом и основным текстом
@@ -142,6 +152,31 @@
   \fi%
   \vskip 0.8em%  Расстояние между подпунктом и основным текстом
 }%
+
+\newcommand{\subsectionI}[1]
+{%
+  \refstepcounter{subsection}%
+  \vskip 1.0em%  Расстояние между пунктом и подпунктом
+  \ifx\gostParagraphInToc\undefined%
+    \ifx\gostSubSubSectInToc\undefined%
+      \ifx\gostSubSectInToc\undefined%
+        %В оглавлении печатаются только секции
+        {\thesubsection \ #1}%
+      \else% В оглавлении печатаются секции, подсекции
+        {\bf\thesubsection \ #1}%
+        \addcontentsline{toc}{subsection}{\hspace{2em}\thesubsection\hspace{0.3em}#1}%
+      \fi%
+    \else% В оглавлении печатаются секции, подсекции, поподсекции
+      \large{\bf\thesubsection \ #1}\normalsize%
+      \addcontentsline{toc}{subsection}{\hspace{2em}\thesubsection\hspace{0.3em}#1}%
+    \fi%
+  \else% В оглавлении печатаются секции, подсекции, поподсекции и параграфы
+    \large{\bf\thesubsection \ #1}\normalsize%
+    \addcontentsline{toc}{subsection}{\hspace{2em}\thesubsection\hspace{0.3em}#1}%
+  \fi%
+  \vskip 0.8em%  Расстояние между подпунктом и основным текстом
+}%
+
 
 
 \renewcommand{\subsubsection}[1]
@@ -232,6 +267,7 @@
   \@addtoreset{paragraphI}{subsubsectionI}% 
   \@addtoreset{subparagraphI}{paragraphI}%
   \@addtoreset{subsubparagraphI}{subparagraphI}%
+  \@addtoreset{subsubsubparagraphI}{subsubparagraphI}%
 
   \renewcommand{\thesection}{\GostAsbuk{sectionI}}%
   \renewcommand{\thesubsection}{\GostAsbuk{sectionI}.\@arabic\c@subsectionI}%
@@ -239,14 +275,15 @@
   \renewcommand{\theparagraph}{\GostAsbuk{sectionI}.\@arabic\c@subsectionI.\@arabic\c@subsubsectionI.\@arabic\c@paragraphI}%
   \renewcommand{\thesubparagraph}{\GostAsbuk{sectionI}.\@arabic\c@subsectionI.\@arabic\c@subsubsectionI.\@arabic\c@paragraphI.\@arabic\c@subparagraphI}%
   \renewcommand{\thesubsubparagraph}{\GostAsbuk{sectionI}.\@arabic\c@subsectionI.\@arabic\c@subsubsectionI.\@arabic\c@paragraphI.\@arabic\c@subparagraphI.\@arabic\c@subsubparagraphI}% 
-  
+  \renewcommand{\thesubsubsubparagraph}{\GostAsbuk{sectionI}.\@arabic\c@subsectionI.\@arabic\c@subsubsectionI.\@arabic\c@paragraphI.\@arabic\c@subparagraphI.\@arabic\c@subsubparagraphI.\@arabic\c@subsubsubparagraphI}% 
+
   \renewcommand{\thesectionI}{\thesection}%Чтобы из основного текста ссылки на главы приложений корректные были
   \renewcommand{\thesubsectionI}{\thesubsection}%Чтобы из основного текста ссылки на главы приложений корректные были
   \renewcommand{\thesubsubsectionI}{\thesubsubsection}%Чтобы из основного текста ссылки на главы приложений корректные были
   \renewcommand{\theparagraphI}{\theparagraph}%Чтобы из основного текста ссылки на главы приложений корректные были
   \renewcommand{\thesubparagraphI}{\thesubparagraph}%Чтобы из основного текста ссылки на главы приложений корректные были
   \renewcommand{\thesubsubparagraphI}{\thesubsubparagraph}%Чтобы из основного текста ссылки на главы приложений корректные были
-
+  \renewcommand{\thesubsubsubparagraphI}{\thesubsubsubparagraph}%Чтобы из основного текста ссылки на главы приложений корректные были
 
   \renewcommand{\section}[2][]
   {%
@@ -403,6 +440,13 @@
     \refstepcounter{subsubparagraphI}%
     \thesubsubparagraph\ ##1%
   }%
+
+
+  \renewcommand{\subsubsubparagraph}[1]
+  {%
+    \refstepcounter{subsubsubparagraphI}%
+    \thesubsubsubparagraph\ ##1%
+  }%  
 
 
   \renewcommand{\thebibliography}[1]

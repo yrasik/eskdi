@@ -56,6 +56,7 @@
 {%
   \newpage%
   \refstepcounter{section}%
+  \ifx\gostSubParagraphInToc\undefined%
   \ifx\gostParagraphInToc\undefined%
     \ifx\gostSubSubSectInToc\undefined%
       \ifx\gostSubSectInToc\undefined%
@@ -74,13 +75,19 @@
     \Large{\bf\thesection \ #1}\normalsize%
 	  \addcontentsline{toc}{section}{\bf\hspace{1.0em}\thesection\hspace{0.3em}#1}%Расстояния между номером и текстом в строчке содержания
   \fi%
-  \vskip 0.8em%  Расстояние между пунктом и основным текстом
+  \else% В оглавлении печатаются секции, подсекции, поподсекции и параграфы
+    \Large{\bf\thesection \ #1}\normalsize%
+    \addcontentsline{toc}{section}{{\bf\thesection\ #1}}%
+  \fi%  
+  \vskip 5mm%
+%  \vskip 0.8em%  Расстояние между пунктом и основным текстом
 }%
 
 
 \WithSuffix\newcommand\section*[1]
 {%
   \newpage%
+  \ifx\gostSubParagraphInToc\undefined%
   \ifx\gostParagraphInToc\undefined%
     \ifx\gostSubSubSectInToc\undefined%
       \ifx\gostSubSectInToc\undefined%
@@ -99,7 +106,12 @@
     \Large{\bf#1}\normalsize%
 	  \addcontentsline{toc}{section}{\bf\hspace{1.0em}#1}%Расстояния между номером и текстом в строчке содержания
   \fi%
-  \vskip 0.8em%  Расстояние между пунктом и основным текстом
+  \else% В оглавлении печатаются секции, подсекции, поподсекции и параграфы
+    \Large{\bf#1}\normalsize%
+    \addcontentsline{toc}{section}{{\bf#1}}%
+  \fi%  
+  \vskip 5mm%
+%  \vskip 0.8em%  Расстояние между пунктом и основным текстом
 }%
 
 
@@ -107,6 +119,8 @@
 {%
   \refstepcounter{subsection}%
   \vskip 1.0em%  Расстояние между пунктом и подпунктом
+    \ifx\gostSubParagraphInToc\undefined%
+
   \ifx\gostParagraphInToc\undefined%
     \ifx\gostSubSubSectInToc\undefined%
       \ifx\gostSubSectInToc\undefined%
@@ -124,13 +138,20 @@
     \large{\bf\thesubsection \ #1}\normalsize%
     \addcontentsline{toc}{subsection}{\hspace{2em}\thesubsection\hspace{0.3em}#1}%
   \fi%
-  \vskip 0.8em%  Расстояние между подпунктом и основным текстом
+  \else% В оглавлении печатаются секции, подсекции, поподсекции и параграфы
+    \large{\bf\thesubsection \ #1}\normalsize%
+    %\addcontentsline{toc}{subsection}{\ \ \thesubsection \ #1}
+    \addcontentsline{toc}{subsection}{\hspace{4mm}\thesubsection\ #1}%
+  \fi%
+  \vskip 5mm%
+%  \vskip 0.8em%  Расстояние между подпунктом и основным текстом
 }%
 
 
 \renewcommand{\subsubsection}[1]
 {%
   \refstepcounter{subsubsection}%
+    \ifx\gostSubParagraphInToc\undefined%
   \ifx\gostParagraphInToc\undefined%
     \ifx\gostSubSubSectInToc\undefined%
       \ifx\gostSubSectInToc\undefined%
@@ -149,12 +170,18 @@
     {\bf\thesubsubsection\ #1}%
     \addcontentsline{toc}{subsubsection}{\hspace{3em}\thesubsubsection\hspace{0.3em}#1}%
   \fi%
+  \else% В оглавлении печатаются секции, подсекции, поподсекции и параграфы
+    \vskip 4mm%
+    {\bf\thesubsubsection\ #1}%
+    \addcontentsline{toc}{subsubsection}{\hspace{8mm}\thesubsubsection\ #1}%
+  \fi%
 }%
 
 
 \renewcommand{\paragraph}[1]
 {%
   \refstepcounter{paragraph}%
+  \ifx\gostSubParagraphInToc\undefined%
   \ifx\gostParagraphInToc\undefined%
     \ifx\gostSubSubSectInToc\undefined%
       \ifx\gostSubSectInToc\undefined%
@@ -167,11 +194,45 @@
       \theparagraph\ #1%
     \fi%
   \else% В оглавлении печатаются секции, подсекции, поподсекции и параграфы
-    \vskip 0.5em%
+    \vskip 4mm%
     \theparagraph\ #1%
-    \addcontentsline{toc}{paragraph}{\hspace{4em}\theparagraph\hspace{0.3em}#1}%
+    \addcontentsline{toc}{paragraph}{\hspace{12mm}\theparagraph\ #1}%  
+  \fi%
+  \else% В оглавлении печатаются секции, подсекции, поподсекции и параграфы
+    \vskip 4mm%
+    \theparagraph\ #1%
+    \addcontentsline{toc}{paragraph}{\hspace{12mm}\theparagraph\ #1}%
   \fi%
 }%
+
+
+\renewcommand{\subparagraph}[1]
+{%
+  \refstepcounter{subparagraph}%
+  \ifx\gostSubParagraphInToc\undefined%
+  \ifx\gostParagraphInToc\undefined%
+    \ifx\gostSubSubSectInToc\undefined%
+      \ifx\gostSubSectInToc\undefined%
+        %В оглавлении печатаются только секции
+        \thesubparagraph\ #1%
+      \else% В оглавлении печатаются секции, подсекции
+        \thesubparagraph\ #1%
+      \fi%
+    \else% В оглавлении печатаются секции, подсекции, поподсекции
+      \thesubparagraph\ #1%
+    \fi%
+  \else% В оглавлении печатаются секции, подсекции, поподсекции и параграфы
+      \thesubparagraph\ #1%
+  \fi%
+  \else% В оглавлении печатаются секции, подсекции, поподсекции, параграфы, подпараграфы
+    \vskip 4mm%
+    \thesubparagraph\ #1%
+    \addcontentsline{toc}{subparagraph}{\hspace{12mm}\thesubparagraph\ #1}%
+  \fi%
+}%
+
+
+
 
 
 \makeatletter
@@ -212,6 +273,7 @@
   \@addtoreset{paragraphI}{subsubsectionI}% 
   \@addtoreset{subparagraphI}{paragraphI}%
   \@addtoreset{subsubparagraphI}{subparagraphI}%
+  \@addtoreset{subsubsubparagraphI}{subsubparagraphI}%
 
   \renewcommand{\thesection}{\GostAsbuk{sectionI}}%
   \renewcommand{\thesubsection}{\GostAsbuk{sectionI}.\@arabic\c@subsectionI}%
@@ -219,6 +281,7 @@
   \renewcommand{\theparagraph}{\GostAsbuk{sectionI}.\@arabic\c@subsectionI.\@arabic\c@subsubsectionI.\@arabic\c@paragraphI}%
   \renewcommand{\thesubparagraph}{\GostAsbuk{sectionI}.\@arabic\c@subsectionI.\@arabic\c@subsubsectionI.\@arabic\c@paragraphI.\@arabic\c@subparagraphI}%
   \renewcommand{\thesubsubparagraph}{\GostAsbuk{sectionI}.\@arabic\c@subsectionI.\@arabic\c@subsubsectionI.\@arabic\c@paragraphI.\@arabic\c@subparagraphI.\@arabic\c@subsubparagraphI}%   
+  \renewcommand{\thesubsubsubparagraph}{\GostAsbuk{sectionI}.\@arabic\c@subsectionI.\@arabic\c@subsubsectionI.\@arabic\c@paragraphI.\@arabic\c@subparagraphI.\@arabic\c@subsubparagraphI.\@arabic\c@subsubsubparagraphI}%   
 
   \renewcommand{\thesectionI}{\thesection}%Чтобы из основного текста ссылки на главы приложений корректные были
   \renewcommand{\thesubsectionI}{\thesubsection}%Чтобы из основного текста ссылки на главы приложений корректные были
@@ -226,6 +289,7 @@
   \renewcommand{\theparagraphI}{\theparagraph}%Чтобы из основного текста ссылки на главы приложений корректные были
   \renewcommand{\thesubparagraphI}{\thesubparagraph}%Чтобы из основного текста ссылки на главы приложений корректные были
   \renewcommand{\thesubsubparagraphI}{\thesubsubparagraph}%Чтобы из основного текста ссылки на главы приложений корректные были
+  \renewcommand{\thesubsubsubparagraphI}{\thesubsubsubparagraph}%Чтобы из основного текста ссылки на главы приложений корректные были
 
 
   \renewcommand{\section}[2][]
@@ -373,6 +437,32 @@
 
   \renewcommand{\subparagraph}[1]
   {%
+    \refstepcounter{paragraphI}% 
+    \ifx\gostSubParagraphInToc\undefined%
+    \ifx\gostParagraphInToc\undefined%
+      \ifx\gostSubSubSectInToc\undefined%
+        \ifx\gostSubSectInToc\undefined%
+          %В оглавлении печатаются только секции
+          \theparagraph\ ##1%
+        \else% В оглавлении печатаются секции, подсекции
+          \theparagraph\ ##1%
+        \fi%
+      \else% В оглавлении печатаются секции, подсекции, поподсекции
+        \theparagraph\ ##1%
+      \fi%
+    \else% В оглавлении печатаются секции, подсекции, поподсекции и параграфы
+      \theparagraph\ ##1%
+    \fi%
+    \else% В оглавлении печатаются секции, подсекции, поподсекции,параграфы подпараграфы
+      \theparagraph\ ##1%
+      \addcontentsline{toc}{subparagraph}{\hspace{35mm}\thesubparagraph\ ##1}%
+    \fi%
+    
+  }%  
+  
+  
+  \renewcommand{\subparagraph}[1]
+  {%
     \refstepcounter{subparagraphI}%
     \thesubparagraph\ ##1%
   }%
@@ -383,6 +473,13 @@
     \refstepcounter{subsubparagraphI}%
     \thesubsubparagraph\ ##1%
   }%
+
+
+  \renewcommand{\subsubsubparagraph}[1]
+  {%
+    \refstepcounter{subsubparagraphI}%
+    \thesubsubsubparagraph\ ##1%
+  }%  
 
 
   \renewcommand{\thebibliography}[1]

@@ -104,15 +104,18 @@
         \thesubsection \ #1%
       \else% В оглавлении печатаются секции, подсекции
         \thesubsection \ #1%
-        \addcontentsline{toc}{subsection}{\hspace{2em}\thesubsection\hspace{0.3em}#1}%
+%        \addcontentsline{toc}{subsection}{\hspace{2em}\thesubsection\hspace{0.3em}#1}%
+          \addcontentsline{toc}{subsection}{\hspace{4mm}\thesubsection\ #1}%
       \fi%
     \else% В оглавлении печатаются секции, подсекции, поподсекции
       {\bf\thesubsection \ #1}%
-      \addcontentsline{toc}{subsection}{\hspace{2em}\thesubsection\hspace{0.3em}#1}%
+%      \addcontentsline{toc}{subsection}{\hspace{2em}\thesubsection\hspace{0.3em}#1}%
+      \addcontentsline{toc}{subsection}{\hspace{4mm}\thesubsection\ #1}%
     \fi%
   \else% В оглавлении печатаются секции, подсекции, поподсекции и параграфы
     {\bf\thesubsection \ #1}%
-    \addcontentsline{toc}{subsection}{\hspace{2em}\thesubsection\hspace{0.3em}#1}%
+%    \addcontentsline{toc}{subsection}{\hspace{2em}\thesubsection\hspace{0.3em}#1}%
+    \addcontentsline{toc}{subsection}{\hspace{4mm}\thesubsection\ #1}%
   \fi%
   \vskip 0.8em%  Расстояние между подпунктом и основным текстом
 }%
@@ -199,6 +202,7 @@
   \@addtoreset{paragraphI}{subsubsectionI}% 
   \@addtoreset{subparagraphI}{paragraphI}%
   \@addtoreset{subsubparagraphI}{subparagraphI}%
+  \@addtoreset{subsubsubparagraphI}{subsubparagraphI}%
 
 
 
@@ -210,7 +214,8 @@
   \renewcommand{\theparagraph}{\GostAsbuk{sectionI}.\@arabic\c@subsectionI.\@arabic\c@subsubsectionI.\@arabic\c@paragraphI}%
   \renewcommand{\thesubparagraph}{\GostAsbuk{sectionI}.\@arabic\c@subsectionI.\@arabic\c@subsubsectionI.\@arabic\c@paragraphI.\@arabic\c@subparagraphI}%
   \renewcommand{\thesubsubparagraph}{\GostAsbuk{sectionI}.\@arabic\c@subsectionI.\@arabic\c@subsubsectionI.\@arabic\c@paragraphI.\@arabic\c@subparagraphI.\@arabic\c@subsubparagraphI}% 
-  
+  \renewcommand{\thesubsubsubparagraph}{\GostAsbuk{sectionI}.\@arabic\c@subsectionI.\@arabic\c@subsubsectionI.\@arabic\c@paragraphI.\@arabic\c@subparagraphI.\@arabic\c@subsubparagraphI.\@arabic\c@subsubsubparagraphI}% 
+
 
   \renewcommand{\thesectionI}{\thesection}%Чтобы из основного текста ссылки на главы приложений корректные были
   \renewcommand{\thesubsectionI}{\thesubsection}%Чтобы из основного текста ссылки на главы приложений корректные были
@@ -218,6 +223,7 @@
   \renewcommand{\theparagraphI}{\theparagraph}%Чтобы из основного текста ссылки на главы приложений корректные были
   \renewcommand{\thesubparagraphI}{\thesubparagraph}%Чтобы из основного текста ссылки на главы приложений корректные были
   \renewcommand{\thesubsubparagraphI}{\thesubsubparagraph}%Чтобы из основного текста ссылки на главы приложений корректные были
+  \renewcommand{\thesubsubsubparagraphI}{\thesubsubsubparagraph}%Чтобы из основного текста ссылки на главы приложений корректные были
 
 
   \renewcommand{\section}[2][]
@@ -264,29 +270,29 @@
                %В оглавлении печатаются только секции
                {\bf\appendixname \enskip \thesection}%
                \addtocontents{toc}{\vskip 1em}%Расстояние в оглавлении между приложениями    
-               \addcontentsline{toc}{section}{\hspace{1.0em}\appendixname\hspace{0.3em}\thesection\hspace{0.3em}(##2) ##1}%
+               \addcontentsline{toc}{section}{\hspace{1.0em}\appendixname\hspace{0.3em}\thesection\hspace{0.3em}##1}%
              \else% В оглавлении печатаются секции, подсекции
                {\bf\appendixname \enskip \thesection}%
                \addtocontents{toc}{\vskip 1em}%Расстояние в оглавлении между приложениями    
-               \addcontentsline{toc}{section}{\hspace{1.0em}\appendixname\hspace{0.3em}\thesection\hspace{0.3em}(##2) ##1}%
+               \addcontentsline{toc}{section}{\hspace{1.0em}\appendixname\hspace{0.3em}\thesection\hspace{0.3em}##1}%
              \fi%
            \else% В оглавлении печатаются секции, подсекции, поподсекции
              {\bf\appendixname \enskip \thesection}%
              \addtocontents{toc}{\vskip 1em}%Расстояние в оглавлении между приложениями    
-             \addcontentsline{toc}{section}{\hspace{1.0em}\appendixname\hspace{0.3em}\thesection\hspace{0.3em}(##2) ##1}%
+             \addcontentsline{toc}{section}{\hspace{1.0em}\appendixname\hspace{0.3em}\thesection\hspace{0.3em}##1}%
            \fi%
          \else% В оглавлении печатаются секции, подсекции, поподсекции и параграфы
            \large{\bf\appendixname \enskip \thesection}\normalsize%
            \addtocontents{toc}{\vskip 1em}%Расстояние в оглавлении между приложениями    
-           \addcontentsline{toc}{section}{\hspace{1.0em}\appendixname\hspace{0.3em}\thesection\hspace{0.3em}(##2) ##1}%
+           \addcontentsline{toc}{section}{\hspace{1.0em}\appendixname\hspace{0.3em}\thesection\hspace{0.3em}##1}%
          \fi%
        \end{center}%
        \begin{center}%
-         {\vskip -1em\bf({##2})}%
+         {\bf({##2})}%
        \end{center}
        \vskip 0.5em%Расстояние между словом 'справочное' и названием приложения
        \begin{center}%
-         \parbox[t]{0.7\textwidth}{\vskip -2em\centering{\bf##1}}%Чтобы название приложения печаталось по центру страницы, но не во всю ширину...
+         \parbox[t]{0.7\textwidth}{\centering{\bf##1}}%Чтобы название приложения печаталось по центру страницы, но не во всю ширину...
        \end{center}%
        \vskip 0.5em%  Расстояние между пунктом и основным текстом в приложении
      }%
@@ -374,6 +380,13 @@
     \thesubsubparagraph\ ##1%
   }%
 
+
+  \renewcommand{\subsubsubparagraph}[1]
+  {%
+    \refstepcounter{subsubsubparagraphI}%
+    \thesubsubsubparagraph\ ##1%
+  }%  
+  
 
   \renewcommand{\thebibliography}[1]
   {%   

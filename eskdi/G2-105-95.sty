@@ -160,7 +160,8 @@
   \begin{trivlist}%
     \let\olditem\item% Переопределяем название \item
     \renewcommand\item{\olditem[ –]}%
-    \newcommand{\itemb}{\olditem[\hspace{4em}•]}%  
+    %\newcommand{\itemb}{\olditem[\hspace{4em}•]}%
+     \newcommand{\itemb}{\olditem[\hspace{4em} –]}%     
     \setlength{\itemindent}{15mm}% 
 }%
 {%
@@ -181,6 +182,7 @@
     \renewcommand\item{\stepcounter{gostenumerateCount}\olditem[\asbuk{gostenumerateCount})] } 
     %\setlength{\itemindent}{\parindent}
     \newcommand{\itemb}{\olditem[\hspace{4em}–]}% 
+    %\newcommand{\itemb}{\olditem[\ \ \ \ \ \  –]}% 
     \setlength{\itemindent}{15mm}    
 }%
 {%

@@ -107,17 +107,17 @@
       {%
         \vbox%
         {%
-          \hbox to \textwidth{}%  
+          \hbox to \textwidth{}%
         }%
       }%
       \unitlength=1pt%
       \StampFormatI%
       \vbox%
       {%
-        \hbox to \textwidth{\parbox[c][1.2\height]{0.6\textwidth}{{\@gostklgi} \hfil} \parbox[c][1.2\height]{0.3\textwidth}{} \parbox[c][1.2\height]{0.1\textwidth}{\hbox to \hsize{\hfil \thepage}}}%   
+        \hbox to \textwidth{\parbox[c][1.2\height]{0.6\textwidth}{{\@gostklgi} \hfil} \parbox[c][1.2\height]{0.3\textwidth}{} \parbox[c][1.2\height]{0.1\textwidth}{\hbox to \hsize{\hfil \thepage}}}%
       }%
-      \end{picture}%	    
-    }%   
+      \end{picture}%
+    }%
 %    {%
 %      \ifthenelse{\equal{\value{evenpage}}{2}}%
 %      {%
@@ -169,7 +169,7 @@
       }%
       {%
         \ifthenelse{\equal{\value{evenpage}}{1}}%
-        {%    
+        {%
         }%
         {%
           \ifthenelse{\equal{\value{evenpage}}{2}}%
@@ -181,10 +181,10 @@
             }%
           }%
           {%
-          }% 
-        }%       
+          }%
+        }%
       }%
-    }%	               
+    }%
   }%
 }%
 % end{После вывода  каждой страницы выполняем следующий код для вывода рамок}
@@ -206,7 +206,7 @@
   }%
   {%
     \ifthenelse{\equal{\value{evenpage}}{1}}%
-    {%     
+    {%
       \setcounter{evenpage}{2}%
     }%
     {%
@@ -227,8 +227,8 @@
 \newcommand{\FormatSizeA}[2]
 {%
   \clearpage%
-  \setcounter{evenpage}{1}%  
-  \setlength{\oddsidemargin}{0mm}%  
+  \setcounter{evenpage}{1}%
+  \setlength{\oddsidemargin}{0mm}%
   \StampA{#1}%
   \PageSizeFormat%
   \TextSizeFormat{#1}%

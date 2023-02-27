@@ -1,12 +1,15 @@
 \documentclass[a4paper,14pt,russian]{article} %draft
 \usepackage[T2A]{fontenc}% Поддержка русских букв
 
+\usepackage{luacode}
+
 
 
 % XeTeX packages
 \usepackage[cm-default]{fontspec} % or install lmodern and remove cm-default opt
-\usepackage{xunicode} % some extra unicode support
+%\usepackage{xunicode} % some extra unicode support
 \usepackage{xltxtra} % \XeLaTeX macro
+
 
 
 \tolerance=1000
@@ -15,12 +18,14 @@
 
 \usepackage[pdfborder = {0 0 0}]{hyperref} %гиперссылки в документе.
 
-\usepackage[utf8]{inputenc}	% кодировка текста
-\usepackage[russian]{babel}	% руссификация по Бабелю
+\usepackage[utf8]{inputenc} % кодировка текста
+\usepackage[russian]{babel} % руссификация по Бабелю
 \usepackage{graphics}
 
+%\usepackage[clean,pdf]{svg}
+
 \usepackage{amsmath, amsfonts} % для расширенных настроек ссылок на формулы
-\usepackage{extsizes}	% использование шрифтов большего кегля 
+\usepackage{extsizes} % использование шрифтов большего кегля 
 
 \usepackage{fancyvrb} % Добавляет продвинутые Verbatim и Verb
 
@@ -30,17 +35,20 @@
 \usepackage{pst-plot} % For axes
 
 \usepackage{graphicx,xcolor}
+\usepackage{minted}
 
 %\usepackage[MakeStamp]{eskdi}
 %\usepackage[MakeStamp, SubSectInToc]{eskdi}
 %\usepackage[MakeStamp, SubSubSectInToc]{eskdi}
 %\usepackage[MakeStamp, ParagraphInToc]{eskdi}
 %\usepackage[twoside, MakeStamp, ParagraphInToc]{eskdi}
-\usepackage{eskdi}
+%\usepackage{eskdi}
 %\usepackage[SubSectInToc]{eskdi}
 %\usepackage[SubSubSectInToc]{eskdi}
 %\usepackage[ParagraphInToc]{eskdi}
+%\usepackage[SubParagraphInToc]{eskdi}
 %\usepackage[twoside, ParagraphInToc]{eskdi}
+\usepackage[MakeEmptyStamp, SubSubSectInToc]{eskdi}
 %\usepackage[twoside, MakeEmptyStamp, SubSectInToc]{eskdi}
 %\usepackage[twoside, MakeEmptyStamp, ParagraphInToc]{eskdi}
 %\usepackage[twoside, MakeEmptyStamp]{eskdi}
@@ -66,6 +74,10 @@
 
 \usepackage{tikz} % Пакет для рмсования диаграмм
 \usepackage{tikz-timing}[2009/12/09]
+\usetikzlibrary{arrows}
+\usepackage{tikzit}
+\input{sample.tikzstyles}
+
 \usetikzlibrary{positioning,arrows,automata,plotmarks} %В данном случае нам потребуются positioning и arrows, которые нужны для расположения элементов друг относительно друга и рисования стрелок между ними соответственно.
 \usetikzlibrary{shapes,snakes}
 \usepackage{schemabloc}
@@ -74,10 +86,7 @@
 \usepackage{colortbl} % Для раскрашивания ячеек в таблицах
 
 
-%{Arial} {Courier New} 
-%{OpenGost Type A TT} {OpenGost Type B TT} % Свободный шрифт. Нет наклонного начертания и дирного начертания
-%{GOST type A} % Морально устарел, не свободный, не хватает символа тирэ. Не рекомендуется
-%{GOST type B} % Морально устарел, не свободный, не хватает символа тирэ. Не рекомендуется
+
 \gostSetStampfont{Times New Roman}%
 
 \setromanfont{Times New Roman}
@@ -86,20 +95,19 @@
 \setmainfont{Times New Roman}
 
 
-\verbatimfont{\fontspec[Scale=1.0]{Arial} \itshape}% % Для замены стиля начертания verbatim и verb
-
+%\verbatimfont{\fontspec[Scale=1.0]{Arial} \itshape}% % Для замены стиля начертания verbatim и verb
+%\verbatimfont{\fontspec[Scale=1.0]{Times New Roman}}% % Для замены стиля начертания verbatim и verb
 %\renewcommand{\SetStampfontIt}{\itshape}%
-
-
-
-\input commands.tex %Файл включает такие команды как надчёркивание, запрещение переноса ТУ и др.
-
-
+%\verbatimfont{\fontspec[Scale=1.0]{Consolas}}% % Для замены стиля начертания verbatim и verb
+%\newfontfamily{\gostListingfont}[Scale=1.0]{Arial Narrow} % Шрифт для листингов
+%\newfontfamily{\gostListingfont}[Scale=1.0]{Consolas} % Шрифт для листингов
 
 
 
 
 
+
+\input{commands.tex} %Файл включает такие команды как надчёркивание, запрещение переноса ТУ и др.
 
 
 
@@ -108,28 +116,72 @@
 
 \begin{document}% Начало самого документа (содержательной части)
 
-\input ./toy/title.tex %Здесь информация о названии файла, авторах и т.д.
+\input{./src/title.tex} %Здесь информация о названии файла, авторах и т.д.
 
 \maketitle % Поместили Титульный лист
 
 
-\SetEmptyPage
+%\SetEmptyPage
 \SetEvenPage
 
 
 \makesecondpage
 
 
-%\tableofcontents % Содержание
+\tableofcontents % Содержание
+
+
+\begin{luacode}
+  function rnd(num, numDecimalPlaces)
+    -- Округление числа до ближайшего и
+    -- обрезка незначащих нулей
+    local negate = false
+    if (num < 0) then
+      negate = true
+      num = -num
+    end
+
+    local mult = 10^(numDecimalPlaces or 0)
+    num_fl = math.floor(num * mult + 0.5) / mult
+    local fmt = "%."..numDecimalPlaces.."f"
+
+    if (negate == true) then
+      num_fl = -num_fl
+    end
+
+    str = string.format(fmt, num_fl):gsub('\%.', ',')
+    str = str:gsub('[0]+$', '')
+    str = str:gsub(',$', '')
+    return tex.sprint(str)
+  end
+
+  function rnd1(num)
+    return rnd(num, 1)
+  end
+
+  function rnd2(num)
+    return rnd(num, 2)
+  end
+
+  function rnd3(num)
+    return rnd(num, 3)
+  end
+
+  -- Загрузка кода, исполнение, получение глобальной
+  -- таблицы t с результатами вычислений
+  local file = io.open("calc_pollution.lua", "r")
+  local code = file:read("*all")
+  file:close()
+  local res, calc = pcall(load('return '..code))
+  t = calc()
+\end{luacode}
 
 
 
-\input ./toy/toy.tex
+\input{./src/01.tex}
+\input{./src/02.tex}
 
-
-
-
-%\regChanges %Вставляем лист регистрации изменений
-%\sectionmark{Лист замечаний}
 \end{document}
+
+
 

@@ -1,0 +1,24 @@
+% МАКРОСЫ, СПЕЦИФИЧЕСКИЕ ДЛЯ ДАННОГО ДОКУМЕНТА   Подключается в преамбуле
+
+
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}% Выравнивание столбца по левому краю
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}% Выравнивание столбца по левому центру
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}% Выравнивание столбца по правому краю
+
+
+
+\newminted[LuaCode]{lua}{
+               fontsize=\footnotesize,
+               %linenos,
+               breaklines,    % Перенос кода на другую строку
+               numbersep=2mm,  %Отступ от номеров строк до кода
+               xleftmargin=5mm,
+               frame = lines, %Линия над кодом и линия под кодом
+               baselinestretch=1.0 %Расстояние между строчками
+               }
+
+
+\definecolor{Gray}{gray}{0.94}%
+
+
+

@@ -78,11 +78,15 @@
 %{OpenGost Type A TT} {OpenGost Type B TT} % Свободный шрифт. Нет наклонного начертания и дирного начертания
 %{GOST type A} % Морально устарел, не свободный, не хватает символа тирэ. Не рекомендуется
 %{GOST type B} % Морально устарел, не свободный, не хватает символа тирэ. Не рекомендуется
-\gostSetRomanfont{Times New Roman}%
-\gostSetSansfont{Times New Roman}%
-\gostSetMonofont{Times New Roman}%
-\gostSetMainfont{Times New Roman}%
-\gostSetStampfont{Arial}%
+
+\gostSetStampfont{Times New Roman}%
+
+\setromanfont{Times New Roman}
+\setsansfont{Arial}
+\setmonofont{Consolas}
+\setmainfont{Times New Roman}
+
+
 \verbatimfont{\fontspec[Scale=1.0]{Arial} \itshape}% % Для замены стиля начертания verbatim и verb
 
 %\renewcommand{\SetStampfontIt}{\itshape}%

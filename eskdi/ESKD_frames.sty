@@ -320,7 +320,96 @@
     \spformedboxmm{129}{242}{157}{279}{c}{\centering\stampnormalfont  и~дата}
     \spformedboxmm{157}{259}{172}{279}{c}{\centering\stampnormalfont  Подпись}
     \spboxmm{172}{259}{185}{279}{lc}{\parbox{14mm}{\centering\stampnormalfont  Дата}}
+    \spboxmm{172}{259}{185}{279}{lc}{\parbox{14mm}{\centering\stampnormalfontit Дата}}
   \end{picture}%
+}%
+
+
+\newcommand{\DrawAII}
+{%
+  \setlength{\unitlength}{1mm}%
+  \begin{picture}(0,0)%
+    \linethickness{\pcbdoclinethick}%
+    \put(0,0){\line(1,0){569}}% нижняя линия
+    \put(0,410){\line(1,0){569}}% верхняя линия
+    \put(0,0){\line(0,1){410}}% левая линия
+    \put(569,0){\line(0,1){410}}% правая линия
+    \put(384,0){\DrawStampNext}%
+    \put(384,0){\line(0,1){15}}% правая линия
+    \put(0,0){\DrawFieldBottomNext}%
+    \put(0,0)
+    {%
+      \begin{picture}(0,0)%	     
+        \spformedboxmm{10}{-5}{30}{-1.0}{tc}{\stampnormalfontit Ф.2.106-9а}
+      \end{picture}%
+    }%
+    \put(384,0)
+    {%
+      \begin{picture}(0,0)%
+        \spformedboxmm{60}{-5}{80}{-1.0}{tc}{\stampnormalfontit Копировал:}
+        \spformedboxmm{145}{-5}{165}{-1.0}{tc}{\stampnormalfontit Формат А2}
+      \end{picture}%
+    }%  
+  \end{picture}%
+}%
+
+
+\newcommand{\DrawAIII}
+{%
+  \setlength{\unitlength}{1mm}%
+  \begin{picture}(0,0)%
+     \linethickness{\pcbdoclinethick}%
+     \put(0,0){\line(1,0){395}}% нижняя линия
+     \put(0,287){\line(1,0){395}}% верхняя линия
+     \put(0,0){\line(0,1){287}}% левая линия
+     \put(395,0){\line(0,1){287}}% правая линия
+     \put(210,0){\DrawStampNext}%
+     \put(210,0){\line(0,1){15}}% правая линия
+     \put(0,0){\DrawFieldBottomNext}%
+     \put(0,0)
+     {%
+       \begin{picture}(0,0)%	     
+         \spformedboxmm{10}{-5}{30}{-1.0}{tc}{\stampnormalfontit Ф.2.106-9а}
+       \end{picture}%
+     }%
+     \put(210,0)
+     {%
+       \begin{picture}(0,0)%
+         \spformedboxmm{60}{-5}{80}{-1.0}{tc}{\stampnormalfontit Копировал:}
+         \spformedboxmm{145}{-5}{165}{-1.0}{tc}{\stampnormalfontit Формат А3}
+       \end{picture}%
+     }%  
+  \end{picture}
+}%
+
+
+\newcommand{\DrawAI}
+{%
+   \setlength{\unitlength}{1mm}%
+   \begin{picture}(0,0)%
+      \linethickness{\pcbdoclinethick}%
+      \put(0,0){\line(1,0){816}}% нижняя линия
+      \put(0,583.5){\line(1,0){816}}% верхняя линия
+      \put(0,0){\line(0,1){583.5}}% левая линия
+      \put(816,0){\line(0,1){583.5}}% правая линия
+
+      \put(631,0){\DrawStampNext}%
+      \put(631,0){\line(0,1){15}}% правая линия
+      \put(0,0){\DrawFieldBottomNext}%
+      \put(0,0)
+      {%
+        \begin{picture}(0,0)%	     
+          \spformedboxmm{10}{-5}{30}{-1.0}{tc}{\stampnormalfontit Ф.2.106-9а}
+        \end{picture}%
+      }%
+      \put(631,0)
+      {%
+        \begin{picture}(0,0)%
+          \spformedboxmm{60}{-5}{80}{-1.0}{tc}{\stampnormalfontit Копировал:}
+          \spformedboxmm{145}{-5}{165}{-1.0}{tc}{\stampnormalfontit Формат А1}
+        \end{picture}%
+      }%  
+    \end{picture}%
 }%
 
 
